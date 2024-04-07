@@ -1,0 +1,155 @@
+-
+  const footerMenu = [
+    {
+      name: 'Услуги',
+      list: [
+        {
+          text: 'Все услуги',
+          href: '#',
+        },
+        {
+          text: 'Название услуги 1',
+          href: '#',
+        },
+        {
+          text: 'Название услуги 2',
+          href: '#',
+        },
+        {
+          text: 'Название услуги 3',
+          href: '#',
+        },
+        {
+          text: 'Название услуги 4',
+          href: '#',
+        },
+      ],
+    },
+    {
+      name: 'Подарочные сертификаты:',
+      list: [
+        {
+          text: 'Все сертификаты',
+          href: '#',
+        },
+        {
+          text: 'Название сертификата 1',
+          href: '#',
+        },
+        {
+          text: 'Название сертификата 2',
+          href: '#',
+        },
+        {
+          text: 'Название сертификата 3',
+          href: '#',
+        },
+        {
+          text: 'Название сертификата 4',
+          href: '#',
+        },
+      ],
+    },
+    {
+      name: 'Акции:',
+      list: [
+        {
+          text: 'Все акции',
+          href: '#',
+        },
+        {
+          text: 'Акция 1',
+          href: '#',
+        },
+        {
+          text: 'Акция 2',
+          href: '#',
+        },
+        {
+          text: 'Акция 3',
+          href: '#',
+        },
+        {
+          text: 'Акция 4',
+          href: '#',
+        },
+      ],
+    },
+    {
+      name: 'О&nbsp;компании:',
+      list: [
+        {
+          text: 'О&nbsp;компании',
+          href: '#',
+        },
+        {
+          text: 'Интерьеры',
+          href: '#',
+        },
+        {
+          text: 'Отзывы',
+          href: '#',
+        },
+      ],
+    },
+    {
+      name: 'Новости:',
+      list: [
+        {
+          text: 'Блог',
+          href: '#',
+        },
+        {
+          text: 'Новости',
+          href: '#',
+        },
+      ],
+    },
+    {
+      name: 'Информация:',
+      mod: 'footer__section--mob-dn',
+      list: [
+        {
+          text: 'Прайс лист',
+          href: '#',
+        },
+        {
+          text: 'Информация',
+          href: '#',
+        },
+        {
+          text: 'Правила',
+          href: '#',
+        },
+      ],
+    },
+  ]
+
+-
+  const socialsItemsFooter =[
+    { icon: 'icon_inst' },
+    { icon: 'icon_vk' },
+  ]
+
+footer.footer
+  .inner
+    .footer__main
+      a.footer__logo(href='/'): img(src='../../images/logo.svg' alt='')
+      a.footer__account(href='#') Войти или создать личный кабинет
+    ul.footer__menu
+      each item in footerMenu
+        li.footer__section(class=item.mod)
+          h5.footer__heading !{item.name}
+          ul.footer__list
+            each link in item.list
+              li.footer__item
+                a.footer__link(href=link.href) !{link.text}
+      li.footer__section.footer__section--mob-dn.footer__section--contacts
+        h5.footer__heading Контакты
+        .footer__buttons
+          +ui-button('Бронирование', 'footer, --outline-gradient, --l-min-w-s')
+          +ui-button('Купить сертификат', 'footer, --l-min-w-s')
+    +socials(socialsItemsFooter, 'footer', '-grey')
+    .footer__policies
+      a.footer__policy(href='#') Политика конфиденциальности
+      a.footer__policy(href='#') Разработка сайтов “Генерация”

@@ -1,0 +1,31 @@
+mixin category(mods)
+  -
+    const baseName = 'category'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  -
+    const items =[
+      { h2: 'SPA ритуалы', img: '../../images/category/category_spa.jpg' },
+      { h2: 'Сертификаты', img: '../../images/category/category_certificates.jpg' },
+    ]
+
+  .category(class=allMods)&attributes(attributes)
+    .swiper
+      .swiper-wrapper
+        each item in items
+          a.category__item.swiper-slide(href='#')
+            .category__img
+              img(src=item.img, alt='')
+            .category__content
+              +ui-h2('', 'category')
+                span.text-gradient !{item.h2}
+            .category__img-hover
+              img(src='../../images/category/category_hover_img.png', alt='')
+    block

@@ -1,0 +1,38 @@
+mixin reviews-slider(mods)
+  -
+    const baseName = 'reviews-slider'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .reviews-slider(class=allMods)&attributes(attributes)
+    +section-head('reviews-slider')
+      +ui-h2('отзывы', 'section-head').text-brown
+      +ui-h4('Отзывы гостей: моменты совершенства в Kyoto SPA')
+    .reviews-slider__main
+      .swiper
+        .swiper-wrapper
+          - for(let i=0; i<8; i++)
+            .reviews-slider__item.swiper-slide
+              .reviews-slider__logo
+                img(src='../../images/reviews-slider-logo-2gis.svg', alt='')
+              if i===2
+                +ui-h4('>1 000')
+                +ui-p1('Отзывы', 'reviews-slider')
+              else
+                .reviews-slider__rating
+                  .reviews-slider__star
+                    +svg('icon_star')
+                  .reviews-slider__value
+                    span 5,0
+                    span.reviews-slider__value-generic /5,0
+                +ui-p1('Рейтинг', 'reviews-slider')
+                +ui-p3('> 300 отзывов', 'reviews-slider')
+    +ui-button('Смотреть все отзывы', 'reviews-slider, --min-w, --outline')(href='#')
+    +ui-swiper-buttons('reviews-slider')
+    block

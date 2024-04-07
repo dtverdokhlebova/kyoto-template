@@ -1,0 +1,31 @@
+mixin reviews-video(mods)
+  -
+    const baseName = 'reviews-video'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .reviews-video(class=allMods)&attributes(attributes)
+    +section-head('reviews-video')
+      +ui-h2('видео отзывы', 'section-head').text-uppercase.text-brown
+      +ui-h4('Посмотрите видео отзывы наших счастливых клиентов', 'section-head')
+    .reviews-video__main
+      .swiper
+        .swiper-wrapper
+          - for(let i=0; i<10; i++)
+            .reviews-video__item.swiper-slide
+              .reviews-video__video
+                <iframe src="https://www.youtube.com/embed/bTqVqk7FSmY?iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0" allowfullscreen="allowfullscreen" allowtransparency="allowtransparency" allow="autoplay"></iframe>
+              .reviews-video__img
+                img(src='../../images/reviews-video-img.jpg', alt='')
+              button.reviews-video__button(type='button' title='Воспроизвести видео' data-plyr-provider='youtube' data-plyr-embed-id='bTqVqk7FSmY')
+
+    .reviews-video__nav
+      +ui-swiper-buttons('reviews-video')
+      +ui-swiper-fraction('reviews-video, --fz-xl')
+    block

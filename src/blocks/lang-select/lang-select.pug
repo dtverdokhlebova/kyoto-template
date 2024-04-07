@@ -1,0 +1,18 @@
+mixin lang-select(mods)
+  -
+    const baseName = 'lang-select'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .lang-select(class=allMods)&attributes(attributes)
+    input#lang-toggle.lang-select__input(type='checkbox' name='')
+    label.lang-select__label(for='lang-toggle')
+      .lang-select__item ru
+      .lang-select__item kz
+    block

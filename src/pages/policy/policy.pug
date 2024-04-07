@@ -1,0 +1,12 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'policy'
+    const pageTitle = 'Политика конфиденциальности'
+
+block content
+  main.main
+    +section('--pt-xs')
+      .inner
+        +policy

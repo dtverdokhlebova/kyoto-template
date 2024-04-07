@@ -1,0 +1,25 @@
+mixin large-active-slider(data, mods)
+  -
+    const baseName = 'large-active-slider'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .large-active-slider(class=allMods)&attributes(attributes)
+    .swiper
+      .swiper-wrapper
+        -for(let i=0; i<3; i++)
+          each item in data
+            .large-active-slider__slide.swiper-slide
+              .large-active-slider__img: img(src=item.img alt='')
+              .large-active-slider__content
+                +ui-h5(item.title, 'large-active-slider, --mob-fz-s, --semibold')
+                +ui-p1(item.text, 'large-active-slider, --mob-s')
+                if item.button
+                  +ui-button(item.button.text, 'large-active-slider')(href=item.button.href)
+    block

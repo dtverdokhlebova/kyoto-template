@@ -1,0 +1,43 @@
+.section-head {
+  &__ui-h2 {
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+  &--max-w {
+    max-width: 930px;
+  }
+  &--mb-l {
+    margin-bottom: 50px;
+    @include media-laptop {
+      margin-bottom: 30px;
+    }
+    @include media-tablet {
+      margin-bottom: 20px;
+    }
+  }
+  &--mb {
+    margin-bottom: 40px;
+    @include media-laptop {
+      margin-bottom: 30px;
+    }
+    @include media-tablet {
+      margin-bottom: 20px;
+    }
+  }
+  &--mb-xs {
+    margin-bottom: 24px;
+    @include media-tablet {
+      margin-bottom: 20px;
+    }
+  }
+  &--center {
+    margin-right: auto;
+    margin-left: auto;
+  }
+  &--mob-pr {
+    @include media-tablet {
+      padding-right: 40px;
+    }
+  }
+}

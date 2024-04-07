@@ -1,0 +1,92 @@
+.reviews-slider {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 25px;
+  @include media-tablet {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 24px;
+  }
+  .swiper {
+    overflow: visible;
+  }
+  &__section-head {
+    order: -1;
+    @include media-tablet {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  &__main {
+    grid-column: 1/-1;
+    width: 100%;
+    margin-top: 40px;
+    @include media-tablet {
+      margin: 0;
+    }
+  }
+  &__item {
+    width: 370px;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    align-content: start;
+    height: auto;
+    padding: 50px 15px 15px;
+    text-align: center;
+    color: $white;
+    background: url('/images/bg-decor-dark.png');
+    background-size: cover;
+    border-radius: 20px;
+  }
+  &__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 28px;
+  }
+  &__rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+  &__star {
+    flex-shrink: 0;
+    width: 35px;
+    height: 35px;
+    color: #fd5;
+  }
+  &__value {
+    font-size: 28px;
+    line-height: 1.3;
+    &-generic {
+      font-size: 25px;
+      color: #b4b4b4;;
+    }
+  }
+  &__ui-p3 {
+    &:not(:first-child) {
+      margin-top: 5px;
+    }
+  }
+  &__ui-button {
+    order: -1;
+    align-self: end;
+    @include media-tablet {
+      order: unset;
+      flex: auto;
+    }
+  }
+  &__ui-swiper-buttons {
+    margin-top: 56px;
+    @include media-laptop {
+      margin-top: 40px;
+    }
+    @include media-tablet {
+      order: unset;
+      margin-top: 0;
+    }
+  }
+}

@@ -1,0 +1,63 @@
+mixin certificates-list(mods)
+  -
+    const baseName = 'certificates-list'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  -
+    const items =[
+      {
+        label: 'Орган чувств: слух',
+        name: 'Музыкальная шкатулка с сюрпризом',
+        descr: 'Деревянная шкатулка с музыкой Миядзаки из летающего замка, внутри небольшой свиток с текстом сертификата.',
+      },
+      {
+        label: 'Орган чувств: обоняние',
+        name: 'Аромо-сертификат',
+        descr: 'Ароматизированный сертификат : свиток, к которому привязывается мешочек (саше) с ароматом японских благовоний и трав, желательно исполнение на бумаге, которая будет похожа на ткань и деревянный или из иного материала стержень.',
+      },
+      {
+        label: 'Орган чувств: воздух',
+        name: 'Японский веер Гейши',
+        descr: 'Бумажный веер с текстом, желательно сделать для него какой-то чехол или завязочку, чтобы удобно было презентовать (осязание, воздействие воздуха на кожу).',
+      },
+      {
+        label: 'Орган чувств: вкус',
+        name: 'Вкусы Японии (сундук со сладостями)',
+        descr: 'Сладкий бокс: деревянная шкатулка с японскими сладостями (чаями, печеньями с предсказанием) и мини свитком с текстом сертификата (вкус).',
+      },
+      {
+        label: 'Зрение',
+        name: 'Онлайн сертификат',
+        descr: 'Музыкальный гиф, в который вставляется имя гостя (в название файла зашивается номер сертификата), (зрение)',
+      },
+    ]
+
+  .certificates-list(class=allMods)&attributes(attributes)
+    each item, index in items
+      .certificates-list__item
+        .certificates-list__content
+          .certificates-list__text
+            .certificates-list__head
+              +ui-p1(item.label, '--semibold').certificates-list__label.text-brown
+              +ui-h4(item.name, '--semibold')
+            +ui-p1(item.descr, 'certificates-list, --mob-s')
+          .certificates-list__actions
+            +ui-button('Купить сертификат', 'certificates-list, --fz-xs')(href='#')
+            +ui-button('Забронировать', 'certificates-list, --fz-xs, --outline-gradient')(href='#')
+            +ui-button('Написать в WhatsApp', 'certificates-list, --fz-xs, --outline-gradient')(href='#')
+          button.certificates-list__share(onclick=`window.openPopup('#popup-share')`)
+            +svg('icon_share')
+            span.certificates-list__share-text Поделиться
+        .certificates-list__pictures
+          .certificates-list__img
+            img(src=`../../images/certificates/certificates-list_${index+1}.jpg` alt='')
+          .certificates-list__icon
+            img(src=`../../images/certificates/certificates-icon_${index+1}.png`, alt='')
+    block

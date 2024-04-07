@@ -1,0 +1,21 @@
+@mixin button-reset {
+  background-color: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  transition: $transitionDuration;
+}
+@mixin golden-scrollbar {
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-track {
+    margin: 10px 0;
+    background: #424242;
+    border-radius: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(130.14deg, #8A5C2A 13.54%, rgb(194 166 80 / 0.81) 50.18%, rgb(209 186 90 / 0.92) 57.67%, rgb(200 173 83 / 0.86) 63.23%, #A37C36 84.8%);
+    border-radius: 4px;
+  }
+}

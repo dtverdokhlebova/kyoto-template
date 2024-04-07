@@ -1,0 +1,28 @@
+mixin information(mods)
+  -
+    const baseName = 'information'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  -
+    const items =[
+      { title: 'Правила' },
+      { title: 'Новости' },
+      { title: 'Блог' },
+    ]
+
+  .information(class=allMods)&attributes(attributes)
+    each item, index in items
+      a.information__item(class=(index===0 ? 'information__item--big' : '') href='#')
+        .information__content
+          +ui-h2('', '--mob-fz-l')
+            span.text-gradient !{item.title}
+        .information__img
+          img(src=`../../images/information/information-img-${index+1}.jpg`, alt='')
+    block

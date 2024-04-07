@@ -1,0 +1,28 @@
+.page-404 {
+  flex: 1;
+  padding: 168px 0;
+  text-align: center;
+  background: $bgLight url('/images/page-404-bg.png') no-repeat center;
+  background-blend-mode: luminosity;
+  background-size: cover;
+  overflow: hidden;
+  &__img {
+    max-width: 770px;
+    margin: 0 auto -20px;
+    @include media-tablet {
+      margin-bottom: -10px;
+    }
+  }
+  &__ui-h4 {
+    margin-bottom: 30px;
+    @include media-tablet {
+      margin-bottom: 50px;
+    }
+  }
+  &__ui-button {
+    @include media-tablet {
+      width: 100%;
+      max-width: 410px;
+    }
+  }
+}

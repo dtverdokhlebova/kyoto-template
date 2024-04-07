@@ -1,0 +1,46 @@
+.socials {
+  --size: 55px;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: $black;
+  @include media-tablet {
+    --size: 50px;
+  }
+  &__item {
+    display: block;
+    @include media-hover {
+      .socials__icon {
+        opacity: 0.8;
+      }
+    }
+  }
+  &__icon {
+    width: var(--size);
+    height: var(--size);
+    margin: 0 auto;
+    transition: $transitionDuration;
+  }
+  &__ui-p2 {
+    margin-top: 10px;
+    text-align: center;
+  }
+  &--size-l {
+    --size: 69px;
+    @include media-tablet {
+      --size: 54px;
+    }
+  }
+  &--gap-l {
+    gap: 40px;
+    @include media-tablet {
+      gap: 10px;
+    }
+  }
+  &--mob-between {
+    @include media-tablet {
+      justify-content: space-between;
+    }
+  }
+}

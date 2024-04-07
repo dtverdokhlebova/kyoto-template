@@ -1,0 +1,35 @@
+mixin services(mods)
+  -
+    const baseName = 'services'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  -
+    const items =[
+      { img: '../../images/services/services-img-phytobarrel.jpg', h4: 'Кедровая фитобочка' },
+      { img: '../../images/services/services-img-hammam.jpg', h4: 'Хаммам' },
+      { img: '../../images/services/services-img-sauna.jpg', h4: 'Сауна' },
+      { img: '../../images/services/services-img-footsteps-geisha.jpg', h4: 'По следам Гейши: экспресс-ритуал для ног' },
+      { img: '../../images/services/services-img-elixir-harmony.jpg', h4: 'Эликсир Гармонии: Касание Киото' },
+    ]
+
+  .services(class=allMods)&attributes(attributes)
+    each item in items
+      .services__item
+        .services__img
+          img(src=item.img, alt='')
+        .services__wrapper
+          .services__content
+            .services__icon
+              img(src='../../images/services/services-icon.svg', alt='')
+            +ui-h4(item.h4, 'services, --semibold, --mob-fz-l')
+            .services__actions
+              +ui-button('Подробнее', 'services, --l-min-w-xs, --fz-xs')(href='#')
+              +ui-button('Забронировать', 'services, --l-min-w-xs, --fz-xs, --outline-gradient')(href='#')
+    block

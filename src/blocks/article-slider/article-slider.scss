@@ -1,0 +1,54 @@
+.article-slider {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 25px;
+  @include media-tablet {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .swiper {
+    overflow: visible;
+  }
+  &__section-head {
+    align-self: center;
+    @include media-tablet {
+      margin-bottom: 15px;
+    }
+  }
+  &__nav {
+    align-self: center;
+    @include media-tablet {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+  }
+  &__main {
+    order: 1;
+    grid-column: 1/-1;
+    width: 100%;
+    margin-top: 40px;
+    @include media-tablet {
+      order: unset;
+      margin-top: 0;
+    }
+  }
+  &__article-item {
+    width: 370px;
+    height: auto;
+    @include media-laptop {
+      width: 330px;
+    }
+    @include media-tablet {
+      width: 100%;
+      max-width: 410px;
+    }
+  }
+  &__ui-swiper-fraction {
+    display: none;
+    @include media-tablet {
+      display: flex;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'news-inner'
+    const pageTitle = 'Детальная страница новости'
+
+block content
+  main.main
+    +section('--pt-s, --pb-0')
+      .inner.inner--l
+        +article-inner('news')
+    +section('--bg, --article-slider-news, --ov-hidden')
+      .inner
+        +article-slider('news')

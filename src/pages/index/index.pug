@@ -1,0 +1,38 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageTitle = 'Index'
+
+  -
+    const pages = [
+      { text: 'Главная', href: 'main.html' },
+      { text: 'Услуги', href: 'services.html' },
+      { text: 'Услуги - Детальная страница', href: 'services-inner.html' },
+      { text: 'О компании', href: 'about.html' },
+      { text: 'Интерьер', href: 'interior.html' },
+      { text: 'Отзывы', href: 'reviews.html' },
+      { text: 'Прайс лист', href: 'prices.html' },
+      { text: 'Подарочные сертификаты', href: 'certificates.html' },
+      { text: 'Акции', href: 'promotions.html' },
+      { text: 'Акции - Детальная страница', href: 'promotions-inner.html' },
+      { text: 'Информация', href: 'information.html' },
+      { text: 'Блог', href: 'blog.html' },
+      { text: 'Блог - Детальная страница', href: 'blog-inner.html' },
+      { text: 'Новости', href: 'news.html' },
+      { text: 'Новости - Детальная страница', href: 'news-inner.html' },
+      { text: 'Правила', href: 'rules.html' },
+      { text: 'Контакты', href: 'contacts.html' },
+      { text: 'Политика конфиденциальности', href: 'policy.html' },
+      { text: '404', href: 'page-404.html' },
+    ]
+
+block content
+  main.main
+    +section
+      .inner
+        each item in pages
+          +ui-p1
+            a(href=item.href)=item.text
+            br
+            br

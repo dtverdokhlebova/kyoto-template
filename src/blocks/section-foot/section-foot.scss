@@ -1,0 +1,6 @@
+.section-foot {
+  margin-top: 40px;
+  @include media-laptop {
+    margin-top: 30px;
+  }
+}

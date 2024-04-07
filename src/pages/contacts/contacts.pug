@@ -1,0 +1,23 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'contacts'
+    const pageTitle = 'Контакты'
+
+block content
+  main.main
+    +section('--pt-s, --pb-0, --mob-pt-xxxs')
+      .inner
+        +section-head('--mb-xs, --mob-pr')
+          +ui-h2('Контакты', 'section-head').text-brown
+        +contacts
+    +section('--pb-0')
+      .inner
+        +legal-info
+    +section('--bg, --reviews-slider, --ov-hidden')
+      .inner
+        +reviews-slider
+    +section('--pt-0')
+      .inner
+        +ask-question

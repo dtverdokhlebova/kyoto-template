@@ -1,0 +1,78 @@
+.lang-select {
+  display: inline-block;
+  &__input {
+    display: none;
+    &:checked {
+      ~ .lang-select__label {
+        &::before {
+          transform: translate(calc(var(--width) - var(--indent) - var(--indent) - 100%), -50%);
+        }
+        .lang-select__item {
+          &:first-child {
+            opacity: 1;
+          }
+          &:last-child {
+            opacity: 0;
+          }
+        }
+      }
+    }
+  }
+  &__label {
+    --width: 68px;
+    --indent: 5px;
+    --color: #b4b4b4;
+
+    position: relative;
+    display: inline-flex;
+    justify-content: space-between;
+    gap: 5px;
+    width: var(--width);
+    padding: 7px 11px;
+    outline: 1px solid var(--color);
+    outline-offset: -1px;
+    border-radius: 32px;
+    color: var(--color);
+    cursor: pointer;
+    user-select: none;
+    transition: $transitionDuration;
+    @include media-hover {
+      --color: #{$white};
+    }
+    @include media-tablet {
+      --width: 49px;
+      --indent: 2px;
+
+      padding: 6px 5px;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: var(--indent);
+      transform: translate(0, -50%);
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background-color: var(--color);
+      transition: $transitionDuration;
+      @include media-tablet {
+        width: 19px;
+        height: 19px;
+      }
+    }
+  }
+  &__item {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.25;
+    text-transform: uppercase;
+    transition: $transitionDuration;
+    @include media-tablet {
+      font-size: 9px;
+    }
+    &:first-child {
+      opacity: 0;
+    }
+  }
+}

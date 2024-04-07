@@ -1,0 +1,43 @@
+mixin article-inner(type, mods)
+  -
+    const baseName = 'article-inner'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .article-inner(class=allMods)&attributes(attributes)
+    .article-inner__decor.article-inner__decor--top
+      img(src='../../images/article-inner-bg-top.png', alt='')
+    .article-inner__container
+      .article-inner__wrapper
+        .article-inner__content
+          .article-inner__head
+            if type === 'news'
+              .article-inner__date Дата публикации: 11.08.1999
+            .article-inner__title Массаж: секрет жизненной гармонии и здоровья
+            .article-inner__descr Массаж – это не просто приятная процедура, но и мощный инструмент поддержания общего благополучия. Все больше людей обращают внимание на пользу массажа, осознавая его уникальные физические и психологические преимущества.
+          +text('article-inner')
+            ol.text__ol-lvl1
+              li Расслабление и Снятие Стресса:
+                p Массаж – это идеальный способ избавиться от напряжения и стресса, накопленного в повседневной жизни. Регулярные сеансы массажа способствуют снижению уровня стресса и обеспечивают глубокое расслабление.
+              li Улучшение Кровообращения:
+                p Улучшение Кровообращения: Профессиональный массаж стимулирует кровоток, что способствует лучшему поступлению кислорода и питательных веществ в клетки. Это улучшает общее состояние организма и способствует его регенерации.
+              li Снятие Болевых Ощущений:
+                p Массаж может помочь в снятии боли и дискомфорта, связанных с мышечными напряжениями, спазмами и травмами. Он способен улучшить гибкость и подвижность суставов.
+              li Поддержание Здоровья Кожи:
+                p Различные виды массажа способствуют улучшению кровоснабжения кожи, стимулируют выработку коллагена и улучшают ее общий тонус.
+              li Повышение Энергетики и Восстановление Сил:
+                p Массаж активизирует работу энергетических точек в организме, способствуя балансу внутренних энергий и повышению общей энергетики.
+          .article-inner__footnote
+            +ui-p1('', '--bold, --mob-s')
+              | Не упускайте возможность улучшить свое здоровье и благополучие. Впустите в свою жизнь терапевтический массаж – путь к гармонии и радости.
+        .article-inner__img
+          img(src='../../images/article-item-img.jpg', alt='')
+    .article-inner__decor.article-inner__decor--bottom
+      img(src='../../images/article-inner-bg-bottom.png', alt='')
+    block

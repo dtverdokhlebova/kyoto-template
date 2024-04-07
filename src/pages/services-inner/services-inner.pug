@@ -1,0 +1,39 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'services-inner'
+    const pageTitle = 'Услуги - Детальная страница'
+
+  -
+    const socialsItemsShare =[
+      { icon: 'icon_vk_color', isImg: true, text: 'ВК' },
+      { icon: 'icon_wa_color', isImg: true, text: 'WhatsApp' },
+      { icon: 'icon_tg_color', isImg: true, text: 'Telegram' },
+      { icon: 'icon_link_color', isImg: true, text: 'Копировать <br>ссылку' },
+      { icon: 'icon_inst_color', isImg: true, text: 'Instagram' },
+    ]
+
+block content
+  main.main
+    +banner
+      +banner__item('services-inner', 'Кедровая фитобочка')
+        block banner
+          +banner__scroll
+    +section('--pb-0')
+      .inner
+        +services-inner
+    +section('--pb-0, --ov-hidden, --bg, --reviews-video')
+      .inner
+        +reviews-video
+    +section('--pb-0, --ov-hidden')
+      .inner
+        +services-simular
+    +section('--ov-hidden')
+      .inner
+        +reviews-slider
+
+    +popup#popup-share
+      +section-head('--mb-xs')
+        +ui-h5('Поделиться:', '--semibold, --t-fz-l').text-brown
+      +socials(socialsItemsShare, '--size-l, --gap-l, --mob-between')

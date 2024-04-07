@@ -1,0 +1,30 @@
+mixin legend(mods)
+  -
+    const baseName = 'legend'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .legend(class=allMods)&attributes(attributes)
+    .legend__pictures
+      .legend__img.legend__img--l
+        img(src='../../images/legend/legend_img_1.jpg', alt='')
+      .legend__img
+        img(src='../../images/legend/legend_img_2.jpg', alt='')
+    .legend__text
+      +ui-h2('легенда о kyoto&nbsp;spa', 'legend').text-brown
+      +ui-h4('', '--semibold')
+        | Японский дедушка Ямамото живет в деревушке недалеко от Киото.
+        br
+        | Дети переехали в Токио. Он сильно переживал о стрессе современной жизни своих детей и внуков и очень хотел облегчить их душевные переживания. В результате множества размышлений он создал для них особые риуталы, воздействующие на все органы чувств (осязание, обоняние, зрение, запахи, вкусы) и позволяющие полностью отдохнуть, прежде всего, духовно.
+    .legend__pictures
+      .legend__img.legend__img--l
+        img(src='../../images/legend/legend_img_3.jpg', alt='')
+      .legend__img
+        img(src='../../images/legend/legend_img_4.jpg', alt='')
+    block

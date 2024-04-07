@@ -1,0 +1,43 @@
+mixin discounts(mods)
+  -
+    const baseName = 'discounts'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+    const slides = [
+      {
+        img: '../../images/discounts/discounts_1.png',
+        title: 'Сияние осени в Kyoto SPA',
+        text: 'При бронировании спа-ритуала получите бесплатно ароматическую свечу и уникальный Японский чай!',
+        button: {
+          text: 'Подробнее',
+          href: '#',
+        },
+      },
+      {
+        img: '../../images/discounts/discounts_2.png',
+        title: 'Сияние осени в Kyoto SPA Сияние осени в Kyoto SPA',
+        text: 'При бронировании спа-ритуала получите бесплатно ароматическую свечу и уникальный Японский чай, ароматическую свечу и уникальный Японский чай!',
+        button: {
+          text: 'Подробнее',
+          href: '#',
+        },
+      },
+    ]
+
+  .discounts(class=allMods)&attributes(attributes)
+    +section-head('discounts')
+      +ui-h2('Акции', 'section-head').text-brown
+      +ui-h4('Актуальные скидки и&nbsp;акции', '--semibold')
+    +ui-button('Смотреть все акции', 'discounts, --min-w, --outline')(href='#')
+    +large-active-slider(slides, 'discounts, --content-inside')
+    .discounts__nav
+      +ui-swiper-buttons('discounts')
+      +ui-swiper-fraction('discounts, --fz-xl')
+    block

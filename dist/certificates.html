@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Подарочные сертификаты</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <link href="" rel="icon" type="image/x-icon">
+    <link href="libs/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="libs/select2/select2.min.css" rel="stylesheet">
+    <link href="libs/plyr/plyr.min.css" rel="stylesheet">
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=7742add4-5d3c-4060-9f01-67963d12fb4e&amp;lang=ru_RU" type="text/javascript"></script>
+    <script type="module" crossorigin src="scripts/scripts.js"></script>
+    <link rel="stylesheet" href="styles/index.css">
+  </head>
+  <body ontouchstart>
+    <div class="wrapper">
+      <header class="header">
+        <div class="inner">
+          <div class="header__main-group"><a class="header__logo" href="/"><img src="images/logo.svg" alt=""></a>
+            <div class="ui-select header__ui-select">
+              <select data-placeholder="Ваш город">
+                <option></option>
+                <option>Воронеж</option>
+                <option>Липецк</option>
+                <option>Москва</option>
+                <option>Калуга</option>
+                <option>Рязань</option>
+                <option>Санкт-Петербург</option>
+              </select>
+            </div>
+            <div class="lang-select header__lang-select">
+              <input class="lang-select__input" id="lang-toggle" type="checkbox" name=""/>
+              <label class="lang-select__label" for="lang-toggle">
+                <div class="lang-select__item">ru</div>
+                <div class="lang-select__item">kz</div>
+              </label>
+            </div>
+          </div>
+          <button class="ui-button header__ui-button ui-button--p-xs ui-button--fz-xs" onclick="window.openMenu()">
+            <svg class="svg svg--icon_palms">
+              <use xlink:href="images/sprite.svg#icon_palms"></use>
+            </svg><span>SPA ритуалы</span>
+          </button>
+          <div class="header__secondary-group">
+            <div class="header__actions header__actions--links"><a class="header__tel" href="tel:+70000000000">+7 (000) 000-00-00</a>
+              <button class="ui-button ui-button--p-xs ui-button--fz-xs ui-button--outline"><span>Записаться онлайн</span>
+              </button>
+              <button class="ui-button ui-button--p-xs ui-button--fz-xs ui-button--outline"><span>Купить сертификат</span>
+              </button>
+            </div>
+            <div class="header__actions header__actions--buttons"><a class="header__lk" href="#">
+                <svg class="svg svg--icon_person">
+                  <use xlink:href="images/sprite.svg#icon_person"></use>
+                </svg></a>
+              <button class="header__burger" onclick="window.openBurgerMenu()">
+                <svg class="svg svg--icon_burger">
+                  <use xlink:href="images/sprite.svg#icon_burger"></use>
+                </svg>Меню
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="header-burger">
+          <button class="header__close" onclick="window.closeBurgerMenu()">
+            <svg class="svg svg--icon_cross">
+              <use xlink:href="images/sprite.svg#icon_cross"></use>
+            </svg>
+          </button>
+          <div class="inner">
+            <ul class="header-burger__menu">
+              <li class="header-burger__item"><a class="header-burger__link active" href="#">Главаная</a></li>
+              <li class="header-burger__item"><a class="header-burger__link" href="#">SPA-ритуалы</a></li>
+              <li class="header-burger__item"><a class="header-burger__link" href="#">Сертификаты</a></li>
+              <li class="header-burger__item"><a class="header-burger__link" href="#">Цены</a></li>
+              <li class="header-burger__item"><a class="header-burger__link" href="#">Акции</a></li>
+              <li class="header-burger__item"><a class="header-burger__link" href="#">Правила посещения</a></li>
+              <li class="header-burger__item"><a class="header-burger__link" href="#">О компании</a></li>
+              <li class="header-burger__item"><a class="header-burger__link" href="#">Новости</a></li>
+              <li class="header-burger__item"><a class="header-burger__link" href="#">Интерьер</a></li>
+              <li class="header-burger__item"><a class="header-burger__link" href="#">Отзывы</a></li>
+              <li class="header-burger__item"><a class="header-burger__link" href="#">Блог</a></li>
+              <li class="header-burger__item"><a class="header-burger__link" href="#">Контакты</a></li>
+            </ul>
+            <div class="header-burger__foot">
+              <button class="ui-button header-burger__ui-button"><span>Забронировать</span>
+              </button>
+              <div class="header-burger__links">
+                <div class="socials header-burger__socials"><a class="socials__item" href="#">
+                    <div class="socials__icon">
+                      <svg class="svg svg--icon_inst-grey">
+                        <use xlink:href="images/sprite.svg#icon_inst-grey"></use>
+                      </svg>
+                    </div></a><a class="socials__item" href="#">
+                    <div class="socials__icon">
+                      <svg class="svg svg--icon_vk-grey">
+                        <use xlink:href="images/sprite.svg#icon_vk-grey"></use>
+                      </svg>
+                    </div></a>
+                </div>
+                <button class="ui-button ui-button--p-xs ui-button--outline-gradient"><span>Войти в личный кабинет</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="header-menu">
+          <button class="header__close" onclick="window.closeMenu()">
+            <svg class="svg svg--icon_cross">
+              <use xlink:href="images/sprite.svg#icon_cross"></use>
+            </svg>
+          </button>
+          <ul class="header-menu__menu">
+            <li class="header-menu__item">
+              <button class="header-menu__button" type="button">SPA ритуалы</button>
+              <div class="header-menu__block">
+                <h5 class="header-menu__header">SPA ритуалы</h5>
+                <div class="header-menu__grid">
+                  <div class="header-menu__section"><a class="header-menu__title" href="#">Экспресс программы</a>
+                    <ul class="header-menu__sublist">
+                      <li class="header-menu__subitem"><a class="header-menu__link" href="#">Кедровая фитобочка</a></li>
+                      <li class="header-menu__subitem"><a class="header-menu__link" href="#">Хаммам</a></li>
+                      <li class="header-menu__subitem"><a class="header-menu__link" href="#">Сауна</a></li>
+                      <li class="header-menu__subitem"><a class="header-menu__link" href="#">Эликсир Гармонии: Касание Киото</a></li>
+                      <li class="header-menu__subitem"><a class="header-menu__link" href="#">По следам Гейши: экспресс-ритуал для&nbsp;ног</a></li>
+                    </ul>
+                  </div>
+                  <div class="header-menu__section"><a class="header-menu__title" href="#">Обертывания</a>
+                    <ul class="header-menu__sublist">
+                      <li class="header-menu__subitem"><a class="header-menu__link" href="#">Обертывание с&nbsp;горячим шоколадом</a></li>
+                      <li class="header-menu__subitem"><a class="header-menu__link" href="#">Винное обертывание</a></li>
+                      <li class="header-menu__subitem"><a class="header-menu__link" href="#">Медовое обертывание</a></li>
+                      <li class="header-menu__subitem"><a class="header-menu__link" href="#">Обертывание с&nbsp;горячим шоколадом</a></li>
+                      <li class="header-menu__subitem"><a class="header-menu__link" href="#">Аппликации с&nbsp;грязью мертвого моря</a></li>
+                    </ul>
+                  </div>
+                  <div class="header-menu__section"><a class="header-menu__title" href="#">Расслабляющие SPA ритуалы</a>
+                    <ul class="header-menu__sublist">
+                      <li class="header-menu__subitem"><a class="header-menu__link" href="#">Шёпот Саюри: Отдых и&nbsp;Восстановление</a></li>
+                      <li class="header-menu__subitem"><a class="header-menu__link" href="#">Секреты Императора: Волшебная Стоун-терапия</a></li>
+                      <li class="header-menu__subitem"><a class="header-menu__link" href="#">Путешествие к&nbsp;Сердцу Японии</a></li>
+                      <li class="header-menu__subitem"><a class="header-menu__link" href="#">Закат над Фудзи: Путешествие в&nbsp;Спокойствие</a></li>
+                      <li class="header-menu__subitem"><a class="header-menu__link" href="#">Моменты гармонии</a></li>
+                    </ul>
+                  </div>
+                  <div class="header-menu__section"><a class="header-menu__title" href="#">SPA ритуалы для&nbsp;двоих</a>
+                    <ul class="header-menu__sublist">
+                      <li class="header-menu__subitem"><a class="header-menu__link" href="#">Свидание на&nbsp;Фудзи</a></li>
+                      <li class="header-menu__subitem"><a class="header-menu__link" href="#">Таинство Сакуры</a></li>
+                      <li class="header-menu__subitem"><a class="header-menu__link" href="#">Нирвана Шоколадного Ханами</a></li>
+                      <li class="header-menu__subitem"><a class="header-menu__link" href="#">Дух бусидо: Ритуал для&nbsp;самураев</a></li>
+                      <li class="header-menu__subitem"><a class="header-menu__link" href="#">Цветение Сакуры: Релакс для&nbsp;подруг</a></li>
+                    </ul>
+                  </div>
+                  <div class="header-menu__section"><a class="header-menu__title" href="#">SPA ритуалы с&nbsp;пилингом</a>
+                    <ul class="header-menu__sublist">
+                      <li class="header-menu__subitem"><a class="header-menu__link" href="#">Океан Гармонии</a></li>
+                      <li class="header-menu__subitem"><a class="header-menu__link" href="#">Вдохновение Сакуры</a></li>
+                      <li class="header-menu__subitem"><a class="header-menu__link" href="#">Тайный Ритуал Гейши</a></li>
+                    </ul>
+                  </div>
+                  <div class="header-menu__section"><a class="header-menu__title" href="#">Интенсивные SPA ритуалы</a>
+                    <ul class="header-menu__sublist">
+                      <li class="header-menu__subitem"><a class="header-menu__link" href="#">Фирменный SPA ритуал Киото</a></li>
+                      <li class="header-menu__subitem"><a class="header-menu__link" href="#">Традиционный Японский массаж Шиацу</a></li>
+                      <li class="header-menu__subitem"><a class="header-menu__link" href="#">Королевский Японский ритуал</a></li>
+                      <li class="header-menu__subitem"><a class="header-menu__link" href="#">Император Ямато</a></li>
+                      <li class="header-menu__subitem"><a class="header-menu__link" href="#">Касание Самурая – ритуал с&nbsp;бамбуковыми палочками</a></li>
+                      <li class="header-menu__subitem"><a class="header-menu__link" href="#">Энергия Самурая – спортивный массаж</a></li>
+                      <li class="header-menu__subitem"><a class="header-menu__link" href="#">Изящество Гейши: SLIM массаж</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="header-menu__item">
+              <button class="header-menu__button" type="button">Сертификаты</button>
+              <div class="header-menu__block">
+                <h5 class="header-menu__header">Сертификаты</h5>
+                <ul class="header-menu__list">
+                  <li class="header-menu__li"><a class="header-menu__title" href="#">Музыкальная шкатулка</a>
+                    <div class="header-menu__certificate"><img src="images/about_img.jpg" alt=""></div>
+                  </li>
+                  <li class="header-menu__li"><a class="header-menu__title" href="#">Ароматизированный сертификат</a>
+                    <div class="header-menu__certificate"><img src="images/about_img.jpg" alt=""></div>
+                  </li>
+                  <li class="header-menu__li"><a class="header-menu__title" href="#">Веер</a>
+                    <div class="header-menu__certificate"><img src="images/about_img.jpg" alt=""></div>
+                  </li>
+                  <li class="header-menu__li"><a class="header-menu__title" href="#">Онлайн сертификат</a>
+                    <div class="header-menu__certificate"><img src="images/about_img.jpg" alt=""></div>
+                  </li>
+                  <li class="header-menu__li"><a class="header-menu__title" href="#">Сладкий бокс</a>
+                    <div class="header-menu__certificate"><img src="images/about_img.jpg" alt=""></div>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </header>
+      <nav class="navbar">
+        <ul class="navbar__menu">
+          <li class="navbar__item"><a class="navbar__link" href="#"><span class="navbar__icon">
+                <svg class="svg svg--icon_person">
+                  <use xlink:href="images/sprite.svg#icon_person"></use>
+                </svg></span><span class="navbar__name">Личный<br> кабинет</span></a>
+          </li>
+          <li class="navbar__item"><a class="navbar__link" href="#"><span class="navbar__icon">
+                <svg class="svg svg--icon_call">
+                  <use xlink:href="images/sprite.svg#icon_call"></use>
+                </svg></span><span class="navbar__name">Позвонить</span></a>
+          </li>
+          <li class="navbar__item">
+            <button class="navbar__link" onclick="window.openMenu()"><span class="navbar__icon">
+                <svg class="svg svg--icon_palms">
+                  <use xlink:href="images/sprite.svg#icon_palms"></use>
+                </svg></span><span class="navbar__name">SPA<br> ритуалы</span></button>
+          </li>
+          <li class="navbar__item"><a class="navbar__link" href="#"><span class="navbar__icon">
+                <svg class="svg svg--icon_register">
+                  <use xlink:href="images/sprite.svg#icon_register"></use>
+                </svg></span><span class="navbar__name">Запись<br> онлайн</span></a>
+          </li>
+          <li class="navbar__item"><a class="navbar__link" href="#"><span class="navbar__icon">
+                <svg class="svg svg--icon_certificate">
+                  <use xlink:href="images/sprite.svg#icon_certificate"></use>
+                </svg></span><span class="navbar__name">Купить<br> сертификат</span></a>
+          </li>
+        </ul>
+      </nav>
+      <main class="main">
+        <div class="banner">
+          <div class="swiper">
+            <div class="swiper-wrapper">
+              <div class="banner__item swiper-slide">
+                <div class="banner__img"><img src="images/certificates.jpg" alt=""/></div>
+                <div class="inner banner__inner">
+                  <div class="banner__content">
+                    <div class="ui-h1 banner__ui-h1 ui-h1--mob-fz-s">Сертификаты
+                    </div>
+                  </div>
+                  <div class="banner__scroll">
+                    <div class="banner__scroll-img"><img src="images/banner-scroll.png" alt=""/></div>
+                    <div class="ui-p2 text-gradient">Листай вниз
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="ui-swiper-pagination banner__ui-swiper-pagination">
+              <div class="swiper-pagination">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section section--ov-hidden section--pb-0">
+          <div class="inner">
+            <div class="certificates">
+              <div class="section-head certificates__section-head">
+                <div class="ui-h2 section-head__ui-h2 text-brown">для вас и&nbsp;ваших близких
+                </div>
+                <div class="ui-h4 ui-h4--semibold">Выберите сертификат, который действует на&nbsp;разные органы чувств!
+                </div>
+              </div>
+              <div class="certificates__desc">
+                <div class="ui-p1 certificates__ui-p1">Подарите сертификат, который сразу же осчастливит ваших близких! Наши сертификаты - это&nbsp;настоящий подарок и&nbsp;приятные эмоции в&nbsp;момент дарения!
+                </div>
+                <button class="ui-button certificates__ui-button ui-button--min-w ui-button--mob-w-100"><span>Выбрать сертификат</span>
+                </button>
+              </div>
+              <div class="swiper">
+                <div class="swiper-wrapper">
+                  <div class="certificates__slide swiper-slide">
+                    <div class="certificates__icon"><img src="data:image/png;base64,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" alt=""/></div>
+                    <div class="certificates__img"><img src="images/certificates_1.jpg" alt=""/></div>
+                    <div class="certificates__content">
+                      <div class="ui-h5 certificates__ui-h5 ui-h5--mob-fz-s ui-h5--semibold text-brown">Слух
+                      </div>
+                      <div class="ui-p1 certificates__ui-p1 ui-p1--mob-s">Сертификат в&nbsp;виде музыкальной шкатулки&nbsp;– ваш билет в&nbsp;волшебный мир звуков и&nbsp;волнующих мелодий, вдохновленных Летающим Замком.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="certificates__slide swiper-slide">
+                    <div class="certificates__icon"><img src="images/certificates-icon_2.png" alt=""/></div>
+                    <div class="certificates__img"><img src="images/certificates_2.jpg" alt=""/></div>
+                    <div class="certificates__content">
+                      <div class="ui-h5 certificates__ui-h5 ui-h5--mob-fz-s ui-h5--semibold text-brown">Обоняние
+                      </div>
+                      <div class="ui-p1 certificates__ui-p1 ui-p1--mob-s">Сертификат в&nbsp;виде свитка с&nbsp;мешочком благовоний&nbsp;– это приглашение в&nbsp;мир изысканных ароматов, созданных для настоящих ценителей.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="certificates__slide swiper-slide">
+                    <div class="certificates__icon"><img src="data:image/png;base64,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" alt=""/></div>
+                    <div class="certificates__img"><img src="images/certificates_3.jpg" alt=""/></div>
+                    <div class="certificates__content">
+                      <div class="ui-h5 certificates__ui-h5 ui-h5--mob-fz-s ui-h5--semibold text-brown">Осязание
+                      </div>
+                      <div class="ui-p1 certificates__ui-p1 ui-p1--mob-s">Бумажный веер, словно магия востока, раскрывает не&nbsp;только свои лепестки, но&nbsp;и&nbsp;тайны текста сертификата, создавая уникальную симфонию.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="certificates__slide swiper-slide">
+                    <div class="certificates__icon"><img src="images/certificates-icon_4.png" alt=""/></div>
+                    <div class="certificates__img"><img src="images/certificates_4.jpg" alt=""/></div>
+                    <div class="certificates__content">
+                      <div class="ui-h5 certificates__ui-h5 ui-h5--mob-fz-s ui-h5--semibold text-brown">Вкус
+                      </div>
+                      <div class="ui-p1 certificates__ui-p1 ui-p1--mob-s">Откройте деревянный бокс с&nbsp;восточными сладостями, где каждый вкус&nbsp;– это часть уникального сертификата, спрятанного внутри.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="certificates__slide swiper-slide">
+                    <div class="certificates__icon"><img src="data:image/png;base64,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" alt=""/></div>
+                    <div class="certificates__img"><img src="images/certificates_5.jpg" alt=""/></div>
+                    <div class="certificates__content">
+                      <div class="ui-h5 certificates__ui-h5 ui-h5--mob-fz-s ui-h5--semibold text-brown">Зрение
+                      </div>
+                      <div class="ui-p1 certificates__ui-p1 ui-p1--mob-s">Получите уникальный онлайн сертификат&nbsp;– музыкальную гифку с&nbsp;вашим именем, где звуки и&nbsp;видения соединяются в&nbsp;виртуальном танце.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section section--bg section--certificates-list">
+          <div class="inner">
+            <div class="section-head section-head--mb">
+              <div class="ui-h2 section-head__ui-h2 text-uppercase text-brown">Сертификаты
+              </div>
+              <div class="ui-h4 ui-h4--semibold">Выберите подходящий для вас сертификат
+              </div>
+            </div>
+            <div class="certificates-list">
+              <div class="certificates-list__item">
+                <div class="certificates-list__content">
+                  <div class="certificates-list__text">
+                    <div class="certificates-list__head">
+                      <div class="ui-p1 ui-p1--semibold certificates-list__label text-brown">Орган чувств: слух
+                      </div>
+                      <div class="ui-h4 ui-h4--semibold">Музыкальная шкатулка с сюрпризом
+                      </div>
+                    </div>
+                    <div class="ui-p1 certificates-list__ui-p1 ui-p1--mob-s">Деревянная шкатулка с музыкой Миядзаки из летающего замка, внутри небольшой свиток с текстом сертификата.
+                    </div>
+                  </div>
+                  <div class="certificates-list__actions"><a class="ui-button certificates-list__ui-button ui-button--fz-xs" href="#"><span>Купить сертификат</span></a><a class="ui-button certificates-list__ui-button ui-button--fz-xs ui-button--outline-gradient" href="#"><span>Забронировать</span></a><a class="ui-button certificates-list__ui-button ui-button--fz-xs ui-button--outline-gradient" href="#"><span>Написать в WhatsApp</span></a>
+                  </div>
+                  <button class="certificates-list__share" onclick="window.openPopup('#popup-share')">
+                    <svg class="svg svg--icon_share">
+                      <use xlink:href="images/sprite.svg#icon_share"></use>
+                    </svg><span class="certificates-list__share-text">Поделиться</span>
+                  </button>
+                </div>
+                <div class="certificates-list__pictures">
+                  <div class="certificates-list__img"><img src="images/certificates-list_1.jpg" alt=""/></div>
+                  <div class="certificates-list__icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGgAAABoCAYAAAAdHLWhAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAnJSURBVHgB7Z15bBTXGcC/783sLL4wECcBHLDxgRez5UgXbENDcBSiNGkbVVFRD0VJ0+MPKjUt+aNqlCpUSiTapFGV/NFWUasWlaZClWgatRUUhRYf2MQBY+xdm/WuTbicAOW2vce8r98s9Ep2ba+9a7/1zE/a3dG+YbDnN+/63vN7CA4ZI9TdtBSEy4tAi00wVwoh7iEJywGwChAQAU5KU3Zx2i883k0tE7kmgkNadHcfLCwG98IRkqs0XXglQA3fxDJO+gQQzJ3gZYj53bGes09u3brVHOtER1AS+ObpgUBrqRtkNQptLd9BD2eARSBpNScvhgzBOa1PXru6vrr+kWupz7EpLEGEQq0lYhTL4zqtRNLuRjJrAUQdp1bxKQKmh99U1W54KlXirBcUDLbNjY9EynTN5RECl7CZCgK4lyWs5V9/Dsw4ZKLUNld665uTpeowCyAKuns7zywydGMlalhOCPcQgQ+tz5hZ4tJdd/BpyLnmf/6VKs8maiTkNj7IfUE7duwQX9v6cOVooigCKwesRAE1/YELd7jc7rv49usJBbc93PKRE4XEOn54kKGPJuSMoGBP22OI8qUoSqvC1v6TQLOgnEac19//1yI++lhjQXlBVmUeDhx+jSBRDCARzD6IXLq+KGmjRHlB4UD7T9jJt8CmTFdTclIEe1q/wDnnGbAxSgsSCM+CzTvTygryH2/xctG2HmyOsoLcQpaDE4pSV5CJEw48zmqUFWT12sBB7UaCgyNIeRxBiuMIUhxHkOLMivEgFeGgbpzboRc42PshN0g7pQk9QsMGTvl8OtdxBGUGaxJIHw+CNCOJAPfiBofjMX9RUfngsmXLRv99UrCn5QWW5QjKGggm54w+zhlNPL7Wh2Z8UC8yOstil85h9SMRyAKOoGSwCB7bPEGS+oQu+k2C9tH4sD8SKX7f5/PFYBqxtSBJFBeIJ/iwl62EecS5bY5hdF0eCQ95vVujoAC2EMRR8Ri/HeOiKYQogqYpe/kXD52+ED3a2NgYB4WZVYJYQIQr6yFAcRyB3uPjk0Jo/n/e0APTXTRlipwUxFHUCCG8DyR6uMXUwSKCQohAhaehO9nMmFwmN3NQVFtVtabuJNiA3IwkGKOzcW5PUpxQj+I4ghTHEaQ4jiDFcQQpjiNIcRxBiuMIUhxHkOI4ghTHEaQ4jiDFcQQpjiNIcRxBiuMIUhxHkOI4ghTHEaQ4jiDFcQQpjiNIcRxBiuMIUhznz08mwdmzHfmj50dKpItKyKUV6qQTUvz61TheWL264QNEzNiEfEfQBAieaKkUAu8HhA0A+NDI1egSyNcS69RYL4lmYuZ+oQEQCrSa/f6WAII4RCYduBK5uM/n+9wwTBJHUAoGuo8sjFP0UdS0r7OCNQRwewHa8WYdJ1aD9BKQFzTYNi+/5FQ40LqPDPMlOQpp4wj6CF1dTfOLXPozkuLf5lww/5aQKa1KUyYJvgkR7Yt8rYuQJk4j4TbWgrV93Ye+kaeJsEn0AmuZD5llLtdNFZAmTg6CRKVfMnoltotr+k+DYtheUH9X0ydHrkT2ciW/BBTE1oLC/rYtJsm93AArAEWxbR00GGhvkCDfUlmOhS0Fhf0tZTFp/oEP80BxbCdoz549mkn4K845GdtmJpvYTtCa2tInWM4DkCPYSlB3d+sCDtn8ENQjzzSvFSVLsJUgnaS10tRSUA8DYu67kiXYSpBLE0+CophSzkv2vW0E9R5tXszhmzpQFLcmZLLvs95RtTYu6uz8e/GdhXmFN0euG1pMF3Pm5o1euDFyY+3axiswTbiMxNZoBiiKRHkz2fcZF2RFg/N0Vw1J81GukOtDgcPLigz3gpGYLNT0Apf1P47GpCw03DdCgZYhAjzDFt+RJA6gcbmzOksL43EopwzUJSbM+OlkCRkRRNThCvujm1DgE5KokZ+HpXz83xPwYwF7wU3duZy5rOX/rY1gHxBIL1J0Xm/I3/Jrd0zbPQKZXSWMQFsw/ljOjHG8vHbTULKEKQviEcQvhQLR7WzAR1PcHouleThH7Rx10fd5LOZdyCASzJhQtMpFlAcgxdMzaUFWLMsk8+fsZBVkHCrmtwchg7hIDJpq7gbBtbLxRqrEtAVRBxdneZGdcTCtbcvckCNobgqascRkDqUi+Aj4RlnN+nCq9LTyfPDooTtD+dF2QtzOGTJn5FiEzkRP8cc5UItLCPLHY50wYUF9Xa0ekac3QWL/0tzDWpsUCXaDQpDApytqN54a65wJCRoYOLJQ1/Ftrm9qIIchN/2U36+DCiC9Xu1p+NN4p40ryOrXyBHzj3RrA/Kcpqpq44fcXX8NZhiud35b6dnwnYmcO66gApf+A5ajbIgkXbTh4Ze5MdcOMwR3Jd6sWFH/VeS29UTOH1PQYLDjXu7bfBdmEZW+LVfnaJHPEMgBmEYSKxUT7KzwNHwlnanBKQVZMbRYNPIKKIikvCnF1EprGi8amvEgP83dMD1wQ0B7vKq24bl0l41OKag/0FLHF2sEBZEYXw5TxOp7SF1s5OL7Z5C1GBBe5beX57vEqsrauj9PZk3vMTpt2tOqxq44MJ+R+QTV1fXW7vPbTvpbfo9SPI+CtkBmGALC3YZmvrrU86kp9b2SCrJ2oA8F2jaDoghBGX1yltduPMQfD/X3tjWClE/xHbifn/50o9/n+dWOqO2J39T+VuPzpT0POxlJBYV7m6sAtQpVg7+k4XnIAlWe+oP8cZAo6A6fHFpHUqsnEzycs6wi9W6WZs2hM/kBvs6V/ilrbwgWEjYh0lk4r/C90lLfpP/MJBVJBQkpVnBgUQNFQaAzkEUQq60xqebbrxklaSMhLqkEVAXxYkFxoR9sQlJBnG2V3VOH20FvLVy4+ibYhBSCsluETAUT5F6wEUkFaRj3c7wo4xXelCF4t3rFhr+AjUgqiMfHz3MHLgQKYXXyeAR3+2zbwGk8UsfiCHaBQnCT9pUa730z3qqablIKchWav+S2/mVQAjx2+oP9z4ENGXMaRch/+Htc1O2EGYRjBuG40NavWFF3CWzImMMNc4pdr/MdaoIZg0JSN+rsKsdiTEFW6IIM7ct8GIRphnPO29cj+b6amszEtHKVCc0UCwQOl7sI9vNtq4Yswz/QFW4QvFhZu+FVu7XYkjHhqXxnOzryb+ZFdgnExyFLsI1/GFJsK/PW2yaUMx5pz7Uc6G15zJT4PB/6IENwQ2Q/j9D/qMq78R1w+D8mPRl2oPvIwyZGn5UgNguc1GzNAAfW9hpkvLm0dt10DT3nHFOerXx8376CgtKi+1AXnwVpVhGgNdpZyq9iLrKs6dA3+Pgc1yZhQjxLZDa7NTg41ZFGu/Av0KV5KT77bP4AAAAASUVORK5CYII=" alt=""/></div>
+                </div>
+              </div>
+              <div class="certificates-list__item">
+                <div class="certificates-list__content">
+                  <div class="certificates-list__text">
+                    <div class="certificates-list__head">
+                      <div class="ui-p1 ui-p1--semibold certificates-list__label text-brown">Орган чувств: обоняние
+                      </div>
+                      <div class="ui-h4 ui-h4--semibold">Аромо-сертификат
+                      </div>
+                    </div>
+                    <div class="ui-p1 certificates-list__ui-p1 ui-p1--mob-s">Ароматизированный сертификат : свиток, к которому привязывается мешочек (саше) с ароматом японских благовоний и трав, желательно исполнение на бумаге, которая будет похожа на ткань и деревянный или из иного материала стержень.
+                    </div>
+                  </div>
+                  <div class="certificates-list__actions"><a class="ui-button certificates-list__ui-button ui-button--fz-xs" href="#"><span>Купить сертификат</span></a><a class="ui-button certificates-list__ui-button ui-button--fz-xs ui-button--outline-gradient" href="#"><span>Забронировать</span></a><a class="ui-button certificates-list__ui-button ui-button--fz-xs ui-button--outline-gradient" href="#"><span>Написать в WhatsApp</span></a>
+                  </div>
+                  <button class="certificates-list__share" onclick="window.openPopup('#popup-share')">
+                    <svg class="svg svg--icon_share">
+                      <use xlink:href="images/sprite.svg#icon_share"></use>
+                    </svg><span class="certificates-list__share-text">Поделиться</span>
+                  </button>
+                </div>
+                <div class="certificates-list__pictures">
+                  <div class="certificates-list__img"><img src="images/certificates-list_2.jpg" alt=""/></div>
+                  <div class="certificates-list__icon"><img src="images/certificates-icon_2.png" alt=""/></div>
+                </div>
+              </div>
+              <div class="certificates-list__item">
+                <div class="certificates-list__content">
+                  <div class="certificates-list__text">
+                    <div class="certificates-list__head">
+                      <div class="ui-p1 ui-p1--semibold certificates-list__label text-brown">Орган чувств: воздух
+                      </div>
+                      <div class="ui-h4 ui-h4--semibold">Японский веер Гейши
+                      </div>
+                    </div>
+                    <div class="ui-p1 certificates-list__ui-p1 ui-p1--mob-s">Бумажный веер с текстом, желательно сделать для него какой-то чехол или завязочку, чтобы удобно было презентовать (осязание, воздействие воздуха на кожу).
+                    </div>
+                  </div>
+                  <div class="certificates-list__actions"><a class="ui-button certificates-list__ui-button ui-button--fz-xs" href="#"><span>Купить сертификат</span></a><a class="ui-button certificates-list__ui-button ui-button--fz-xs ui-button--outline-gradient" href="#"><span>Забронировать</span></a><a class="ui-button certificates-list__ui-button ui-button--fz-xs ui-button--outline-gradient" href="#"><span>Написать в WhatsApp</span></a>
+                  </div>
+                  <button class="certificates-list__share" onclick="window.openPopup('#popup-share')">
+                    <svg class="svg svg--icon_share">
+                      <use xlink:href="images/sprite.svg#icon_share"></use>
+                    </svg><span class="certificates-list__share-text">Поделиться</span>
+                  </button>
+                </div>
+                <div class="certificates-list__pictures">
+                  <div class="certificates-list__img"><img src="images/certificates-list_3.jpg" alt=""/></div>
+                  <div class="certificates-list__icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGgAAABoCAYAAAAdHLWhAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAz9SURBVHgB7Z15dFTlFcDv/d6bSUiIrMoStpIJSYYELKQQJkSIyOICatuD1do/PC60lbZHrT1HWxWotdVKT9VTa11aq7UH8ZxWUXADg2TXlCUZJntCWJNgaCB75r3v9j6If+ih4ry8WXm/c+bMvGTmzXvffd/d3zcANjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NrEMwkVEbW3FeKfe75KkpADSeAIayUMQB4gKEOlEsp8Au4HkSRRqbcIoR01ycnYvhJGYFlCjt3CaBFwBIHJQRQ/ochILY3QAu+gklqsA9JKkPTSovZs674qTEEJiTkD79hWMToqLX4lAd/PgXs5/SgKL4NnVwzNtDxA+l6Sf2TVx7soeCDIxI6DKysIxI52OeyXRXTyIl0HwOcaPvwz2ai+6s684AUEi6gV0tLp8XB/J+5Hkbay+QiGYL0LQRig2ne5tfzk7e43l9ipqBdRY8eEofUTCr4XA7/EgXQphhggaFZC3zZy9uBAsJOoEVFNTNNkJykZdp28jwliILCQ/NpOj86HU1GsGwAJMC6ikpGTE6NF0mdud2wIhoKG6bD5IWs/u8U28OQIim7fASXe5XLntMExMCajeW3g3oPo4IiXypldKeKxf6u/NmZP3X7CQI3wRaGPwJp3kej7UeRBFM54PdH/3mYHVc3Pyj8IwMHXCDb6SQ/w0/Ut/bmOVUyh1fLWfsDwrK6cNTFBUVJQ0YYxYhQKuYttizJZREKUg0YFe2bcyK+sqU2Nxdh9gggZf6WdsFsd9xVv62KMq4wP0oRC7Hapjf4/W17Zly86eDRs2GHqajSphbXHxSLyELlVVTJckFgsBWXxIK/h/TogReIDfSXF71oDh75n7fOA0HSx9UCL9BgJH8mH2swBAKCKenwVcBPCFuiFldu5GMIGpAWpp73+Cx7gcAoezJpCAAhMuFuEYEOIjDZWF88EEpo1ubW1JsqLBXt5D6IPDIMIXnsZP9fzYxzb1mCQ8KiS0SUV2cy4P+XyTEMQkRcWJOuFMlHIBq/OpF9wx0qeujNwFECDD8oqa60oX+v2ySCCqEMXwqLeyp/iuQvjhoIKlPT2OY9nZ2f6v81mv1+uMF32zJA5mK4DLpaTViHi+/F+Xy+25BAJk2G5rna9suQC5g19GlZDYR+nhGfIpP55R/VrBdItChNragvFCc65CFLfzpoe/6ZzDg/C8K8OzDgLEkriixluaKwS9wUZlEkQ4rMI6WCjPotRfTMnMOwxBpK6qNEOgvoxtUOfR9sEt+fn5WoC7sC7wa2wsS6UB+Sa/dEMEwk5JtaLgZj8630pLy/4MogRLI/PWAwcSuxy9vxcI6yLGSyNoYAP9UGdvx7ZgZJuDTVBSJ4dqyvI1KZ/hl7MhTBBCDZ/dw6B0brMqcRkOgprbaqwpu03q8ues80Om9jhc9yHoj/fLE1syM9cOQpQTkuRjQ03JKiQ0qp1L+QsdYDFG7MIXwdu6pj97vGPX7vz8DQEb40glpNnhlspPZmpO/xJO9NwAOuUML8ilThbMLg4SC/T+7n+nz1txHGKQsKXvKyoqHOMTIEvK3pmkiPkEipunwgwe9PF8VHHsYQgC0llnGQHjKX60gEAfC/agqmDdJ1VHy9euXatDjHPR9MW1Hng/sUtNmsXe5VwhRAaf+GS+ABJZNTo5k6BIMswXDiBQN5c6Dmma5nM65f7mYwX14VSZMSsgw81n27eQs7NLScKNfKbZYOJ8WW4DrEZLeT+7OY2zzeVetJ9TOaZKB2aIOQE1eAtcqIz4rpT6L3ggx4D1tKAi/tl7euDPWQuWHIEgEzMCqq8v+Sb7cvfxtX0dX/dBr8Kyauzj4tYOodHvUrIWV0CQiHoBNfiKM/k0NvFLFoz1LvyFYKfGjwr9PV5RNk5JzRlW/8H5iFoBVVeVeBwKPcinsBIiIZOOeJQrp0/OzFj0tJU2KqoEVFCwQZ0yccUyDnp/ymOwkq9eBSIMlsxfB7oHfpm5IL8VLMC0gOq9e9yKEMnfyDj+EWLw45F6X9kPEOQP4WyNJbLhQfVpmr46bU5eEwwTk109xb8a0vtsK7kcTPA3IO3V1MwrfGAh1dWlM9iorGdFfytvToAogmfSMTGoXJly+cI6GAamBNRYXdpG57mDgHdWxZXKFwn9Ra6MjzheONdiFQhGkUtR5dWcjr6ZT9JoVozi5hI6Odjf/y33vGWmu2/NdZYeLG5gQ5jyVe9h+8AlZSxjW7FH5/SMQxEdfl12SlU77ZSqFLpI8KswAUmfAEKZjpKWclDIAsGomikXBr1xkpZMzfScAhOYElBzdfk6nfTnwOZrwamkl1Lci+4AE5h2EhoPlrzGRbFbwOZrwRplbepszxsQIKbjhz6Cn8QjzWcZp0EMwQPZBka3D8HHIPGIhnq7cCqtI9W43i5/jyI0ZRTHO2ME6GNJccxmW5zPdjd76EaC/wsKfIyfAhbQsOKgw1UVKX7VX8wHGc12gx0Z2ouo7CSHfMnl8jRAgGzdulXJdk+ZryPcwCO6mgc188vvMbqJeAaNhwAZdqBaXV0+SyWtiPVs2O9yC5BWDhJeQ1172ur2KyNGBHTczqWLW4eKkuyQ0sMud+6jECCWZBKqqopT4hHe4WmcDhHMUP6lhIt+z42drLw1blzOGQgizc0Fo6EnLkcT2J7qXrQXTGBZqqfJt3e6hL7HeZc3QeRhxGN72KnZcLR1oNhMA2G4sDwX13Sw+D4d8R7ecTKEmaFG+O2KCo/NTPN8AlFIUJKl9azyUBWPsvPwHQxHCQDO9jG8yUW7p9My84ogigluX5y3cDEI9QHOEFwd7O8aggTCK7qEp9hj2gcxQGj64v5T4qI4uoOdiJt5cxpYDccuKOCPDtX5xrTU7EaIIUJaDzLuS+WywQLD/eQ0+Dz+9vk8uHEQOIbbWo6glJMut6ZkLuKcHwacmI0Gwlqwo/odcYdhbIqmybkEmMkHM52ksUQYxHG0LgiR/Q3oJwndnNNuVRB9qKoH4pOcdRMnzg36QkaRwEXRF2e0YLU0lCzUNJolSMyWgFPZVo3mKXcp/3Mk/1/hQHuQVXCnNPriCDtByjpUYL+uQyPbMy/P0LC45jErIK/3vbFx4pIb+QSv4c1lMIz1FlifHmcBVbBqft3fId9OX7y4C0JETAnI6Fn4xuSVyzWd7uQYaDWrx2A0kwyyyHaCVDe7Mhd+BEEmJgTk9W51xosp1/JVvpHVVRaECP6+SvZ7futy52yBIBHVAqqvr4+DwbbrUYhNrIfCVvZAY70ihPWpGZ6PwWKiUkBER0Y01h2+HnS8H871LUQA2MvOxVPxo9sfTU627lbLqBJQY+OHo7SBhDUC4AH2ujIgAmHPsNIplBtmpC9sBgswJaCO+rJLTg/qawhFEruhu2dlLaqGIGKs3ktCZcNPP47ARfzOx3EQuNaVvqgYhonZtqs/8GDdM7QLw6vZTiS3aMKxKyNjYQdYQEtl4RjN4biS93sLB7HGKr6JEE0QdHJwfa0rw1MCw8Bc42J18Rmg8y53cobd23f4Kn8fnPReoCsOtrYeSOw+1cclY7mcswjXhWj13mDi57GYn5LhqQKTmJtBvtJyzlBfcGEgthMtgLKC3dEmXeIJlPIEJzW7WC0CCkoUKCZxGieZkzrTEMQc3mcqRtmSMheEqF3347y0yz3HwASmBFRbWXiVoiofQIwFukEDoTglfWApYuCVXFNttWlz8nZyMnMjXCTQ2ftXode4aQvMrJxIkNvoc/4ITGB6BhyrqEgYSPBv5+TiUogVkBOmRB+w/avk8zooEFsSR/k5c5732ef3/BjBcX9/+5REBZLl2RuRRR5LwFhRJfer1TOdcLlzJ0OADEtFNVWVTZCK3AVhXPJl+FAXSXxTUcU2xym5farH0wcmaG4umKh3KTmkKrez7TUqyF+8d4mgxTXbMwMCZNg2xFh5UWjwQSiXe7EAQ2uVconvhSMnB/9hdZfPuRBBWSUJHjSaGM/eSEB0rysz93kIEEuMfFPVzgkkEl8gpNUQwbCO6uM60HZJcnOqe3EZhIAmX/H01k5s95icmZZ5YQUFBfHTJ8RtYr18P0QYLJhTXIz7l9bb9Ui0LRljuZtc5yu+1kgasspLgfBj/BjTyyOd9OREC5bpDwdBiWOqq8vHqdK/joPPn4VnVWDikjU871fUJ6xKPYWLoAaah3wVk/w0YCykeie7qQG7mAGD2A4kn+nV5J+s/h2JcBGSTIDXWzAyUYn7viS8nq/uJWwTEsA6ujhxu4+F88qAHHg9MzO/G2KIkKdqGhqKL4N+uIaNdp4kWnKhe13PC0ErIezgz+4Z7JO73fNC8xM54SDsuTSv1ztSpc50RUAaJ0+HfjpTjCCQKtswP5fA+lmY3VIXHQT+el04G6LdrtjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjYfM7/AKIUM/u7lQLyAAAAAElFTkSuQmCC" alt=""/></div>
+                </div>
+              </div>
+              <div class="certificates-list__item">
+                <div class="certificates-list__content">
+                  <div class="certificates-list__text">
+                    <div class="certificates-list__head">
+                      <div class="ui-p1 ui-p1--semibold certificates-list__label text-brown">Орган чувств: вкус
+                      </div>
+                      <div class="ui-h4 ui-h4--semibold">Вкусы Японии (сундук со сладостями)
+                      </div>
+                    </div>
+                    <div class="ui-p1 certificates-list__ui-p1 ui-p1--mob-s">Сладкий бокс: деревянная шкатулка с японскими сладостями (чаями, печеньями с предсказанием) и мини свитком с текстом сертификата (вкус).
+                    </div>
+                  </div>
+                  <div class="certificates-list__actions"><a class="ui-button certificates-list__ui-button ui-button--fz-xs" href="#"><span>Купить сертификат</span></a><a class="ui-button certificates-list__ui-button ui-button--fz-xs ui-button--outline-gradient" href="#"><span>Забронировать</span></a><a class="ui-button certificates-list__ui-button ui-button--fz-xs ui-button--outline-gradient" href="#"><span>Написать в WhatsApp</span></a>
+                  </div>
+                  <button class="certificates-list__share" onclick="window.openPopup('#popup-share')">
+                    <svg class="svg svg--icon_share">
+                      <use xlink:href="images/sprite.svg#icon_share"></use>
+                    </svg><span class="certificates-list__share-text">Поделиться</span>
+                  </button>
+                </div>
+                <div class="certificates-list__pictures">
+                  <div class="certificates-list__img"><img src="images/certificates-list_4.jpg" alt=""/></div>
+                  <div class="certificates-list__icon"><img src="images/certificates-icon_4.png" alt=""/></div>
+                </div>
+              </div>
+              <div class="certificates-list__item">
+                <div class="certificates-list__content">
+                  <div class="certificates-list__text">
+                    <div class="certificates-list__head">
+                      <div class="ui-p1 ui-p1--semibold certificates-list__label text-brown">Зрение
+                      </div>
+                      <div class="ui-h4 ui-h4--semibold">Онлайн сертификат
+                      </div>
+                    </div>
+                    <div class="ui-p1 certificates-list__ui-p1 ui-p1--mob-s">Музыкальный гиф, в который вставляется имя гостя (в название файла зашивается номер сертификата), (зрение)
+                    </div>
+                  </div>
+                  <div class="certificates-list__actions"><a class="ui-button certificates-list__ui-button ui-button--fz-xs" href="#"><span>Купить сертификат</span></a><a class="ui-button certificates-list__ui-button ui-button--fz-xs ui-button--outline-gradient" href="#"><span>Забронировать</span></a><a class="ui-button certificates-list__ui-button ui-button--fz-xs ui-button--outline-gradient" href="#"><span>Написать в WhatsApp</span></a>
+                  </div>
+                  <button class="certificates-list__share" onclick="window.openPopup('#popup-share')">
+                    <svg class="svg svg--icon_share">
+                      <use xlink:href="images/sprite.svg#icon_share"></use>
+                    </svg><span class="certificates-list__share-text">Поделиться</span>
+                  </button>
+                </div>
+                <div class="certificates-list__pictures">
+                  <div class="certificates-list__img"><img src="images/certificates-list_5.jpg" alt=""/></div>
+                  <div class="certificates-list__icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGgAAABoCAYAAAAdHLWhAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAwsSURBVHgB7ZwLcFTVGYD/c+4+8gARDBWKkWQ3m+cGigZMNokaNLUqqK2VqpVWmXYs9VVbfOIoY30xWmVa7LTY6tQnpo5v8QmpkCwZWBWSzXMTQEgKSEwIJOaxe8/f/0adaZndze7m3s2mc76ZzL2559y9597/nv/85///ewAkEolEIpFIJBKJRCKRSCQSiUQikUgkEolEIpFIJBKJRCL5/4HBJOTQ7vdTB5SUBchNcxDEKQzYLLqRGVSUhMCQAQ4jQA8K9ZBA5aDZIrqZJbUhM3PBUZhkTAoBdbTUFDHkxarA86nFC0kgsyGWtiMcJuntpFM3KQp3Z2YvqmeMISQwCSkgROQdTXUXKBwrBbIfImAGGACJpgU5/xj94qXOL4drKyoqApBgJJSA9nqrZwWYdSWJ6Dp6s9MhrmAbKcdXmeDrbIXFhyFBSAgBtXu3lwLHu2j3Yph4/MDYZivH+9JzXDtggplQAbV4aypMCr+HxobFkIgw2MKFWGMrKNsGE8SECKi9ue5MQPEH2j0HJgOcvYuKf5XDcXYTxJm4Cqh1l3uOycJWI8NrqNdMhUkFC5Cx8mySAveS6uuCOBEXAfk2bbJy27SrUYXHSb+fDJMZhl0c2X22fNffIQ4YLiDfp1tnsiTTi7R7HiSoWR8TDN5n6L/Jnn+ODwzEsAdWVVWlnFkw52fI2MP076mgPwdphvkJ3cBWRHWf8OPnimrq0QqYFafT/MYGILIQYRHj7AxSqaeBztC1D5Mn45as/LKXwSAMEdAX3uopx7h1A+1eBTpDQvkXCf1PiqV/s91e2RfJOS0tb0w148wlQuBvaH61CHSG2vOMKWno15mZFUOgM7oLqGn39jPMJtzIGDhARxiHXdTaVfYc12YYBx3N7iW0eYx6Vg7oCD3IvWjBS7KySr2gI7oKqM3rvpoEs57+poOOILLVfYNH1hUVXfIV6AC5kpiv0f0I+eNWaW4l0AuEo6iIGx25ZS+ATugmIF9T7SPkxLwD9OU4ClzhcJa+AgZAvekqEtBf6THoavIjivvBcuwhh+OiYRgn4xaQ1+u1JCnH/0mtugT05Thn+GNbXukHYCAdTTUXIeMb9Z6X0ZzpqaSp7M70dFcPjINxCai9vfY7OMLfpPjLWaAjpCIFgHqNPa/8pUjqd7V60gaGh/OZgunk8FRVEJ1+GGhyOn8Q0cOh3r+cev+zoDNk0Gxnfrwsa37pFxAjMQuow+s5Hbl/CzXDDjqjMP5IZl7xXeHqHDjgnhEY4MsDqqp5vueHqNZIxsXfevu7N4w1fvkaa+5mjD8IOkOCbxsUgUqns3w/xEBMA2TzZ9UZYPLXGiEcojUj96y7x6o03A+5ARQtKNgLmgUVoloBCnhiekpas69l+0/D/V7fYM86isbq7msjVZedxE0f7mmqnQsxEHUP0oRjtlrrwJjJJzWIX2zPL94UzTmIVUpH82nrafdX4apxDg/Ycl33hqqgmeBkfr8FBkC9fF+A44U5Oa6WqM6LprImHAsJBw0SDj2cHY4CV0zjmWY6722ucwvA4rAVGT6UlVe6OlRxe5O7mjbngjG0qgG4LGde5EKKWMU1NXlmU8+pMUo4o43hsC5UWXV1tSnMqTCaW8DhYRgLZLf7vNuXhioWDNeDceQoJnx3f4Mn4qEhIgE1N390igVG3LQ7BwwCGXTZTDNfDVbW1eVJSZ9lHdNF09Pf/zGMjYmsvb/U128LOplWLF99RBsDcxNYhl8Zec+3uy4i3+CYAvJ6q2dZIFVzr2SAkQj8hDkcQSd2Q8dGbhYBHNM7YTZ/J7IHi/DdJIVfFqxo1L+H8BEYCGmhLDCrrx86tDt1rLphBaTp9WTFuoG288FgyMQNGf8XApZzxsYcm6YkDS6ACKEbXxmqjNRcNRgMmd9nDnw58NJYQgorIBowH6WBeynEAXoJ2oIdP+B1z6CJaz79XYEUwgj7GyOBmyFSGFvY6vGkBS1Cvg/iAKn1pcd7Bn4frk5IAe1prCnnjP8W4gQ34b5gx/1MKdC2dDO5ewpPf1LLKg1Wz+d13wAKvwKiwJoqsoMdVzB4W4yAzOhbWxq2zgtVHtIyQs4WaioO4oSZW3uCt0NNh29yP8kJeX2/5STXXu+O24eUYztzTXP7O4a7i+g1u5FKr4QoCfCRoLl35Gcal/8sWhTOtXSz+mBlIQVEZmsfJkBSLL0k4n+ma4iFKg+8a8YU6PAfidEX8g0qJAaMdYYqCnl7/SMqmbwYt2RzvxieEew4E6ITjIJZDgQ7LFR2CsQLhE5zihrSagwpoHnzynsZMy0f/Yk4gCragh0PmJOjco1EfD36M/uHm4OVcbPIhPhAkQ5lZUbG2QdDVQirIOx5Z71Nv3EvxAV+erCjOTlF3fQwPwO9r8bY7rn0EoYozoI4QEbY7V8/4zB1YAzQ3Pco6ciNYDAYJv2XGvkP0Pt6IJ4MXcpLwHies+UVPzZWpTEFpIVt7aa0a2mYNjaRnLEij+fDacGKTKlTKJiGB0E/9lt72fPBCny+TSfRtQzNFdecwsxquSmSuhHZQJoLRhwbvpwMqj1gEBSVTZueOuW8YGVz587rJXVwPegDMgF3pbtcg8EKzYGTtayfJDCO/cMIF9rtRRGljEVspDqKKzrNZoUajzFFBiMBVbEqVJktr+QtDmzcEU8UYo3d6XoxVHkA4VYwCAredZtSLMVOZ+R5ClHNIjKyS5qZipfToP1vMALOSlqbtp0fqtiWX3KPCrgWYrAsSa0ESDoPOZxl94eq42usvZQ2RWAEiL0iwMozMoqiUtVRT/PshWUeBcWVdMMDYAAmUB71eN5MCVWek196J/nlriGdeAQiBg8qqP4oq6AsZKBO85owzh4HA6Dxe0CgeXE0gbpviWkePvpBE1cqaVeXRML/hrrG96annnpbuDr2PNeL1l6YSxG6G8jTXR/6x3CnQFxhDogCm7M8bCi7o7F2LV3cBjpDHpkBCpVUZjsX7YIYGJevrbW1royr+B4N8GPGNaKFxqOfOArLqiKp+3l9/fQh0VdgsZjmqJr/hrwP6lBKa05RUXck53c0bltB3tqndM0yhVG1OqCYzIttOQtjtoDH7QztaHYX0o1tpZ/S9bsfevMECf+iTKfrfTAQLXERGN+Ien9QhnjAqihL0nOL62EcjPuNIXXTMAIBLRx9CHREe5sDDF/xNbpXgEFoCYukJt/WWzhabItskkvHKxwN3cIJX2f8JG0hU1JXP5bWk+gBPmbPK75Tr0UnNCNkanLaHQoD3d1Y1ECf6hdLc+eXtYIO6Brv0RIxUkzKa2DAx8GoJScydouD5kMwDtoa3EsYh7ValBb0RuA7qVb1utmOs6OwMMOje0DuC693ylHW9yA5IyMPP0cDwk7BYV13b+drLteywUhO+dJXd9LRgFqJwH5H5xvjZ2Ow4fmXP1i5Zs0aATpiWMS0rbn2Wpr5/5keSDIYAg4z4JupN7hVVfUpyPd9GwmlgXWG4NzGOUsn91SlEKKC1KMJDAEHGSo32guKnwYDMDSk7Wt2n0N+r6fpKrrPLxIChHbFbLoiMzu2OU4k6Gr3n4gjz/UxWLGExnbdvjhLEDQ19tzxkeSFRgpHI25JIW3ebVdzRVlrxNfWcQXxqED4xa6mrteXLVtmeFZDXNctaG/YkY7M/wT5vC6HSQbZ+gGa0L6iCPMddmeRYR79E5mQhSXammoqOSjr6XXMhkkAzcOaOBO32fPLovosRg8mbOUPilxauf/klaTM76FGxC+LJgq0ZTW1xEIlebjKiDUQImHCl2bxequnJDPramTwc/p3NiQGx8h8ekDttzwTqcPVKBJm7Ry3252cNg1/SRNcLVYfl6yaEyEfWgc9kD8GFHwmN7fsOCQACbe40ejnjG3p36f500oamBdTA3UPZZxwRVJd/GXO8Z3PD37wWkXFmoRatzShV5/y+bbO5AFzuRCoZRWdR61NAV1A6h1sC+P4Rv9wf9X8+RcYEh3Wg0mzPJjH4zHPTA3M84NaCMjOJWfnAhrF02kg1+JQQe9Dc33TTLyXtgfI1fMpBQHd5H7anVlQsjPRl2P+lkm/fhv6fNaGwUNzppnN0wMckhFH0+0HmUU5MjSUctjpdI6ARCKRSCQSiUQikUgkEolEIpFIJBKJRCKRSCQSiUQikejGfwClN4BUEq5s3AAAAABJRU5ErkJggg==" alt=""/></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section section--pt-0">
+          <div class="inner">
+            <div class="accordions-container">
+              <div class="section-head accordions-container__section-head">
+                <div class="ui-h2 section-head__ui-h2 text-brown">информация
+                </div>
+                <div class="ui-h4">Правила пользования сертификатом
+                </div>
+              </div>
+              <div class="accordions accordions-container__accordions">
+                <div class="accordions__column">
+                  <div class="accordions__item">
+                    <div class="accordions__head">
+                      <div class="ui-h5 ui-h5--semibold ui-h5--mob-fz-s">Покупка
+                      </div>
+                      <div class="accordions__button">
+                        <svg class="svg svg--icon_accordion_cross">
+                          <use xlink:href="images/sprite.svg#icon_accordion_cross"></use>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="accordions__body">
+                      <div class="accordions__text">
+                        <div class="ui-p1 ui-p1--mob-s">
+                          <p>Приобретая сертификат, вы вкладываете себя в уникальное восприятие японских ритуалов. Оплатите свой опыт и подготовьтесь к виртуальному путешествию.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordions__item">
+                    <div class="accordions__head">
+                      <div class="ui-h5 ui-h5--semibold ui-h5--mob-fz-s">Покупка
+                      </div>
+                      <div class="accordions__button">
+                        <svg class="svg svg--icon_accordion_cross">
+                          <use xlink:href="images/sprite.svg#icon_accordion_cross"></use>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="accordions__body">
+                      <div class="accordions__text">
+                        <div class="ui-p1 ui-p1--mob-s">
+                          <p>Приобретая сертификат, вы вкладываете себя в уникальное восприятие японских ритуалов. Оплатите свой опыт и подготовьтесь к виртуальному путешествию.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordions__column">
+                  <div class="accordions__item">
+                    <div class="accordions__head">
+                      <div class="ui-h5 ui-h5--semibold ui-h5--mob-fz-s">Бронирование
+                      </div>
+                      <div class="accordions__button">
+                        <svg class="svg svg--icon_accordion_cross">
+                          <use xlink:href="images/sprite.svg#icon_accordion_cross"></use>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="accordions__body">
+                      <div class="accordions__text">
+                        <div class="ui-p1 ui-p1--mob-s">
+                          <p>Бронирование</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordions__item">
+                    <div class="accordions__head">
+                      <div class="ui-h5 ui-h5--semibold ui-h5--mob-fz-s">Бронирование
+                      </div>
+                      <div class="accordions__button">
+                        <svg class="svg svg--icon_accordion_cross">
+                          <use xlink:href="images/sprite.svg#icon_accordion_cross"></use>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="accordions__body">
+                      <div class="accordions__text">
+                        <div class="ui-p1 ui-p1--mob-s">
+                          <p>Бронирование</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div><a class="ui-button accordions-container__ui-button ui-button--min-w ui-button--outline" href="#"><span>Задать вопрос в WhatsApp</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="section section--pt-0">
+          <div class="inner">
+            <div class="ask-question">
+              <div class="ask-question__content">
+                <form class="ask-question__form" action="#">
+                  <div class="ask-question__head">
+                    <div class="ui-h2 ask-question__ui-h2 text-brown">задать вопрос
+                    </div>
+                    <div class="ui-h4 ask-question__ui-h4 ui-h4--semibold">У вас есть вопросы? <br>Мы готовы на них ответит!
+                    </div>
+                    <div class="ui-p1 ask-question__ui-p1 ui-p1--mob-s">Оставьте заявку и наши менеджеры свяжутся с вами и&nbsp;проконсультируют по всем вопросам
+                    </div>
+                  </div>
+                  <div class="ask-question__main">
+                    <div class="ui-input ask-question__ui-input ui-input--light ui-input--error">
+                      <input id="ask-question-phone" type="text" placeholder="Ваш телефон" name="phone"/>
+                      <div class="ui-input__error"></div>
+                    </div>
+                    <button class="ui-button ask-question__ui-button ui-button--py-s ui-button--mob-fz-xxs"><span>Отправить</span>
+                    </button>
+                  </div>
+                  <div class="ui-p3 ask-question__ui-p3 ui-p3--extra-light ui-p3--mob-s">Нажимая кнопку “Отправить” вы соглашаетесь с <a class="text-underline" href="#">политикой конфиденциальности</a>
+                  </div><br/><span onclick="window.askQuestionThankShow()">Показать "спасибо"</span>
+                </form>
+                <div class="ask-question__thank">
+                  <div class="ask-question__head ask-question__head--mb-l">
+                    <div class="ui-h4 ui-h4--semibold">Заявка успешно отправлена. <br>Мы скоро свяжемся с вами!
+                    </div>
+                  </div>
+                  <button class="ui-button ui-button--min-w-s ui-button--py-s ui-button--mob-fz-xxs" onclick="askQuestionThankHide()"><span>Отправить еще</span>
+                  </button>
+                </div>
+              </div>
+              <div class="ask-question__img"><img src="images/ask-question-img.png" alt=""/></div>
+            </div>
+          </div>
+        </div>
+        <div class="popup" id="popup-share">
+          <div class="popup__container">
+            <button class="popup__close" onclick="window.closePopup($(this).parents('.popup'))">
+              <svg class="svg svg--icon_cross">
+                <use xlink:href="images/sprite.svg#icon_cross"></use>
+              </svg>
+            </button>
+            <div class="section-head section-head--mb-xs">
+              <div class="ui-h5 ui-h5--semibold ui-h5--t-fz-l text-brown">Поделиться:
+              </div>
+            </div>
+            <div class="socials socials--size-l socials--gap-l socials--mob-between"><a class="socials__item" href="#">
+                <div class="socials__icon"><img src="images/icon_vk_color.svg" alt=""/>
+                </div>
+                <div class="ui-p2 socials__ui-p2 ui-p2--mob-s">ВК
+                </div></a><a class="socials__item" href="#">
+                <div class="socials__icon"><img src="images/icon_wa_color.svg" alt=""/>
+                </div>
+                <div class="ui-p2 socials__ui-p2 ui-p2--mob-s">WhatsApp
+                </div></a><a class="socials__item" href="#">
+                <div class="socials__icon"><img src="images/icon_tg_color.svg" alt=""/>
+                </div>
+                <div class="ui-p2 socials__ui-p2 ui-p2--mob-s">Telegram
+                </div></a><a class="socials__item" href="#">
+                <div class="socials__icon"><img src="images/icon_link_color.svg" alt=""/>
+                </div>
+                <div class="ui-p2 socials__ui-p2 ui-p2--mob-s">Копировать <br>ссылку
+                </div></a><a class="socials__item" href="#">
+                <div class="socials__icon"><img src="images/icon_inst_color.svg" alt=""/>
+                </div>
+                <div class="ui-p2 socials__ui-p2 ui-p2--mob-s">Instagram
+                </div></a>
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer class="footer">
+        <div class="inner">
+          <div class="footer__main"><a class="footer__logo" href="/"><img src="images/logo.svg" alt=""></a><a class="footer__account" href="#">Войти или создать личный кабинет</a></div>
+          <ul class="footer__menu">
+            <li class="footer__section">
+              <h5 class="footer__heading">Услуги</h5>
+              <ul class="footer__list">
+                <li class="footer__item"><a class="footer__link" href="#">Все услуги</a></li>
+                <li class="footer__item"><a class="footer__link" href="#">Название услуги 1</a></li>
+                <li class="footer__item"><a class="footer__link" href="#">Название услуги 2</a></li>
+                <li class="footer__item"><a class="footer__link" href="#">Название услуги 3</a></li>
+                <li class="footer__item"><a class="footer__link" href="#">Название услуги 4</a></li>
+              </ul>
+            </li>
+            <li class="footer__section">
+              <h5 class="footer__heading">Подарочные сертификаты:</h5>
+              <ul class="footer__list">
+                <li class="footer__item"><a class="footer__link" href="#">Все сертификаты</a></li>
+                <li class="footer__item"><a class="footer__link" href="#">Название сертификата 1</a></li>
+                <li class="footer__item"><a class="footer__link" href="#">Название сертификата 2</a></li>
+                <li class="footer__item"><a class="footer__link" href="#">Название сертификата 3</a></li>
+                <li class="footer__item"><a class="footer__link" href="#">Название сертификата 4</a></li>
+              </ul>
+            </li>
+            <li class="footer__section">
+              <h5 class="footer__heading">Акции:</h5>
+              <ul class="footer__list">
+                <li class="footer__item"><a class="footer__link" href="#">Все акции</a></li>
+                <li class="footer__item"><a class="footer__link" href="#">Акция 1</a></li>
+                <li class="footer__item"><a class="footer__link" href="#">Акция 2</a></li>
+                <li class="footer__item"><a class="footer__link" href="#">Акция 3</a></li>
+                <li class="footer__item"><a class="footer__link" href="#">Акция 4</a></li>
+              </ul>
+            </li>
+            <li class="footer__section">
+              <h5 class="footer__heading">О&nbsp;компании:</h5>
+              <ul class="footer__list">
+                <li class="footer__item"><a class="footer__link" href="#">О&nbsp;компании</a></li>
+                <li class="footer__item"><a class="footer__link" href="#">Интерьеры</a></li>
+                <li class="footer__item"><a class="footer__link" href="#">Отзывы</a></li>
+              </ul>
+            </li>
+            <li class="footer__section">
+              <h5 class="footer__heading">Новости:</h5>
+              <ul class="footer__list">
+                <li class="footer__item"><a class="footer__link" href="#">Блог</a></li>
+                <li class="footer__item"><a class="footer__link" href="#">Новости</a></li>
+              </ul>
+            </li>
+            <li class="footer__section footer__section--mob-dn">
+              <h5 class="footer__heading">Информация:</h5>
+              <ul class="footer__list">
+                <li class="footer__item"><a class="footer__link" href="#">Прайс лист</a></li>
+                <li class="footer__item"><a class="footer__link" href="#">Информация</a></li>
+                <li class="footer__item"><a class="footer__link" href="#">Правила</a></li>
+              </ul>
+            </li>
+            <li class="footer__section footer__section--mob-dn footer__section--contacts">
+              <h5 class="footer__heading">Контакты</h5>
+              <div class="footer__buttons">
+                <button class="ui-button footer__ui-button ui-button--outline-gradient ui-button--l-min-w-s"><span>Бронирование</span>
+                </button>
+                <button class="ui-button footer__ui-button ui-button--l-min-w-s"><span>Купить сертификат</span>
+                </button>
+              </div>
+            </li>
+          </ul>
+          <div class="socials footer__socials"><a class="socials__item" href="#">
+              <div class="socials__icon">
+                <svg class="svg svg--icon_inst-grey">
+                  <use xlink:href="images/sprite.svg#icon_inst-grey"></use>
+                </svg>
+              </div></a><a class="socials__item" href="#">
+              <div class="socials__icon">
+                <svg class="svg svg--icon_vk-grey">
+                  <use xlink:href="images/sprite.svg#icon_vk-grey"></use>
+                </svg>
+              </div></a>
+          </div>
+          <div class="footer__policies"><a class="footer__policy" href="#">Политика конфиденциальности</a><a class="footer__policy" href="#">Разработка сайтов “Генерация”</a></div>
+        </div>
+      </footer>
+    </div>
+    <script src="libs/jquery/jquery-3.6.4.min.js"></script>
+    <script src="libs/swiper/swiper-bundle.min.js"></script>
+    <script src="libs/plyr/plyr.min.js"></script>
+    <script src="libs/select2/select2.min.js"></script>
+    
+  </body>
+</html>

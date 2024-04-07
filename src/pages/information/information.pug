@@ -1,0 +1,14 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'information'
+    const pageTitle = 'Информация'
+
+block content
+  main.main
+    +section('--pt-s, --mob-pt-xxxs')
+      .inner
+        +section-head('--mb').text-center
+          +ui-h2('информация').text-brown
+        +information

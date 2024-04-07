@@ -1,0 +1,69 @@
+mixin ui-swiper-fraction(mods)
+  -
+    const baseName = 'ui-swiper-fraction'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .ui-swiper-fraction(class=allMods)&attributes(attributes)
+    .swiper-pagination
+      block
+
+mixin ui-swiper-button(mods, prev)
+  -
+    const baseName = 'ui-swiper-button'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  if prev === true
+    .ui-swiper-button.swiper-button-prev(class=allMods)&attributes(attributes)
+      +svg('icon_swiper_prev')
+      block
+  else
+    .ui-swiper-button.swiper-button-next(class=allMods)&attributes(attributes)
+      +svg('icon_swiper_next')
+      block
+
+mixin ui-swiper-buttons(mods, modsButton)
+  -
+    const baseName = 'ui-swiper-buttons'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .ui-swiper-buttons(class=allMods)&attributes(attributes)
+    +ui-swiper-button(modsButton, true)
+    +ui-swiper-button(modsButton)
+    block
+
+mixin ui-swiper-pagination(mods)
+  -
+    const baseName = 'ui-swiper-pagination'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .ui-swiper-pagination(class=allMods)&attributes(attributes)
+    .swiper-pagination
+      block

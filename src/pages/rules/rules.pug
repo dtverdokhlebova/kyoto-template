@@ -1,0 +1,38 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'rules'
+    const pageTitle = 'Правила'
+
+block content
+  main.main
+    +section('--pt-s, --mob-pt-xxxs')
+      .inner
+        +section-head('--mb-xs, --mob-pr')
+          +ui-h2('Правила', 'section-head').text-brown
+        +accordions
+          +accordions__column
+            -for(let i=0; i<3; i++)
+              +accordions__item('Правила подтверждения и отмены записей:')
+                .ui-p1.ui-p1--bold.ui-p1--mob-s
+                  ol
+                    li Подтверждение записи:
+                      p Пожалуйста, подтверждайте вашу запись в течение 24 часов. <br>В противном случае, время может быть предоставлено другим гостям.
+                    li Отмена записи:
+                      p  Отмена возможна не позднее чем за 24 часа до назначенного времени. <br>В противном случае, может быть применена штрафная плата в размере 50% от стоимости услуги.
+                    li Отсутствие уведомления:
+                      p Неявка на запись без уведомления может повлечь за собой лишение возможности бронирования в будущем.
+                  +ui-button('Задать вопрос в WhatsApp', '--min-w, --mob-w-100')(href='#')
+          +accordions__column
+            -for(let i=0; i<2; i++)
+              +accordions__item('Список противопоказаний:')
+                .ui-p1.ui-p1--bold.ui-p1--mob-s
+                  ol
+                    li Список противопоказаний
+                      p Список противопоказаний
+                    li Список противопоказаний
+                      p Список противопоказаний
+    +section('--pt-0')
+      .inner
+        +ask-question

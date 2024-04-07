@@ -1,0 +1,22 @@
+mixin interior(data, mods)
+  -
+    const baseName = 'interior'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .interior(class=allMods)&attributes(attributes)
+    .swiper
+      .swiper-wrapper
+        each item in data
+          .interior__item.swiper-slide
+            img(src=item.img, alt='')
+    .interior__nav
+      +ui-swiper-buttons('interior')
+      +ui-swiper-fraction('interior')
+    block

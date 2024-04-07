@@ -1,0 +1,24 @@
+mixin promotions-slider(mods)
+  -
+    const baseName = 'promotions-slider'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .promotions-slider(class=allMods)&attributes(attributes)
+    +section-head('promotions-slider')
+      +ui-h2('другие акции', 'section-head').text-brown
+    .promotions-slider__main
+      .swiper
+        .swiper-wrapper
+          - for(let i=0; i<10; i++)
+            +promotions-item('promotions-slider').swiper-slide
+    .promotions-slider__nav
+      +ui-swiper-buttons('promotions-slider')
+      +ui-swiper-fraction('promotions-slider, --fz-xl')
+    block

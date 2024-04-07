@@ -1,0 +1,26 @@
+mixin promotions-inner(mods)
+  -
+    const baseName = 'promotions-inner'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .promotions-inner(class=allMods)&attributes(attributes)
+    .promotions-inner__text
+      .promotions-inner__head
+        +ui-h2('акция', 'promotions-inner').text-uppercase.text-brown
+        +ui-h4('Золотая осень в Kyoto SPA', '--semibold')
+      +ui-p3('Акция действует до 30 ноября 2023', '--semibold').promotions-inner__time
+      +ui-p1('', 'promotions-inner, --mob-s')
+        | Погрузитесь в теплую атмосферу уюта и роскоши вместе с нашей осенней акцией! При бронировании любого спа-ритуала вы получаете уникальный набор подарков: ароматическую свечу, японский чай и специальный сертификат на скидку на следующий визит. Осень - время заботы о себе, и мы готовы сделать ваш опыт в Kyoto SPA неповторимым!
+    .promotions-inner__img
+      img(src='../../images/promotions-item-img.jpg', alt='')
+    .promotions-inner__actions
+      +ui-button('Купить сертификат', 'promotions-inner, --fz-xs')(href='#')
+      +ui-button('Написать в WhatsApp', 'promotions-inner, --fz-xs, --outline-gradient')(href='#')
+    block

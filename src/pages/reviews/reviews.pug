@@ -1,0 +1,37 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'reviews'
+    const pageTitle = 'Отзывы'
+
+  -
+    const tabsData =[
+      { text: 'Все отзывы', class: 'tabs__item--mob-w-100' },
+      { text: 'Яндекс карты' },
+      { text: 'Google карты' },
+      { text: '2 ГИС' },
+      { text: 'Вконтакте' },
+      { text: 'Instagram', class: 'tabs__item--mob-w-100' },
+    ]
+
+block content
+  main.main
+    +banner
+      +banner__item('reviews')
+        block banner
+          .banner__content
+            +ui-h1('Отзывы', 'banner, --mob-fz-s')
+          +banner__scroll
+    +section('--pb-0, --ov-hidden')
+      .inner
+        +reviews-video
+    +section('--ov-hidden, --bg, --reviews')
+      .inner
+        +section-head('--mb-l')
+          +ui-h2('отзывы на сайте', 'section-head').text-brown
+        +section-head('--mb')
+          +tabs(tabsData)
+        +reviews
+        +section-foot.text-center
+          +ui-button('Показать еще', '--l-min-w-s, --outline, --mob-w-100')(href='#')

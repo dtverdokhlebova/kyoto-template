@@ -1,0 +1,70 @@
+mixin certificates-promo(mods)
+  -
+    const baseName = 'certificates-promo'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+    const slides = [
+      {
+        subtitle: 'Слух',
+        title: 'Музыкальная шкатулка',
+      },
+      {
+        subtitle: 'Обоняние',
+        title: 'Аромо-сертификат',
+      },
+      {
+        subtitle: 'Осязание',
+        title: 'Веер сертификат',
+      },
+      {
+        subtitle: 'Вкус',
+        title: 'Сладкий сертификат',
+      },
+      {
+        subtitle: 'Зрение',
+        title: 'Онлайн сертификат',
+      },
+    ]
+    const slidesCards = [...slides]
+    const firstSlide = slidesCards.shift()
+    slidesCards.push(firstSlide)
+
+  .certificates-promo(class=allMods)&attributes(attributes)
+    .certificates-promo__bg-slider
+      .swiper
+        .swiper-wrapper
+          each item, index in slides
+            .certificates-promo__bg-slide.swiper-slide
+              .certificates-promo__bg-img: img(src=`../../images/certificates-promo/certificates-promo_${index+1}.png` alt='')
+              .inner.certificates-promo__inner
+                .certificates-promo__bg-content
+                  +ui-h4(`Орган восприятия: ${item.subtitle}`, 'certificates-promo, --mob-fz-l').text-gradient
+                  +ui-h4(item.title, '--semibold')
+                  +ui-p1('Чудесные японские мотивы, которые приятно удивят ваших близких. Чудесные японские мотивы, которые приятно удивят ваших близких.', 'certificates-promo, --mob-xs')
+                  +ui-button('Оформить сертификат', 'certificates-promo, --l-min-w-s')
+                .certificates-promo__preview
+                  .certificates-promo__icon: img(src=`../../images/certificates/certificates-icon_${index+1}.png`, alt='')
+                  +ui-p2(item.subtitle, 'certificates-promo, --mob-fz-s, --semibold').text-brown
+                  +ui-h4(item.title, '--semibold')
+    .certificates-promo__slider
+      .swiper
+        .swiper-wrapper
+          each item, index in slidesCards
+            -customIndex = index + 1 > slidesCards.length - 1 ? 0 : index + 1
+            .certificates-promo__slide.swiper-slide
+              .certificates-promo__icon: img(src=`../../images/certificates/certificates-icon_${customIndex+1}.png`, alt='')
+              .certificates-promo__img: img(src=`../../images/certificates-promo/certificates-promo_${customIndex+1}.png` alt='')
+              .certificates-promo__content
+                +ui-p2(item.subtitle, 'certificates-promo, --mob-fz-s, --semibold').text-brown
+                +ui-h4(item.title, '--semibold')
+      .certificates-promo__nav
+        +ui-swiper-buttons('benefits')
+        +ui-swiper-fraction('benefits, --fz-xl')
+    block

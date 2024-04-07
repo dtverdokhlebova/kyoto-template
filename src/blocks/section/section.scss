@@ -1,0 +1,109 @@
+.section {
+  padding: 150px 0;
+  @include media-laptop {
+    padding: 120px 0;
+  }
+  @include media-tablet {
+    padding: 94px 0;
+  }
+  &--pd-0 {
+    padding: 0;
+  }
+  &--pt-0 {
+    padding-top: 0;
+  }
+  &--pt-s {
+    padding-top: 100px;
+    @include media-tablet {
+      padding-top: 75px;
+    }
+  }
+  &--pt-xs {
+    padding-top: 60px;
+  }
+  &--pb-0 {
+    padding-bottom: 0;
+  }
+  &--ov-hidden {
+    overflow: hidden;
+  }
+  &--bg {
+    position: relative;
+    background-color: $bgLight;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: luminosity;
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      pointer-events: none;
+      @include media-tablet {
+        height: 60px;
+      }
+    }
+    &::before {
+      top: 0;
+      background: linear-gradient(180deg, #dcd6c6 0%, rgb(220 214 198 / 0) 100%);
+    }
+    &::after {
+      bottom: 0;
+      background: linear-gradient(180deg, rgb(220 214 198 / 0) 0%, #dcd6c6 100%);
+    }
+  }
+  &--article-slider-blog {
+    background-image: url('/images/section-bg-article-slider-blog.png');
+    @include media-tablet {
+      background: none;
+    }
+  }
+  &--article-slider-news {
+    background-image: url('/images/section-bg-article-slider-news.png');
+    @include media-tablet {
+      background: none;
+    }
+  }
+  &--certificates-list {
+    background-image: url('/images/section-bg-certificates-list.png');
+    @include media-tablet {
+      background: none;
+    }
+  }
+  &--legend {
+    background-image: url('/images/section-bg-legend.png');
+    background-position-y: bottom;
+  }
+  &--benefits {
+    background-image: url('/images/section-bg-benefits.png');
+  }
+  &--promotions-slider {
+    background-image: url('/images/section-bg-promotions-slider.png');
+    @include media-tablet {
+      background: none;
+    }
+  }
+  &--reviews {
+    position: relative;
+    background-image: url('/images/section-bg-reviews.png');
+  }
+  &--reviews-slider {
+    background-image: url('/images/section-bg-reviews-slider.png');
+    @include media-tablet {
+      background: none;
+    }
+  }
+  &--reviews-video {
+    background-image: url('/images/section-bg-reviews-video.png');  }
+  &--discounts {
+    background-image: url('/images/section-bg-discounts.png')
+  }
+  &--mob-pt-xxxs {
+    @include media-tablet {
+      padding-top: 20px;
+    }
+  }
+}

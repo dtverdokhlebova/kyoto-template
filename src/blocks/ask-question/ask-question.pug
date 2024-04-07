@@ -1,0 +1,33 @@
+mixin ask-question(mods)
+  -
+    const baseName = 'ask-question'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .ask-question(class=allMods)&attributes(attributes)
+    .ask-question__content
+      form.ask-question__form(action='#')
+        .ask-question__head
+          +ui-h2('задать вопрос', 'ask-question').text-brown
+          +ui-h4('У вас есть вопросы? <br>Мы готовы на них ответит!', 'ask-question, --semibold')
+          +ui-p1('Оставьте заявку и наши менеджеры свяжутся с вами и&nbsp;проконсультируют по всем вопросам', 'ask-question, --mob-s')
+        .ask-question__main
+          +ui-input('ask-question-phone', 'ask-question, --light, --error')(placeholder='Ваш телефон' name='phone')
+          +ui-button('Отправить', 'ask-question, --py-s, --mob-fz-xxs')
+        +ui-p3('Нажимая кнопку “Отправить” вы соглашаетесь с ', 'ask-question, --extra-light, --mob-s')
+          a.text-underline(href='#') политикой конфиденциальности
+        br
+        span(onclick='window.askQuestionThankShow()') Показать "спасибо"
+      .ask-question__thank
+        .ask-question__head.ask-question__head--mb-l
+          +ui-h4('Заявка успешно отправлена. <br>Мы скоро свяжемся с вами!', '--semibold')
+        +ui-button('Отправить еще', '--min-w-s, --py-s, --mob-fz-xxs')(onclick='askQuestionThankHide()')
+    .ask-question__img
+      img(src='../../images/ask-question-img.png', alt='')
+    block

@@ -1,0 +1,15 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'blog-inner'
+    const pageTitle = 'Детальная страница блога'
+
+block content
+  main.main
+    +section('--pt-s, --pb-0')
+      .inner.inner--l
+        +article-inner
+    +section('--bg, --article-slider-blog, --ov-hidden')
+      .inner
+        +article-slider

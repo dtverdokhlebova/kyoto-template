@@ -1,0 +1,24 @@
+mixin prices(mods)
+  -
+    const baseName = 'prices'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .prices(class=allMods)&attributes(attributes)
+    -for(let i=0; i<5; i++)
+      .prices__item
+        .prices__img
+          img(src='../../images/prices-img.jpg', alt='')
+        .prices__content
+          +ui-h5('По следам Гейши: экспресс-ритуал для ног', 'prices, --semibold, --mob-fz-s')
+          +ui-h5('', '--semibold, --mob-fz-xs').prices__cost 5 000 тенге
+          .prices__actions
+            a.ui-p2.ui-p2--semibold.prices__detail.text-brown(href='#') Подробнее
+            +ui-button('Забронировать', '--py-s, --fz-xs, --mob-fz-xxs')(href='#')
+    block

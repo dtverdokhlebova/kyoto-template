@@ -1,0 +1,48 @@
+mixin reviews(mods)
+  -
+    const baseName = 'reviews'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  -
+    const items =[
+      { rating: true },
+      { rating: true },
+      { rating: true },
+      { rating: true },
+      { rating: false },
+      { rating: false, button: false },
+    ]
+
+  .reviews(class=allMods)&attributes(attributes)
+    each item, index in items
+      .reviews__item
+        .reviews__head
+          .reviews__info
+            +ui-h5('Имя', 'reviews, --semibold')
+            if item.rating
+              .reviews__rating(data-rating='4.5')
+                .reviews__star
+                .reviews__star
+                .reviews__star
+                .reviews__star
+                .reviews__star
+          .reviews__logo
+            img(src='../../images/reviews-logo-ya.svg', alt='')
+        .reviews__main
+          .reviews__text
+            +ui-p1('', 'reviews')
+              | Мой визит в Kyoto SPA оставил невероятные впечатления! Весь опыт – словно перенос в уютную японскую атмосферу. Сервис высочайшего уровня: персонал профессиональный и внимательный.
+              |  Ритуалы спа просто волшебны. Особенно впечатлилась подарочным сертификатом - настоящим произведением искусства, собравшим в себе аромат, музыку и предвкушение будущих восхитительных моментов.
+              |  Мастера массажа – настоящие волшебники, их руки словно творят чудеса. Расслабленная атмосфера и индивидуальный подход создали восхитительный опыт, который я обязательно буду повторять.
+              |  Спасибо, Kyoto SPA, за уникальное и незабвенное путешествие в мир релаксации и уюта!"
+          button.reviews__all.ui-p2(data-text-start='Показать еще' data-text-end='Свернуть') Показать еще
+        if item.button !== false
+          +ui-button('Смотреть все отзывы на сервисе', '--l-min-w-m, --fz-xs, --wh-s-unset, --outline-gradient, --mob-w-100')(href='#')
+    block

@@ -1,0 +1,23 @@
+mixin about(button, mods)
+  -
+    const baseName = 'about'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .about(class=allMods)&attributes(attributes)
+    .about__content
+      +section-head('about')
+        +ui-h2('о нас', 'section-head').text-brown
+        +ui-h4('', '--semibold')
+          | Здесь, в нашем уютном уголке Киото, мы стремимся к исключительному сервису и уникальному подходу к&nbsp;вашему благополучию. Здесь, в нашем уютном уголке Киото, мы стремимся к исключительному сервису и уникальному подходу к вашему благополучию.  Здесь, в&nbsp;нашем уютном уголке Киото, мы стремимся к исключительному сервису и уникальному подходу  к&nbsp;вашему благополучию.
+      if button
+        +ui-button(button, '--min-w, --outline, --mob-w-100')(href='#')
+    .about__img
+      img(src='../../images/about_img.jpg', alt='')
+    block

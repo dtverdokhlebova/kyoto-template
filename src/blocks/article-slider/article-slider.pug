@@ -1,0 +1,24 @@
+mixin article-slider(itemsType, mods)
+  -
+    const baseName = 'article-slider'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .article-slider(class=allMods)&attributes(attributes)
+    +section-head('article-slider')
+      +ui-h2('Читайте еще', 'section-head').text-brown
+    .article-slider__main
+      .swiper
+        .swiper-wrapper
+          - for(let i=0; i<10; i++)
+            +article-item(itemsType, 'article-slider').swiper-slide
+    .article-slider__nav
+      +ui-swiper-buttons('article-slider')
+      +ui-swiper-fraction('article-slider, --fz-xl')
+    block

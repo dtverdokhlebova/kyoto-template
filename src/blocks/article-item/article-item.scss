@@ -1,0 +1,46 @@
+.article-item {
+  display: flex;
+  flex-direction: column;
+  &__img {
+    aspect-ratio: 1.14;
+    border-radius: 20px;
+    overflow: hidden;
+    @include media-tablet {
+      height: 323px;
+      aspect-ratio: unset;
+
+    }
+    &:not(:last-child) {
+      margin-bottom: 15px;
+      @include media-tablet {
+        margin-bottom: 10px;
+      }
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  &__content {
+    flex: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  &__ui-p2 {
+    &:not(:last-child) {
+      margin-bottom: 10px;
+      @include media-tablet {
+        margin-bottom: 5px;
+      }
+    }
+  }
+  &__ui-h5 {
+    &:not(:last-child) {
+      margin-bottom: 15px;
+    }
+  }
+  &__ui-button {
+    margin-top: auto;
+  }
+}

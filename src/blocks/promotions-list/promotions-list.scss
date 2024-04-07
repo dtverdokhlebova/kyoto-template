@@ -1,0 +1,11 @@
+.promotions-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+  @include media-laptop {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  @include media-tablet {
+    gap: 20px;
+  }
+}

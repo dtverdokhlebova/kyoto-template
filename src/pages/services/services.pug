@@ -1,0 +1,28 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'services'
+    const pageTitle = 'Услуги'
+
+  -
+    const tabsData =[
+      { text: 'Экспресс программы' },
+      { text: 'Обертывания' },
+      { text: 'Расслабляющие SPA ритуалы', class: 'tabs__item--mob-w-100' },
+      { text: 'Интенсивные SPA ритуалы', class: 'tabs__item--mob-w-100' },
+      { text: 'SPA ритуалы с пилингом' },
+      { text: 'SPA ритуалы для двоих' },
+    ]
+
+block content
+  main.main
+    +banner
+      +banner__item('services', 'SPA ритуалы', 'Подарите себе и&nbsp;своим близким незабываемые эмоции от&nbsp;посещения SPA-хижины Kyoto')
+        block banner
+          +banner__scroll
+    +section('--ov-hidden')
+      .inner
+        +section-head('--mb')
+          +tabs(tabsData)
+        +services

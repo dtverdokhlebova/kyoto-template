@@ -1,0 +1,29 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'prices'
+    const pageTitle = 'Стоимость услуг'
+
+  -
+    const tabsData =[
+      { text: 'Все услуги', class: 'tabs__item--mob-w-100'},
+      { text: 'Экспресс программы'},
+      { text: 'Обертывания'},
+      { text: 'Расслабляющие SPA ритуалы', class: 'tabs__item--mob-w-100'},
+      { text: 'Интенсивные SPA ритуалы', class: 'tabs__item--mob-w-100'},
+      { text: 'SPA ритуалы с пилингом'},
+      { text: 'SPA ритуалы для двоих'},
+    ]
+
+block content
+  main.main
+    +section('--pt-s, --mob-pt-xxxs, --ov-hidden')
+      .inner
+        +section-head('--mb-l, --mob-pr')
+          +ui-h2('Стоимость услуг', 'section-head').text-brown
+        +section-head('--mb')
+          +tabs(tabsData)
+        +prices
+        +section-foot.text-center
+          +ui-button('Показать еще', '--l-min-w-s, --outline, --mob-w-100')(href='#')

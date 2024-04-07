@@ -1,0 +1,56 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'certificates'
+    const pageTitle = 'Подарочные сертификаты'
+
+  -
+    const socialsItemsShare =[
+      { icon: 'icon_vk_color', isImg: true, text: 'ВК' },
+      { icon: 'icon_wa_color', isImg: true, text: 'WhatsApp' },
+      { icon: 'icon_tg_color', isImg: true, text: 'Telegram' },
+      { icon: 'icon_link_color', isImg: true, text: 'Копировать <br>ссылку' },
+      { icon: 'icon_inst_color', isImg: true, text: 'Instagram' },
+    ]
+
+block content
+  main.main
+    +banner
+      +banner__item('certificates')
+        block banner
+          .banner__content
+            +ui-h1('Сертификаты', 'banner, --mob-fz-s')
+          +banner__scroll
+    +section('--ov-hidden, --pb-0')
+      .inner
+        +certificates
+    +section('--bg, --certificates-list')
+      .inner
+        +section-head('--mb')
+          +ui-h2('Сертификаты', 'section-head').text-uppercase.text-brown
+          +ui-h4('Выберите подходящий для вас сертификат', '--semibold')
+        +certificates-list
+    +section('--pt-0')
+      .inner
+        +accordions-container
+          +accordions('accordions-container')
+            +accordions__column
+              -for(let i=0; i<2; i++)
+                +accordions__item('Покупка')
+                  .ui-p1.ui-p1--mob-s
+                    p Приобретая сертификат, вы вкладываете себя в уникальное восприятие японских ритуалов. Оплатите свой опыт и подготовьтесь к виртуальному путешествию.
+            +accordions__column
+              -for(let i=0; i<2; i++)
+                +accordions__item('Бронирование')
+                  .ui-p1.ui-p1--mob-s
+                    p Бронирование
+
+    +section('--pt-0')
+      .inner
+        +ask-question
+
+    +popup#popup-share
+      +section-head('--mb-xs')
+        +ui-h5('Поделиться:', '--semibold, --t-fz-l').text-brown
+      +socials(socialsItemsShare, '--size-l, --gap-l, --mob-between')

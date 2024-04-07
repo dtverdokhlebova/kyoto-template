@@ -1,0 +1,59 @@
+.tabs {
+  .swiper {
+    overflow: visible;
+    &-wrapper {
+      @include media-tablet {
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+    }
+  }
+  &__item {
+    position: relative;
+    width: fit-content;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 39px;
+    font: 600 14px/1.4 $font;
+    text-align: center;
+    white-space: nowrap;
+    color: $black;
+    background: transparent;
+    border: 1px solid $black;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: $transitionDuration;
+    cursor: pointer;
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: $gradient;
+      background: linear-gradient(130.14deg, #8a5c2a 13.54%, rgb(194 166 80 / 0.81) 50.18%, rgb(209 186 90 / 0.92) 57.67%, rgb(200 173 83 / 0.86) 63.23%, #a37c36 74%, #8a5c2a 90%);
+      background-size: 300%;
+      animation: button-gradient 4s linear infinite;
+      transition: $transitionDuration;
+      opacity: 0;
+    }
+    @include media-tablet {
+      flex-grow: 1;
+      min-width: calc((100% - 6px) / 2);
+      padding: 16px 10px;
+    }
+    &--active {
+      color: $white;
+      border-color: transparent;
+      &::before {
+        opacity: 1;
+      }
+    }
+    &--mob-w-100 {
+      @include media-tablet {
+        flex-grow: unset;
+        width: 100%;
+      }
+    }
+  }
+}

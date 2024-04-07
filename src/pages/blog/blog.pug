@@ -1,0 +1,28 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'blog'
+    const pageTitle = 'Блог'
+
+  -
+    const tabsData =[
+      { text: 'Все новости', class: 'tabs__item--mob-w-100'},
+      { text: 'Фильтр статей 1' },
+      { text: 'Фильтр статей 2' },
+    ]
+
+block content
+  main.main
+    +section('--pt-s, --mob-pt-xxxs, --ov-hidden')
+      .inner
+        +section-head('--mb-l, --mob-pr')
+          +ui-h2('Блог', 'section-head').text-brown
+        +section-head('--mb')
+          +tabs(tabsData)
+        +article-list
+        +section-foot.text-center
+          +ui-button('Показать еще', '--l-min-w-s, --outline-gradient, --mob-w-100')(href='#')
+    +section('--pt-0')
+      .inner
+        +ask-question

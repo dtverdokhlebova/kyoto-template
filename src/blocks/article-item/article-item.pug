@@ -1,0 +1,21 @@
+mixin article-item(type, mods)
+  -
+    const baseName = 'article-item'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .article-item(class=allMods)&attributes(attributes)
+    .article-item__img
+      img(src='../../images/article-item-img.jpg', alt='')
+    .article-item__content
+      if type === 'news'
+        +ui-p2('Дата публикации: 11.08.1999', 'article-item, --semibold')
+      +ui-h5('Массаж: секрет жизненной гармонии и здоровья', 'article-item, --semibold')
+      +ui-button('Подробнее', 'article-item')(href='#')
+    block

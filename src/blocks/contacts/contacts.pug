@@ -1,0 +1,54 @@
+mixin contacts(mods)
+  -
+    const baseName = 'contacts'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  -
+    const socialsItems =[
+      { icon: 'icon_inst' },
+      { icon: 'icon_vk' },
+    ]
+
+  .contacts(class=allMods)&attributes(attributes)
+    //- .contacts__map
+    .contacts__wrapper
+      .contacts__col
+        +ui-h5('Адрес:', 'contacts, --semibold')
+        .contacts__text
+          +ui-p1('г. Москва, ул. Выдуманная 15 к2', 'contacts, --p-mb-s, --mob-xs')
+          +ui-p2('Станции метро рядом:', 'contacts')
+          .contacts__stations
+            .contacts__station Название метро 1
+            .contacts__station Название метро 1
+      .contacts__col
+        +ui-h5('Время работы:', 'contacts, --semibold')
+        .contacts__text
+          +ui-p1('', 'contacts, --p-mb-s, --mob-xs')
+            p ПН-ПТ: 09:00-21:00
+            p СБ-ВС: 10:00-22:00
+      .contacts__col
+        +ui-h5('Связаться:', 'contacts, --semibold')
+        .contacts__text
+          +ui-p1('', 'contacts, --p-mb-s, --mob-xs')
+            p
+              a(href='tel:+70000000000') +7 (000) 000-00-00
+            p
+              a(href='tel:+70000000000') +7 (000) 000-00-00
+            p
+              a(href='mailto:test@mail.ru') test@mail.ru
+        .contacts__actions
+          +ui-button('Написать в WhatsApp', '--px-xs, --outline, --mob-w-100')(href='#')
+      .contacts__col
+        .contacts__text
+          +ui-h5('Мы в социальных сетях:', 'contacts, --semibold')
+          +socials(socialsItems, 'contacts')
+          .contacts__actions.contacts__actions--mob-none
+            +ui-button('Оформить сертификат', '--min-w')(href='#')
+    block

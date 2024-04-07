@@ -1,0 +1,15 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'promotions-inner'
+    const pageTitle = 'Акции - Детальная страница'
+
+block content
+  main.main
+    +section('--pt-s, --pb-0')
+      .inner
+        +promotions-inner
+    +section('--bg, --promotions-slider, --ov-hidden')
+      .inner
+        +promotions-slider

@@ -1,0 +1,83 @@
+.ui-select {
+  --arrow-size: 20px;
+  --font-size: 18px;
+  --list-font-size: 16px;
+
+  position: relative;
+  width: 100%;
+  .select2-container {
+    display: block;
+    .select2 {
+      &-selection {
+        height: auto;
+        background: transparent;
+        border: 0;
+        border-radius: 0;
+        overflow: hidden;
+        &__rendered {
+          padding-left: 0;
+          padding-right: calc(var(--arrow-size) + 2px);
+          font-size: var(--font-size);
+          line-height: 1.3;
+          color: inherit;
+        }
+        &__placeholder {
+          color: inherit;
+        }
+        &__arrow {
+          top: 50%;
+          right: 0;
+          transform: translateY(-50%);
+          width: var(--arrow-size);
+          height: var(--arrow-size);
+          mask-image: url('images/sprite.svg#icon_arrow');
+          mask-repeat: no-repeat;
+          background: currentcolor;
+          transition: 0.3s ease;
+          b {
+            display: none;
+          }
+        }
+      }
+      &-dropdown {
+        margin: 5px 0;
+        border: 0;
+        border-radius: 4px;
+      }
+      &-results {
+        padding: 4px 0;
+        font-size: var(--list-font-size);
+        &__options {
+          @include golden-scrollbar;
+
+          max-height: 230px;
+        }
+        &__option {
+          padding: 5px 10px;
+          white-space: unset;
+          &--selectable {
+            color: $black;
+            background: none;
+          }
+          &--selected {
+            color: $brown;
+            background: none;
+          }
+        }
+      }
+    }
+    &.select2-container--open {
+      z-index: 5;
+      .select2 {
+        &-selection {
+          &__arrow {
+            transform: translateY(-50%) rotate(180deg);
+          }
+        }
+      }
+      &.select2 {
+        z-index: 10;
+      }
+    }
+  }
+}

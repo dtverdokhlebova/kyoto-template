@@ -1,0 +1,22 @@
+mixin promotions-item(mods)
+  -
+    const baseName = 'promotions-item'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .promotions-item(class=allMods)&attributes(attributes)
+    .promotions-item__img
+      img(src='../../images/promotions-item-img.jpg', alt='')
+    .promotions-item__content
+      .promotions-item__text
+        +ui-h5('Японская гармония', 'promotions-item, --semibold')
+        .promotions-item__descr
+          +ui-p1('При покупке двух сертификатов вы получаете третий в подарок. Отправляйтесь в удовольственное путешествие вместе с друзьями или делитесь восторгом с близкими.', 'promotions-item, --mob-s')
+      +ui-button('Подробнее', '--mob-outline')(href='#')
+    block

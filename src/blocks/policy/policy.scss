@@ -1,0 +1,22 @@
+.policy {
+  &__head {
+    margin-bottom: 40px;
+    @include media-laptop {
+      margin-bottom: 30px;
+    }
+    @include media-tablet {
+      margin-bottom: 20px;
+    }
+  }
+  &__text {
+    &:not(:last-child) {
+      margin-bottom: 40px;
+      @include media-laptop {
+        margin-bottom: 30px;
+      }
+      @include media-tablet {
+        margin-bottom: 22px;
+      }
+    }
+  }
+}

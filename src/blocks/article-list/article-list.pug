@@ -1,0 +1,16 @@
+mixin article-list(itemsType, mods)
+  -
+    const baseName = 'article-list'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .article-list(class=allMods)&attributes(attributes)
+    - for(let i=0; i<10; i++)
+      +article-item(itemsType)
+    block

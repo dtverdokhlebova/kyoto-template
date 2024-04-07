@@ -1,0 +1,42 @@
+.discounts {
+  display: grid;
+  grid-template-columns: 40.63vw 1fr auto;
+  gap: 40px;
+  @media (max-width: 1640px) {
+    grid-template-columns: 55vw 1fr auto;
+  }
+  @include media-tablet {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+  &__large-active-slider.large-active-slider {
+    --img-height: 35.47vw;
+    --scale: 0.4743;
+    @media (max-width: 1640px) {
+      --width: 55vw;
+    }
+    @include media-tablet {
+      --width: 71.03vw;
+      --img-height: 79.21vw;
+    }
+  }
+  &__ui-button {
+    grid-column: 3/4;
+    align-self: end;
+    @include media-tablet {
+      grid-column: unset;
+      order: 1;
+    }
+  }
+  &__nav {
+    grid-column: 2/-1;
+    align-self: end;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    @include media-tablet {
+      grid-column: unset;
+      gap: 10px;
+    }
+  }
+}

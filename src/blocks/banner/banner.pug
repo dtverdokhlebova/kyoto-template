@@ -1,0 +1,58 @@
+mixin banner(mods)
+  -
+    const baseName = 'banner'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .banner(class=allMods)&attributes(attributes)
+    .swiper
+      .swiper-wrapper
+        block
+      +ui-swiper-pagination('banner')
+
+mixin banner__item(img, title, desc, mods)
+  -
+    const baseName = 'banner__item'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .banner__item.swiper-slide(class=allMods)&attributes(attributes)
+    .banner__img: img(src=`../../images/banner/${img}.jpg`, alt='')
+    .inner.banner__inner
+      if title || desc
+        .banner__content
+          if title
+            +ui-h1(title, 'banner')
+          if desc
+            +ui-h4(desc, 'banner, --mob-fz-m, --light')
+          block bannerContent
+      block banner
+
+mixin banner__scroll(mods)
+  -
+    const baseName = 'banner__scroll'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .banner__scroll(class=allMods)&attributes(attributes)
+    .banner__scroll-img: img(src='../../images/banner-scroll.png' alt='')
+    +ui-p2('Листай вниз').text-gradient
+    block

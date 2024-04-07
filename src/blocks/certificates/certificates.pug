@@ -1,0 +1,52 @@
+mixin certificates(mods)
+  -
+    const baseName = 'certificates'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+    const slides = [
+      {
+        title: 'Слух',
+        text: 'Сертификат в&nbsp;виде музыкальной шкатулки&nbsp;– ваш билет в&nbsp;волшебный мир звуков и&nbsp;волнующих мелодий, вдохновленных Летающим Замком.',
+      },
+      {
+        title: 'Обоняние',
+        text: 'Сертификат в&nbsp;виде свитка с&nbsp;мешочком благовоний&nbsp;– это приглашение в&nbsp;мир изысканных ароматов, созданных для настоящих ценителей.',
+      },
+      {
+        title: 'Осязание',
+        text: 'Бумажный веер, словно магия востока, раскрывает не&nbsp;только свои лепестки, но&nbsp;и&nbsp;тайны текста сертификата, создавая уникальную симфонию.',
+      },
+      {
+        title: 'Вкус',
+        text: 'Откройте деревянный бокс с&nbsp;восточными сладостями, где каждый вкус&nbsp;– это часть уникального сертификата, спрятанного внутри.',
+      },
+      {
+        title: 'Зрение',
+        text: 'Получите уникальный онлайн сертификат&nbsp;– музыкальную гифку с&nbsp;вашим именем, где звуки и&nbsp;видения соединяются в&nbsp;виртуальном танце.',
+      },
+    ]
+
+  .certificates(class=allMods)&attributes(attributes)
+    +section-head('certificates')
+      +ui-h2('для вас и&nbsp;ваших близких', 'section-head').text-brown
+      +ui-h4('Выберите сертификат, который действует на&nbsp;разные органы чувств!', '--semibold')
+    .certificates__desc
+      +ui-p1('Подарите сертификат, который сразу же осчастливит ваших близких! Наши сертификаты - это&nbsp;настоящий подарок и&nbsp;приятные эмоции в&nbsp;момент дарения!', 'certificates')
+      +ui-button('Выбрать сертификат', 'certificates, --min-w, --mob-w-100')
+    .swiper
+      .swiper-wrapper
+        each item, index in slides
+          .certificates__slide.swiper-slide
+            .certificates__icon: img(src=`../../images/certificates/certificates-icon_${index+1}.png`, alt='')
+            .certificates__img: img(src=`../../images/certificates/certificates_${index+1}.jpg` alt='')
+            .certificates__content
+              +ui-h5(item.title, 'certificates, --mob-fz-s, --semibold').text-brown
+              +ui-p1(item.text, 'certificates, --mob-s')
+    block

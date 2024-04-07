@@ -1,0 +1,44 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'about'
+    const pageTitle = 'О компании'
+
+  -
+    const interiorData =[
+      { img: '../../images/interior/interior-img-about-1.jpg' },
+      { img: '../../images/interior/interior-img-about-2.jpg' },
+      { img: '../../images/interior/interior-img-about-3.jpg' },
+      { img: '../../images/interior/interior-img-about-4.jpg' },
+      { img: '../../images/interior/interior-img-about-5.jpg' },
+      { img: '../../images/interior/interior-img-about-6.jpg' },
+    ]
+
+block content
+  main.main
+    +banner
+      +banner__item('about', 'О&nbsp;компании', 'Ваш путь к&nbsp;гармонии и&nbsp;релаксации в&nbsp;стиле Японии!')
+        block bannerContent
+          .banner__video
+            button.banner__video-button.js-fullscreen-player(type='button' title='Воспроизвести видео' data-plyr-provider='youtube' data-plyr-embed-id='bTqVqk7FSmY')
+            +ui-p2('Посмотрите видео нашего салона', '--semibold')
+    +section('--pb-0')
+      .inner
+        +about
+    +section('--bg, --benefits')
+      .inner
+        +benefits
+    +section('--pd-0, --ov-hidden')
+      .inner
+        +section-head('--mb').text-center
+          +ui-h2('Для вас', 'section-head').text-brown
+          +ui-h4('Выберите, что вам по душе', '--semibold')
+        +category
+    +section
+      +section-head('--mb-l').text-center
+        +ui-h2('Наш интерьер', 'section-head').text-brown
+      +interior(interiorData, '--items-6')
+    +section('--pt-0')
+      .inner
+        +ask-question

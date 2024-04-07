@@ -1,0 +1,36 @@
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 49%;
+  gap: 40px;
+  @include media-laptop {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  @include media-tablet {
+    gap: 20px;
+  }
+  &__section-head {
+    &:not(:last-child) {
+      margin-bottom: 54px;
+      @include media-laptop {
+        margin-top: 35px;
+      }
+      @include media-tablet {
+        margin-bottom: 20px;
+      }
+    }
+  }
+  &__img {
+    @include media-laptop {
+      order: -1;
+    }
+    @include media-tablet {
+      margin: 0 calc($innerPd * -1);
+    }
+    img {
+      border-radius: 20px;
+      @include media-tablet {
+        border-radius: 0;
+      }
+    }
+  }
+}

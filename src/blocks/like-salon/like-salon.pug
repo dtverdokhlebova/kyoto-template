@@ -1,0 +1,25 @@
+mixin like-salon(mods)
+  -
+    const baseName = 'like-salon'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .like-salon(class=allMods)&attributes(attributes)
+    .like-salon__content
+      .like-salon__text
+        .like-salon__head
+          +ui-h2('', 'like-salon')
+            span.text-gradient Понравился наш салон?
+          +ui-h5('Мы предлагаем вам погрузиться в нашу атмосферу', 'like-salon')
+        .like-salon__actions
+          +ui-button('Купить сертификат', '--fz-xs')(href='#')
+          +ui-button('Забронировать', '--fz-xs, --outline-gradient')(href='#')
+    .like-salon__bg
+      img(src='../../images/like-salon-bg.jpg', alt='')
+    block

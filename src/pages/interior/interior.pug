@@ -1,0 +1,51 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'interior'
+    const pageTitle = 'Интерьер'
+
+  -
+    const interiorData =[
+      { img: '../../images/interior/interior-img-inner-1.jpg' },
+      { img: '../../images/interior/interior-img-inner-2.jpg' },
+      { img: '../../images/interior/interior-img-inner-3.jpg' },
+      { img: '../../images/interior/interior-img-inner-4.jpg' },
+      { img: '../../images/interior/interior-img-inner-5.jpg' },
+    ]
+
+  -
+    const tabsData =[
+      { text: 'Ресепшен'},
+      { text: 'Душевые' },
+      { text: 'Апартаменты двуместные', class: 'tabs__item--mob-w-100' },
+      { text: 'Апартаменты одноместные', class: 'tabs__item--mob-w-100' },
+      { text: 'Коридор' },
+      { text: 'Раздевалки' },
+      { text: 'Хамам' },
+      { text: 'Пилинг зона' },
+    ]
+
+block content
+  main.main
+    +banner
+      +banner__item('interior', 'Интерьер')
+        block banner
+          +banner__scroll
+    +section('--pb-0, --ov-hidden')
+      .inner
+        +section-head('--max-w, --mb-l, --center').text-center
+          +ui-h2('Наш интерьер', 'section-head').text-brown
+          +ui-h4('Подарите себе и своим близким незабываемы эмоции от посещения KIYTO SPA ', '--semibood')
+        +section-head('--mb')
+          +tabs(tabsData)
+      +interior(interiorData)
+    +section('--pb-0')
+      .inner
+        +like-salon
+    +section('--ov-hidden, --bg, --discounts')
+      .inner
+        +discounts
+    +section('--pt-0')
+      .inner
+        +ask-question

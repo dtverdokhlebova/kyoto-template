@@ -1,0 +1,18 @@
+mixin tabs(data, mods)
+  -
+    const baseName = 'tabs'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .tabs(class=allMods)&attributes(attributes)
+    .swiper
+      .swiper-wrapper
+        each item, index in data
+          .tabs__item.swiper-slide(class=(index===0 ? 'tabs__item--active' : '') class=item.class onclick=`window.tabClick($(this))`) !{item.text}
+    block

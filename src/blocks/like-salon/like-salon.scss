@@ -1,0 +1,58 @@
+.like-salon {
+  display: grid;
+  grid-template-areas: 'main';
+  color: $white;
+  &__bg {
+    grid-area: main;
+    border-radius: 20px;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 58%;
+    }
+  }
+  &__content {
+    position: relative;
+    grid-area: main;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 165px 40px;
+    @include media-tablet {
+      padding: 125px 10px;
+    }
+  }
+  &__head {
+    max-width: 660px;
+    margin-right: auto;
+    margin-left: auto;
+    &:not(:last-child) {
+      margin-bottom: 25px;
+      @include media-tablet {
+        margin-bottom: 50px;
+      }
+    }
+  }
+  &__ui-h2 {
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+  &__ui-h5 {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  &__actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    @include media-tablet {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+}

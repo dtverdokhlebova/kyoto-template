@@ -1,0 +1,21 @@
+mixin legal-info(mods)
+  -
+    const baseName = 'legal-info'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .legal-info(class=allMods)&attributes(attributes)
+    +ui-h2('', 'legal-info, --mob-fz-s')
+      span.text-gradient юридическая информация
+    +ui-p1('', '--p-mb-0, --mob-s')
+      p ИНН: 84511218555
+      p ОГРН: 45445455444554
+      p КП: 455554554
+      p Адрес: г. Москва, уд. Выдуманная 15к5
+    block

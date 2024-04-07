@@ -1,0 +1,19 @@
+mixin page-404(mods)
+  -
+    const baseName = 'page-404'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .page-404(class=allMods)&attributes(attributes)
+    .inner
+      .page-404__img
+        img(src='../../images/page-404-img.png', alt='')
+      +ui-h4('Упс... Кажется вы заблудились в японском саду, здесь нет релакса(', 'page-404, --semibold')
+      +ui-button('Перейти на главную страницу', 'page-404, --fz-xs')(href='/')
+    block

@@ -1,0 +1,15 @@
+.legal-info {
+  padding: 50px 40px;
+  text-align: center;
+  color: $white;
+  background: $black;
+  border-radius: 20px;
+  @include media-tablet {
+    padding: 43px 20px;
+  }
+  &__ui-h2 {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+}

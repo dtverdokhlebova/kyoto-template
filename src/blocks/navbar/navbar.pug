@@ -1,0 +1,53 @@
+mixin navbar(mods)
+  -
+    const baseName = 'navbar'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+    const menu = [
+      {
+        name: 'Личный<br> кабинет',
+        icon: 'person',
+        href: '#',
+      },
+      {
+        name: 'Позвонить',
+        icon: 'call',
+        href: '#',
+      },
+      {
+        name: 'SPA<br> ритуалы',
+        icon: 'palms',
+        onclick: 'window.openMenu()'
+      },
+      {
+        name: 'Запись<br> онлайн',
+        icon: 'register',
+        href: '#',
+      },
+      {
+        name: 'Купить<br> сертификат',
+        icon: 'certificate',
+        href: '#',
+      },
+    ]
+
+  nav.navbar(class=allMods)&attributes(attributes)
+    ul.navbar__menu
+      each item in menu
+        li.navbar__item
+          if item.onclick
+            button.navbar__link(onclick=item.onclick)
+              span.navbar__icon: +svg(`icon_${item.icon}`)
+              span.navbar__name !{item.name}
+          else
+            a.navbar__link(href=item.href)
+              span.navbar__icon: +svg(`icon_${item.icon}`)
+              span.navbar__name !{item.name}
+    block

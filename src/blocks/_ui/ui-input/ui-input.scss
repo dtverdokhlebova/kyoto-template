@@ -1,0 +1,29 @@
+.ui-input {
+  --ui-input-color: #{$black};
+
+  position: relative;
+  input {
+    width: 100%;
+    padding: 18px 15px 19px;
+    font: 400 18px/1.3 $font;
+    color: var(--ui-input-color);
+    background: transparent;
+    border: 1px solid;
+    border-radius: 8px;
+    outline: none;
+    transition: $transitionDuration;
+    @include media-tablet {
+      padding: 14px 10px;
+      font-size: 13px;
+    }
+    &::placeholder {
+      color: inherit;
+    }
+  }
+  &--light {
+    --ui-input-color: #e1e1e1;
+  }
+  &--error {
+    --ui-input-color: #{$error};
+  }
+}

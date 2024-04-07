@@ -1,0 +1,34 @@
+mixin benefits(mods)
+  -
+    const baseName = 'benefits'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+    const slides = [
+      {
+        img: '../../images/benefits/benefits_1.png',
+        title: 'Первый Японский SPA в Казахстане',
+        text: 'Мы гордимся тем, что являемся первыми представителями Японского SPA на этой территории и первыми, кто зарегистрирует товарный знак.',
+      },
+      {
+        img: '../../images/benefits/benefits_2.png',
+        title: 'Первый Японский SPA в Казахстане Первый Японский SPA в Казахстане',
+        text: 'Мы гордимся тем, что являемся первыми представителями Японского SPA на этой территории и первыми, кто зарегистрирует товарный знак. Мы гордимся тем, что являемся первыми представителями Японского SPA на этой территории и первыми, кто зарегистрирует товарный знак.',
+      },
+    ]
+
+  .benefits(class=allMods)&attributes(attributes)
+    +section-head('benefits')
+      +ui-h2('Преимущества', 'section-head').text-brown
+      +ui-h4('Мы предлагаем путешествие в&nbsp;Японию, не&nbsp;покидая своего города, оставаясь невероятно аутентичными в&nbsp;каждой детали.', '--semibold')
+    +large-active-slider(slides, 'benefits')
+    .benefits__nav
+      +ui-swiper-buttons('benefits')
+      +ui-swiper-fraction('benefits, --fz-xl')
+    block

@@ -1,0 +1,39 @@
+mixin services-inner(mods)
+  -
+    const baseName = 'services-inner'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .services-inner(class=allMods)&attributes(attributes)
+    .services-inner__text
+      .services-inner__top
+        .services-inner__head
+          +ui-h2('О ритуале', 'services-inner').text-uppercase.text-brown
+          +ui-h4('Кедровая фитобочка', '--semibold')
+        button.services-inner__share(onclick=`window.openPopup('#popup-share')`)
+          +svg('icon_share')
+          span.services-inner__share-text Поделиться
+      .services-inner__info
+        +ui-h5('В программу входят:', 'services-inner, --mob-fz-s, --semibold')
+        +ui-p3('Продолжительность ритуала: до 1 часа', '--semibold').services-inner__time
+      +ui-p1('', 'services-inner, --mob-s')
+        ul
+          li Ознакомительная экскурсия по Японской SPA-деревне «Kyoto», знакомство с мастером и традициями Японии
+          li Распаривание в кедровой фитобочке
+          li Тропический душ
+          li Релакс
+          li Японское чаепитие
+      +ui-h5('Стоимость: 5.500 тенге', '--semibold').services-inner__cost
+    .services-inner__img
+      img(src='../../images/services-inner-img.jpg', alt='')
+    .services-inner__actions
+      +ui-button('Купить сертификат', 'services-inner, --fz-xs')(href='#')
+      +ui-button('Забронировать', 'services-inner, --fz-xs, --outline')(href='#')
+      +ui-button('Написать в WhatsApp', 'services-inner, --fz-xs, --outline')(href='#')
+    block

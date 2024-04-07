@@ -1,0 +1,64 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'main'
+    const pageTitle = 'Main'
+
+  -
+    const tabsData =[
+      { text: 'Экспресс программы' },
+      { text: 'Обертывания' },
+      { text: 'Расслабляющие SPA ритуалы', class: 'tabs__item--mob-w-100' },
+      { text: 'Интенсивные SPA ритуалы', class: 'tabs__item--mob-w-100' },
+      { text: 'SPA ритуалы с пилингом' },
+      { text: 'SPA ритуалы для двоих' },
+    ]
+
+block content
+  main.main
+    +banner
+      -for(let i=0; i<3; i++)
+        +banner__item('main')
+          block banner
+            .banner__content
+              +ui-h1('Kyoto Spa', 'banner, --fz-l')
+              +ui-h3('Японская SPA-хижина&nbsp;&mdash; райский уголок в&nbsp;большом городе!', 'banner')
+            .banner__actions
+              +ui-button('Купить сертификат', '--l-min-w-s')
+              +ui-button('Записаться онлайн', '--outline, --l-min-w-s')
+    +section('--ov-hidden, --bg, --legend')
+      .inner
+        +legend
+    +section('--pd-0')
+      .inner
+        +about('Узнать больше')
+    +section('--bg, --benefits')
+      .inner
+        +benefits
+    +section('--ov-hidden, --pt-0')
+      .inner
+        +certificates
+    +section('--ov-hidden, --pd-0')
+      +certificates-promo
+    +section('--ov-hidden, --pb-0')
+      .inner
+        +section-head('--max-w, --mb-l, --center').text-center
+          +ui-h2('SPA ритуалы', 'section-head').text-brown
+          +ui-h4('Подарите себе и своим близким незабываемы эмоции от посещения японской SPA-хижины Kyoto', '--semibold')
+        +section-head('--mb')
+          +tabs(tabsData)
+        +services
+        +section-foot.text-center
+          +ui-button('Смотреть все услуги', '--l-min-w-s, --outline, --mob-w-100')(href='#')
+    +section('--ov-hidden, --bg, --discounts')
+      .inner
+        +discounts
+    +section('--pb-0, --ov-hidden')
+      .inner
+        +reviews-slider
+    +section
+      .inner
+        +section-head('--mb-xs')
+          +ui-h2('Контакты', 'section-head').text-brown
+        +contacts
