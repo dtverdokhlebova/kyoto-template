@@ -13,5 +13,6 @@ mixin popup(mods)
   .popup(class=allMods)&attributes(attributes)
     .popup__container
       button.popup__close(onclick=`window.closePopup($(this).parents('.popup'))`)
-        +svg('icon_cross')
+        .svg
+          include ../../images/icon_cross.svg
       block

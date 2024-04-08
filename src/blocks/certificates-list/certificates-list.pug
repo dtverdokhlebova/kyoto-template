@@ -53,7 +53,8 @@ mixin certificates-list(mods)
             +ui-button('Забронировать', 'certificates-list, --fz-xs, --outline-gradient')(href='#')
             +ui-button('Написать в WhatsApp', 'certificates-list, --fz-xs, --outline-gradient')(href='#')
           button.certificates-list__share(onclick=`window.openPopup('#popup-share')`)
-            +svg('icon_share')
+            .svg
+              include ../../images/icon_share.svg
             span.certificates-list__share-text Поделиться
         .certificates-list__pictures
           .certificates-list__img

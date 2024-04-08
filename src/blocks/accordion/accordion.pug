@@ -22,7 +22,8 @@ mixin accordions__item(head)
     .accordions__head
       +ui-h5(head, '--semibold, --mob-fz-s')
       .accordions__button
-        +svg('icon_accordion_cross')
+        .svg
+          include ../../images/icon_accordion_cross.svg
     .accordions__body
       .accordions__text
         block

@@ -1,4 +1,4 @@
-mixin ui-input(id, mods)
+mixin ui-input(id, mods, wrapperClass)
   -
     const baseName = 'ui-input'
     let allMods = ''
@@ -10,7 +10,7 @@ mixin ui-input(id, mods)
       allMods = allMods.trim()
     }
 
-  .ui-input(class=allMods)
+  .ui-input(class=allMods class=wrapperClass)
     input(id=id type='text')&attributes(attributes)
-    .ui-input__error
+    //- .ui-input__error
     block

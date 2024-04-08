@@ -28,11 +28,13 @@ mixin ui-swiper-button(mods, prev)
 
   if prev === true
     .ui-swiper-button.swiper-button-prev(class=allMods)&attributes(attributes)
-      +svg('icon_swiper_prev')
+      .svg
+        include ../../../images/icon_swiper_prev.svg
       block
   else
     .ui-swiper-button.swiper-button-next(class=allMods)&attributes(attributes)
-      +svg('icon_swiper_next')
+      .svg
+        include ../../../images/icon_swiper_next.svg
       block
 
 mixin ui-swiper-buttons(mods, modsButton)

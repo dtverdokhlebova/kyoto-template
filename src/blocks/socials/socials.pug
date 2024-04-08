@@ -14,10 +14,7 @@ mixin socials(items, mods, iconsMod = '')
     each item in items
       a.socials__item(href='#')
         .socials__icon
-          if item.isImg
-            img(src=`../../images/${item.icon}.svg`, alt='')
-          else
-            +svg(item.icon + iconsMod)
+          img(src=`../../images/${item.icon+iconsMod}.svg`, alt='')
         if item.text
           +ui-p2(item.text, 'socials, --mob-s')
     block

@@ -146,6 +146,12 @@ img {
   /* stylelint-disable-next-line value-no-vendor-prefix */
   image-rendering: -webkit-optimize-contrast;
 }
+.svg svg {
+  display: block;
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+}
 a {
   text-decoration: none;
   color: inherit;
@@ -703,7 +709,7 @@ a {
 .ui-input--light {
   --ui-input-color: #e1e1e1;
 }
-.ui-input--error {
+.ui-input.error {
   --ui-input-color: var(--error);
 }
 .ui-p1 {
@@ -2727,7 +2733,6 @@ a {
 .contacts__map {
   height: 523px;
   margin-bottom: 40px;
-  background: #d3ded1;
   border-radius: 20px;
   overflow: hidden;
 }
@@ -6524,12 +6529,6 @@ a {
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
-}
-.svg {
-  display: block;
-  max-width: 100%;
-  width: 100%;
-  height: 100%;
 }
 .tabs .swiper {
   overflow: visible;

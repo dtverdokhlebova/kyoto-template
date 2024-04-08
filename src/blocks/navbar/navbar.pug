@@ -10,44 +10,36 @@ mixin navbar(mods)
       allMods = allMods.trim()
     }
 
-    const menu = [
-      {
-        name: 'Личный<br> кабинет',
-        icon: 'person',
-        href: '#',
-      },
-      {
-        name: 'Позвонить',
-        icon: 'call',
-        href: '#',
-      },
-      {
-        name: 'SPA<br> ритуалы',
-        icon: 'palms',
-        onclick: 'window.openMenu()'
-      },
-      {
-        name: 'Запись<br> онлайн',
-        icon: 'register',
-        href: '#',
-      },
-      {
-        name: 'Купить<br> сертификат',
-        icon: 'certificate',
-        href: '#',
-      },
-    ]
-
   nav.navbar(class=allMods)&attributes(attributes)
     ul.navbar__menu
-      each item in menu
-        li.navbar__item
-          if item.onclick
-            button.navbar__link(onclick=item.onclick)
-              span.navbar__icon: +svg(`icon_${item.icon}`)
-              span.navbar__name !{item.name}
-          else
-            a.navbar__link(href=item.href)
-              span.navbar__icon: +svg(`icon_${item.icon}`)
-              span.navbar__name !{item.name}
+      li.navbar__item
+        a.navbar__link(href='#')
+          span.navbar__icon
+            .svg
+              include ../../images/icon_person.svg
+          span.navbar__name Личный <br>кабинет
+      li.navbar__item
+        a.navbar__link(href='#')
+          span.navbar__icon
+            .svg
+              include ../../images/icon_call.svg
+          span.navbar__name Позвонить
+      li.navbar__item
+        button.navbar__link(onclick='window.openMenu()')
+          span.navbar__icon
+            .svg
+              include ../../images/icon_palms.svg
+          span.navbar__name SPA <br>ритуалы
+      li.navbar__item
+        a.navbar__link(href='#')
+          span.navbar__icon
+            .svg
+              include ../../images/icon_register.svg
+          span.navbar__name Запись <br>онлайн
+      li.navbar__item
+        a.navbar__link(href='#')
+          span.navbar__icon
+            .svg
+              include ../../images/icon_certificate.svg
+          span.navbar__name Купить <br>сертификат
     block

@@ -255,7 +255,10 @@ header.header
       a.header__logo(href='/'): img(src='../../images/logo.svg' alt='')
       +ui-select('header', '', 'Воронеж', 'Липецк', 'Москва', 'Калуга', 'Рязань', 'Санкт-Петербург')(data-placeholder='Ваш город')
       +lang-select('header')
-    +ui-button('SPA ритуалы', 'header, --p-xs, --fz-xs', 'icon_palms')(onclick='window.openMenu()')
+    +ui-button('', 'header, --p-xs, --fz-xs')(onclick='window.openMenu()')
+      .svg
+        include ../../images/icon_palms.svg
+      span SPA ритуалы
     .header__secondary-group
       .header__actions.header__actions--links
         a.header__tel(href='tel:+70000000000') +7 (000) 000-00-00
@@ -263,13 +266,16 @@ header.header
         +ui-button('Купить сертификат', '--p-xs, --fz-xs, --outline')
       .header__actions.header__actions--buttons
         a.header__lk(href='#')
-          +svg('icon_person')
+          .svg
+            include ../../images/icon_person.svg
         button.header__burger(onclick='window.openBurgerMenu()')
-          +svg('icon_burger')
+          .svg
+            include ../../images/icon_burger.svg
           | Меню
   .header-burger
     button.header__close(onclick='window.closeBurgerMenu()')
-      +svg('icon_cross')
+      .svg
+        include ../../images/icon_cross.svg
     .inner
       ul.header-burger__menu
         each item, index in burgerMenu
@@ -282,7 +288,8 @@ header.header
           +ui-button('Войти в личный кабинет', '--p-xs, --outline-gradient')
   .header-menu
     button.header__close(onclick='window.closeMenu()')
-      +svg('icon_cross')
+      .svg
+        include ../../images/icon_cross.svg
     ul.header-menu__menu
       li.header-menu__item
         button.header-menu__button(type='button') SPA ритуалы

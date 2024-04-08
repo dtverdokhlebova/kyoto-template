@@ -1,4 +1,4 @@
-mixin ui-button(text, mods, leftIcon, rightIcon)
+mixin ui-button(text, mods)
   -
     const baseName = 'ui-button'
     let allMods = ''
@@ -12,20 +12,12 @@ mixin ui-button(text, mods, leftIcon, rightIcon)
 
   if (attributes.href)
     a.ui-button(class=allMods)&attributes(attributes)
-      if leftIcon
-        +svg(leftIcon)
       if text
         span !{text}
       block
-      if rightIcon
-        +svg(rightIcon)
 
   else
     button.ui-button(class=allMods)&attributes(attributes)
-      if leftIcon
-        +svg(leftIcon)
       if text
         span !{text}
       block
-      if rightIcon
-        +svg(rightIcon)

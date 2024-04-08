@@ -23,7 +23,7 @@
   &--light {
     --ui-input-color: #e1e1e1;
   }
-  &--error {
+  &.error {
     --ui-input-color: #{$error};
   }
 }

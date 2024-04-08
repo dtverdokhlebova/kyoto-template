@@ -18,7 +18,7 @@ mixin ask-question(mods)
           +ui-h4('У вас есть вопросы? <br>Мы готовы на них ответит!', 'ask-question, --semibold')
           +ui-p1('Оставьте заявку и наши менеджеры свяжутся с вами и&nbsp;проконсультируют по всем вопросам', 'ask-question, --mob-s')
         .ask-question__main
-          +ui-input('ask-question-phone', 'ask-question, --light, --error')(placeholder='Ваш телефон' name='phone')
+          +ui-input('ask-question-phone', 'ask-question, --light', 'error')(placeholder='Ваш телефон' name='phone')
           +ui-button('Отправить', 'ask-question, --py-s, --mob-fz-xxs')
         +ui-p3('Нажимая кнопку “Отправить” вы соглашаетесь с ', 'ask-question, --extra-light, --mob-s')
           a.text-underline(href='#') политикой конфиденциальности

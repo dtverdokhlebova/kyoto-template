@@ -17,7 +17,8 @@ mixin services-inner(mods)
           +ui-h2('О ритуале', 'services-inner').text-uppercase.text-brown
           +ui-h4('Кедровая фитобочка', '--semibold')
         button.services-inner__share(onclick=`window.openPopup('#popup-share')`)
-          +svg('icon_share')
+          .svg
+            include ../../images/icon_share.svg
           span.services-inner__share-text Поделиться
       .services-inner__info
         +ui-h5('В программу входят:', 'services-inner, --mob-fz-s, --semibold')

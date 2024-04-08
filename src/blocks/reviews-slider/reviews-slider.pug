@@ -27,7 +27,8 @@ mixin reviews-slider(mods)
               else
                 .reviews-slider__rating
                   .reviews-slider__star
-                    +svg('icon_star')
+                    .svg
+                      include ../../images/icon_star.svg
                   .reviews-slider__value
                     span 5,0
                     span.reviews-slider__value-generic /5,0
