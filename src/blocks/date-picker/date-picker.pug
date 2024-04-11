@@ -1,0 +1,19 @@
+mixin date-picker(mods)
+  -
+    const baseName = 'date-picker'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .date-picker(class=allMods data-disabled='18.04.2024, 01.05.2024, 13.05.2024')&attributes(attributes)
+    input.date-picker__input(type='hidden', name='date')
+    .date-picker__item(data-month-year='04.2024' data-min-date='09.04.2024')
+    .date-picker__item(data-month-year='05.2024' data-max-date='22.05.2024')
+    // window.updateDatePickerItem($('.date-picker__item')[0], '05.2024', '09.05.2024')
+    // window.updateDatePickerItem($('.date-picker__item')[1], '06.2024', null, '22.06.2024')
+    block

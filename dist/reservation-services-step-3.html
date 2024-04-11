@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>reservation-services-step-3</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <link href="" rel="icon" type="image/x-icon">
+    <link href="libs/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="libs/select2/select2.min.css" rel="stylesheet">
+    <link href="libs/plyr/plyr.min.css" rel="stylesheet">
+    <link href="libs/datepicker/datepicker.min.css" rel="stylesheet">
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=7742add4-5d3c-4060-9f01-67963d12fb4e&amp;lang=ru_RU" type="text/javascript"></script>
+    <script type="module" crossorigin src="scripts/scripts.js"></script>
+    <link rel="stylesheet" href="styles/index.css">
+  </head>
+  <body ontouchstart>
+    <div class="wrapper" style="background: #fff;">
+      <div class="inner">
+        <div class="modal">
+          <div class="modal-head">
+            <div class="ui-h2 modal-head__ui-h2 text-brown">бронирование
+            </div>
+            <div class="tabs modal-head__tabs tabs--mob-center">
+              <div class="swiper">
+                <div class="swiper-wrapper">
+                  <div class="tabs__item swiper-slide tabs__item--active tabs__item--mob-w-auto tabs__item--pd-same-l" onclick="window.tabClick($(this))">
+                    <div class="svg"><svg width="264" height="264" viewBox="0 0 264 264" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_801_4921)">
+<path d="M114.134 2.93332C113.067 4.66666 111.867 9.73332 111.334 14.2667L110.4 22.5333L114.667 20.5333C116.934 19.3333 120.534 18.6667 122.8 18.9333L126.667 19.6V11.8667C126.667 6.66666 126 3.46666 124.534 2.13332C121.467 -0.933342 116.4 -0.533342 114.134 2.93332Z" fill="currentColor"/>
+<path d="M139.467 2.13332C138.001 3.46666 137.334 6.66666 137.334 11.8667V19.6L141.201 18.9333C143.467 18.6667 147.067 19.3333 149.334 20.4L153.467 22.5333L152.534 14.2667C152.134 9.73332 150.801 4.66666 149.867 2.93332C147.601 -0.533342 142.534 -0.933342 139.467 2.13332Z" fill="currentColor"/>
+<path d="M117.067 30.2667C112.4 35.6 108 53.7333 105.867 75.3333C104 95.7333 103.6 97.2 98.1333 109.333C90.5333 125.733 89.3333 131.467 89.3333 149.067C89.3333 179.2 80.4 198.4 58.1333 215.6C53.0666 219.467 52.9333 219.733 54.4 224C58.6666 236.133 74.1333 247.067 89.4666 248.8C96.4 249.6 97.6 249.333 102.8 245.733C106 243.6 111.467 240.267 114.8 238.267C126.667 231.467 126 238 126.4 128.133C126.667 57.3333 126.267 31.2 125.2 29.8667C123.067 27.3333 119.467 27.6 117.067 30.2667Z" fill="currentColor"/>
+<path d="M139.734 29.4667C137.467 30.6667 137.334 36.8 137.334 126.4V222L140.401 228.667C143.067 234.133 144.934 236 150.801 239.2C154.801 241.333 160.001 244.667 162.401 246.4C166.267 249.333 167.601 249.6 174.401 248.8C189.867 247.067 205.334 236.133 209.601 223.867C211.067 219.6 210.934 219.333 205.867 215.467C183.467 198.133 174.667 179.333 174.667 148.8C174.534 130.533 173.467 125.333 166.001 109.333C160.267 97.0667 160.001 95.8667 158.134 75.3334C156.534 58.6667 155.201 51.3334 152.001 42.1334C147.334 28.1334 145.334 26.1334 139.734 29.4667Z" fill="currentColor"/>
+<path d="M32.0009 217.867C20.6675 222.667 2.13421 232.133 1.06754 233.867C-0.665794 236.4 -0.13246 260.667 1.60087 262.4C2.80087 263.6 14.8009 264 47.6009 264C89.2009 264 92.0009 263.867 93.2009 261.6C94.4009 259.333 93.6009 258.933 85.7342 257.467C73.7342 255.333 64.0009 250.4 56.5342 242.933C50.1342 236.533 44.6675 226.8 43.2009 218.933C42.2675 213.867 41.6009 213.867 32.0009 217.867Z" fill="currentColor"/>
+<path d="M220.667 219.467C218.267 232.4 207.2 246.267 194.267 252.533C190.4 254.4 183.2 256.8 178.134 257.6C169.334 259.2 168.934 259.467 171.2 261.6C173.334 263.733 177.334 264 217.2 264C249.334 264 261.2 263.6 262.4 262.4C264.134 260.667 264.667 236.4 262.934 233.733C261.734 231.867 230.534 216.667 225.2 215.333C222 214.533 221.6 214.933 220.667 219.467Z" fill="currentColor"/>
+</g>
+<defs>
+<clipPath id="clip0_801_4921">
+<rect width="264" height="264" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+
+                    </div>Услуги
+                  </div>
+                  <div class="tabs__item swiper-slide tabs__item--mob-w-auto tabs__item--pd-same-l" onclick="window.tabClick($(this))">
+                    <div class="svg"><svg width="264" height="264" viewBox="0 0 264 264" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path opacity="0.962" fill-rule="evenodd" clip-rule="evenodd" d="M52.6664 15.8171C49.5515 12.0392 45.5515 10.4836 40.6664 11.1504C39.082 12.3019 37.5266 13.6352 35.9998 15.1504C35.3347 20.4653 35.1124 25.7987 35.3331 31.1504C30.4242 30.93 25.5352 31.1523 20.6664 31.8171C16.7442 33.07 14.9663 35.7367 15.3331 39.8171C14.9136 43.4228 16.247 46.0895 19.3331 47.8171C24.648 48.4822 29.9814 48.7044 35.3331 48.4838C35.1124 53.8355 35.3347 59.1688 35.9998 64.4838C38.1094 67.432 40.9983 69.2099 44.6664 69.8171C48.6092 68.4739 52.1648 66.696 55.3331 64.4838C55.1116 72.0523 55.3339 79.6079 55.9998 87.1504C58.3907 90.8775 61.2795 94.2108 64.6664 97.1504L55.9998 105.817C55.3332 124.034 55.111 182.256 55.3331 200.484C52.0764 197.966 48.2987 196.189 43.9998 195.15C40.6306 195.849 37.9639 197.628 35.9998 200.484C35.3347 205.798 35.1124 211.132 35.3331 216.484C29.9814 216.262 24.648 216.485 19.3331 217.15C14.0142 222.424 14.0142 227.757 19.3331 233.15C24.648 233.816 29.9814 234.038 35.3331 233.817C35.1124 239.169 35.3347 244.502 35.9998 249.817C41.7487 255.249 47.3043 255.026 52.6664 249.15C105.111 248.261 157.556 248.261 210 249.15C215.462 254.924 221.017 255.146 226.666 249.817C227.332 244.502 227.554 239.169 227.333 233.817C232.685 234.038 238.018 233.816 243.333 233.15C248.652 227.757 248.652 222.424 243.333 217.15C238.018 216.485 232.685 216.262 227.333 216.484C227.554 211.132 227.332 205.798 226.666 200.484C224.557 197.536 221.668 195.757 218 195.15C214.057 196.493 210.501 198.272 207.333 200.484C209.788 189.724 206.677 181.278 198 175.15C201.586 172.676 204.474 169.565 206.666 165.817C207.333 145.377 207.556 84.9331 207.333 64.4838C210.59 67.0008 214.368 68.7786 218.666 69.8171C222.036 69.1182 224.702 67.3403 226.666 64.4838C227.332 59.1688 227.554 53.8355 227.333 48.4838C232.685 48.7044 238.018 48.4822 243.333 47.8171C244.889 47.1504 246 46.0394 246.666 44.4838C248.61 38.7763 247.056 34.554 242 31.8171C237.13 31.1523 232.242 30.93 227.333 31.1504C227.554 25.7987 227.332 20.4653 226.666 15.1504C221.017 9.82135 215.462 10.0436 210 15.8171C157.556 16.706 105.111 16.706 52.6664 15.8171ZM166 77.1504C142.893 76.4839 119.782 76.2616 96.6664 76.4838C94.6638 78.7171 92.886 81.1615 91.3331 83.8171C91.944 87.014 93.7218 89.2363 96.6664 90.4838C119.777 91.3727 142.889 91.3727 166 90.4838C172.901 86.1838 172.901 81.7392 166 77.1504ZM163.333 145.15C142.004 144.484 120.671 144.262 99.3331 144.484C97.2114 145.442 95.2114 146.776 93.3331 148.484C91.1795 154.604 93.1795 158.381 99.3331 159.817C120.666 160.706 142 160.706 163.333 159.817C165.772 159.453 167.772 158.341 169.333 156.484C171.486 150.364 169.486 146.586 163.333 145.15ZM166 174.484C142.893 173.817 119.782 173.594 96.6664 173.817C90.0794 178.43 90.0794 183.097 96.6664 187.817C119.777 188.706 142.889 188.706 166 187.817C172.901 183.228 172.901 178.784 166 174.484ZM163.334 110.151C142.004 109.484 120.672 109.262 99.3336 109.484C97.2118 110.443 95.2118 111.776 93.3336 113.484C91.18 119.604 93.18 123.381 99.3336 124.817C120.667 125.707 142 125.707 163.334 124.817C165.772 124.453 167.772 123.341 169.334 121.484C171.487 115.364 169.487 111.587 163.334 110.151Z" fill="currentColor"/>
+</svg>
+
+                    </div>Сертификаты
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-content">
+            <div class="section-head section-head--mb-xs">
+              <div class="section-head section-head--mb-xxxs">
+                <div class="ui-p1 ui-p1--mob-s">Ваш выбор:
+                </div>
+              </div>
+              <div class="reservation-selected">
+                <div class="reservation-selected__item">
+                  <div class="ui-p2 ui-p2--semibold ui-p2--mob-m">Название услуги Название услуги Название услуги
+                  </div>
+                </div>
+                <div class="reservation-selected__item">
+                  <div class="ui-p2 ui-p2--semibold ui-p2--mob-m">8 февраля
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="section-head section-head--mb-xxs">
+              <div class="ui-h4 ui-h4--semibold">Выберите время:
+              </div>
+            </div>
+            <div class="timetable">
+              <div class="timetable__item">
+                <div class="timetable__title">Обед</div>
+                <div class="timetable__grid">
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" disabled="disabled" name="time" id="00"/>
+                    <label class="timetable__label" for="00">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" disabled="disabled" name="time" id="01"/>
+                    <label class="timetable__label" for="01">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="02"/>
+                    <label class="timetable__label" for="02">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="03"/>
+                    <label class="timetable__label" for="03">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="04"/>
+                    <label class="timetable__label" for="04">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="05"/>
+                    <label class="timetable__label" for="05">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="06"/>
+                    <label class="timetable__label" for="06">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="07"/>
+                    <label class="timetable__label" for="07">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="08"/>
+                    <label class="timetable__label" for="08">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="09"/>
+                    <label class="timetable__label" for="09">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="010"/>
+                    <label class="timetable__label" for="010">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="011"/>
+                    <label class="timetable__label" for="011">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="012"/>
+                    <label class="timetable__label" for="012">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="013"/>
+                    <label class="timetable__label" for="013">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="014"/>
+                    <label class="timetable__label" for="014">10:30</label>
+                  </div>
+                </div>
+              </div>
+              <div class="timetable__item">
+                <div class="timetable__title">Обед</div>
+                <div class="timetable__grid">
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" disabled="disabled" name="time" id="10"/>
+                    <label class="timetable__label" for="10">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" disabled="disabled" name="time" id="11"/>
+                    <label class="timetable__label" for="11">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="12"/>
+                    <label class="timetable__label" for="12">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="13"/>
+                    <label class="timetable__label" for="13">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="14"/>
+                    <label class="timetable__label" for="14">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="15"/>
+                    <label class="timetable__label" for="15">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="16"/>
+                    <label class="timetable__label" for="16">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="17"/>
+                    <label class="timetable__label" for="17">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="18"/>
+                    <label class="timetable__label" for="18">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="19"/>
+                    <label class="timetable__label" for="19">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="110"/>
+                    <label class="timetable__label" for="110">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="111"/>
+                    <label class="timetable__label" for="111">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="112"/>
+                    <label class="timetable__label" for="112">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="113"/>
+                    <label class="timetable__label" for="113">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="114"/>
+                    <label class="timetable__label" for="114">10:30</label>
+                  </div>
+                </div>
+              </div>
+              <div class="timetable__item">
+                <div class="timetable__title">Обед</div>
+                <div class="timetable__grid">
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" disabled="disabled" name="time" id="20"/>
+                    <label class="timetable__label" for="20">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" disabled="disabled" name="time" id="21"/>
+                    <label class="timetable__label" for="21">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="22"/>
+                    <label class="timetable__label" for="22">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="23"/>
+                    <label class="timetable__label" for="23">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="24"/>
+                    <label class="timetable__label" for="24">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="25"/>
+                    <label class="timetable__label" for="25">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="26"/>
+                    <label class="timetable__label" for="26">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="27"/>
+                    <label class="timetable__label" for="27">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="28"/>
+                    <label class="timetable__label" for="28">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="29"/>
+                    <label class="timetable__label" for="29">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="210"/>
+                    <label class="timetable__label" for="210">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="211"/>
+                    <label class="timetable__label" for="211">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="212"/>
+                    <label class="timetable__label" for="212">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="213"/>
+                    <label class="timetable__label" for="213">10:30</label>
+                  </div>
+                  <div class="timetable__option">
+                    <input class="timetable__input" type="radio" name="time" id="214"/>
+                    <label class="timetable__label" for="214">10:30</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-control">
+            <button class="ui-button ui-button--fz-xs ui-button--outline ui-button--min-w-xxs"><span>Назад</span>
+            </button>
+            <button class="ui-button ui-button--fz-xs ui-button--min-w-xs"><span>Далее</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="libs/jquery/jquery-3.6.4.min.js"></script>
+    <script src="libs/swiper/swiper-bundle.min.js"></script>
+    <script src="libs/plyr/plyr.min.js"></script>
+    <script src="libs/select2/select2.min.js"></script>
+    <script src="libs/datepicker/datepicker-full.min.js"></script>
+    
+  </body>
+</html>

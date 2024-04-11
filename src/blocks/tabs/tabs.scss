@@ -14,6 +14,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 10px;
     padding: 18px 39px;
     font: 600 14px/1.4 $font;
     text-align: center;
@@ -42,6 +43,10 @@
       min-width: calc((100% - 6px) / 2);
       padding: 16px 10px;
     }
+    .svg {
+      width: 20px;
+      height: 20px;
+    }
     &--active {
       color: $white;
       border-color: transparent;
@@ -49,10 +54,34 @@
         opacity: 1;
       }
     }
+    &--pd-same-l {
+      padding: 20px;
+    }
+    &--pd-xs {
+      padding: 14px 19px;
+    }
     &--mob-w-100 {
       @include media-tablet {
         flex-grow: unset;
         width: 100%;
+      }
+    }
+    &--mob-w-auto {
+      @include media-tablet {
+        flex-grow: unset;
+        min-width: auto;
+      }
+    }
+    &--mob-min-w-auto {
+      @include media-tablet {
+        min-width: auto;
+      }
+    }
+  }
+  &--mob-center {
+    .swiper-wrapper {
+      @include media-tablet {
+        justify-content: center;
       }
     }
   }

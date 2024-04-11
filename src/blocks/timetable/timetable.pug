@@ -1,0 +1,25 @@
+mixin timetable(mods)
+  -
+    const baseName = 'timetable'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .timetable(class=allMods)&attributes(attributes)
+    -for(let i=0; i<3; i++)
+      .timetable__item
+        .timetable__title Обед
+        .timetable__grid
+          -for(let j=0; j<15; j++)
+            .timetable__option
+              if j < 2
+                input.timetable__input(type='radio' disabled name='time' id=`${i}${j}`)
+              else
+                input.timetable__input(type='radio' name='time' id=`${i}${j}`)
+              label.timetable__label(for=`${i}${j}`) 10:30
+    block

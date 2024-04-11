@@ -1,0 +1,34 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'reservation-services-step-3'
+    const pageTitle = 'reservation-services-step-3'
+    const isEmptyPage = true
+
+    const tabsData =[
+      { text: 'Услуги', icon: 'palms', class: 'tabs__item--mob-w-auto tabs__item--pd-same-l' },
+      { text: 'Сертификаты', icon: 'certificate', class: 'tabs__item--mob-w-auto tabs__item--pd-same-l' },
+    ]
+
+    const reservationSelectedItems =[
+      { text: 'Название услуги Название услуги Название услуги' },
+      { text: '8 февраля' }
+    ]
+
+block content
+  .inner
+    +modal
+      +modal-head('бронирование')
+        +tabs(tabsData, 'modal-head, --mob-center')
+      +modal-content
+        +section-head('--mb-xs')
+          +section-head('--mb-xxxs')
+            +ui-p1('Ваш выбор:', '--mob-s')
+          +reservation-selected(reservationSelectedItems)
+        +section-head('--mb-xxs')
+          +ui-h4('Выберите время:', '--semibold')
+        +timetable
+      +modal-control
+        +ui-button('Назад', '--fz-xs, --outline, --min-w-xxs')
+        +ui-button('Далее', '--fz-xs, --min-w-xs')

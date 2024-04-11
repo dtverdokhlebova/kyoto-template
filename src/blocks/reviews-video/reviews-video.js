@@ -9,7 +9,7 @@ function reviewsVideoSlider() {
       const slider = block.querySelector('.swiper')
       const buttonsWrapper = block.querySelector('.ui-swiper-buttons')
       const buttonNext = block.querySelector('.swiper-button-next')
-      const buttonPrev = block.querySelector('.swiper-button-prev')
+      const buttonPrevious = block.querySelector('.swiper-button-prev')
       const pagination = block.querySelector('.swiper-pagination')
       const lockedClass = 'ui-swiper-buttons--locked'
       const swiper = new Swiper(slider, {
@@ -25,7 +25,7 @@ function reviewsVideoSlider() {
         },
         navigation: {
           nextEl: buttonNext,
-          prevEl: buttonPrev
+          prevEl: buttonPrevious
         },
         pagination: {
           el: pagination,
@@ -58,8 +58,10 @@ function reviewsVideoPlyr() {
       })
 
       block.addEventListener('click', () => {
-        block.classList.add('reviews-video__item--active')
-        player.play()
+        if (!block.classList.contains('reviews-video__item--active')) {
+          block.classList.add('reviews-video__item--active')
+          player.play()
+        }
       })
     }
   }

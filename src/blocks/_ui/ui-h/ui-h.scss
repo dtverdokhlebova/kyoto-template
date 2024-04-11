@@ -63,6 +63,11 @@
       font-size: 20px;
     }
   }
+  &--mob-fz-medium {
+    @include media-tablet {
+      font-size: 22px;
+    }
+  }
   &--mob-fz-l {
     @include media-tablet {
       font-size: 24px;

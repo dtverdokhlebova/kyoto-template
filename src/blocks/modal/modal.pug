@@ -1,0 +1,61 @@
+mixin modal(mods)
+  -
+    const baseName = 'modal'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .modal(class=allMods)&attributes(attributes)
+    block
+
+mixin modal-head(title, mods)
+  -
+    const baseName = 'modal-head'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .modal-head(class=allMods)&attributes(attributes)
+    if title
+      +ui-h2(title, 'modal-head').text-brown
+    block
+
+mixin modal-content(mods)
+  -
+    const baseName = 'modal-content'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .modal-content(class=allMods)&attributes(attributes)
+    block
+
+mixin modal-control(mods)
+  -
+    const baseName = 'modal-control'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .modal-control(class=allMods)&attributes(attributes)
+    block

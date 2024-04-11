@@ -1,0 +1,39 @@
+.reservation-services {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  @include media-laptop {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  @include media-tablet {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+  &__input {
+    display: none;
+    &:checked + .reservation-services__label {
+      color: $white;
+      background-color: #1fb148;
+      border-color: #1fb148;
+    }
+    &:disabled + .reservation-services__label {
+      color: #b4b4b4;
+      pointer-events: none;
+    }
+  }
+  &__label {
+    display: block;
+    padding: 20px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.4;
+    background: $beige;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: $transitionDuration;
+    @include media-hover {
+      border-color: #1fb148;
+    }
+  }
+}

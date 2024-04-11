@@ -1,0 +1,35 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'reservation-services-step-1'
+    const pageTitle = 'reservation-services-step-1'
+    const isEmptyPage = true
+
+    const tabsData =[
+      { text: 'Услуги', icon: 'palms', class: 'tabs__item--mob-w-auto tabs__item--pd-same-l' },
+      { text: 'Сертификаты', icon: 'certificate', class: 'tabs__item--mob-w-auto tabs__item--pd-same-l' },
+    ]
+
+    const tabsData2 =[
+      { text: 'Экспресс программы', class: 'tabs__item--pd-xs' },
+      { text: 'Обертывания', class: 'tabs__item--mob-min-w-auto tabs__item--pd-xs' },
+      { text: 'Расслабляющие SPA ритуалы', class: 'tabs__item--pd-xs' },
+      { text: 'Интенсивные SPA ритуалы', class: 'tabs__item--pd-xs' },
+      { text: 'SPA ритуалы с пилингом', class: 'tabs__item--pd-xs' },
+      { text: 'SPA ритуалы для двоих', class: 'tabs__item--pd-xs' },
+    ]
+
+block content
+  .inner
+    +modal
+      +modal-head('бронирование')
+        +tabs(tabsData, 'modal-head, --mob-center')
+      +modal-content
+        +section-head('--mb-xxs')
+          +ui-h4('Выберите услугу:', '--semibold')
+        +section-head('--mb-xs')
+          +tabs(tabsData2, 'modal')
+        +reservation-services
+      +modal-control
+        +ui-button('Далее', '--fz-xs, --min-w-xs')

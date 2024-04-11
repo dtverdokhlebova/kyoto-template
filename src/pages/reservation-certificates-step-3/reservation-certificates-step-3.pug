@@ -1,0 +1,24 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'reservation-certificates-step-3'
+    const pageTitle = 'reservation-certificates-step-3'
+    const isEmptyPage = true
+
+    const tabsData =[
+      { text: 'Услуги', icon: 'palms', class: 'tabs__item--mob-w-auto tabs__item--pd-same-l' },
+      { text: 'Сертификаты', icon: 'certificate', class: 'tabs__item--mob-w-auto tabs__item--pd-same-l' },
+    ]
+
+block content
+  .inner
+    +modal
+      +modal-head('бронирование')
+        +tabs(tabsData, 'modal-head, --mob-center')
+      +modal-content('--high')
+        +form-success(
+          'Оплата прошла успешно',
+          'Мы скоро свяжемся с вами',
+          'Выбрать еще сертификат',
+        )

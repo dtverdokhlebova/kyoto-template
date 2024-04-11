@@ -1,0 +1,98 @@
+.form-reservation {
+  display: grid;
+  grid-template-columns: 1fr 608px;
+  align-items: start;
+  gap: 40px 70px;
+  max-width: 1160px;
+  margin: auto;
+  @include media-laptop {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  &__ui-h4 {
+    margin-bottom: 20px;
+    @include media-tablet {
+      margin-bottom: 14px;
+    }
+  }
+  &__details {
+    &:not(:last-child) {
+      margin-bottom: 30px;
+      @include media-tablet {
+        margin-bottom: 20px;
+      }
+    }
+  }
+  &__detail {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 5px;
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+  &__ui-p2 {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  &__edit {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    color: #b4b4b4;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    cursor: pointer;
+  }
+  &__section {
+    &:not(:last-child) {
+      margin-bottom: 30px;
+    }
+  }
+  &__fields {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px 20px;
+    @include media-tablet {
+      display: flex;
+      flex-direction: column;
+    }
+    &--cols2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      @include media-tablet {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+    &--al-center {
+      align-items: center;
+    }
+  }
+  &__field {
+    &--comment {
+      textarea {
+        @include media-tablet {
+          min-height: 170px;
+        }
+      }
+    }
+  }
+  &__col {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+    @include media-tablet {
+      display: contents;
+    }
+  }
+  &__row {
+    &--mob-order-1 {
+      @include media-tablet {
+        order: 1;
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'reservation-services-step-5'
+    const pageTitle = 'reservation-services-step-5'
+    const isEmptyPage = true
+
+    const tabsData =[
+      { text: 'Услуги', icon: 'palms', class: 'tabs__item--mob-w-auto tabs__item--pd-same-l' },
+      { text: 'Сертификаты', icon: 'certificate', class: 'tabs__item--mob-w-auto tabs__item--pd-same-l' },
+    ]
+
+    const formReservationData ={
+      details: [
+        {
+          name: 'Услуга:',
+          value: 'Название услуги Название услуги'
+        },
+        {
+          name: 'Дата:',
+          value: '8 февраля'
+        },
+        {
+          name: 'Время:',
+          value: '10:30'
+        },
+        {
+          name: 'Дополнительная услуга:',
+          value: 'Название дополнительной услуги'
+        },
+      ]
+    }
+
+block content
+  main.main
+    .inner
+      +modal
+        +modal-head('бронирование')
+          +tabs(tabsData, 'modal-head, --mob-center')
+        +modal-content('--high')
+          +form-reservation(formReservationData)

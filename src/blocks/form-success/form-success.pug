@@ -1,0 +1,17 @@
+mixin form-success(title, desc, button, mods)
+  -
+    const baseName = 'form-success'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .form-success(class=allMods)&attributes(attributes)
+    +ui-h4(title, 'form-success, --semibold')
+    +ui-p1(desc, 'form-success')
+    +ui-button(button, 'form-success, --fz-xs')
+    block

@@ -14,5 +14,13 @@ mixin tabs(data, mods)
     .swiper
       .swiper-wrapper
         each item, index in data
-          .tabs__item.swiper-slide(class=(index===0 ? 'tabs__item--active' : '') class=item.class onclick=`window.tabClick($(this))`) !{item.text}
+          .tabs__item.swiper-slide(class=(index===0 ? 'tabs__item--active' : '') class=item.class onclick=`window.tabClick($(this))`)
+            if item.icon
+              .svg
+                case item.icon
+                  when 'palms'
+                    include ../../images/icon_palms.svg
+                  when 'certificate'
+                    include ../../images/icon_certificate.svg
+            | !{item.text}
     block

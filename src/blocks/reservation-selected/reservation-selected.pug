@@ -1,0 +1,17 @@
+mixin reservation-selected(items, mods)
+  -
+    const baseName = 'reservation-selected'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .reservation-selected(class=allMods)&attributes(attributes)
+    each item in items
+      .reservation-selected__item
+        +ui-p2(item.text, '--semibold, --mob-m')
+    block

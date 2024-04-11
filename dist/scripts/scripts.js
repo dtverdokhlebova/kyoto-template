@@ -1,4 +1,4 @@
-const style = "";
+
 function accordion() {
   $(".accordions__head").on("click", function() {
     $(this).find(".accordions__button").toggleClass("accordions__button--active");
@@ -129,6 +129,334 @@ function category() {
       });
     }
   }
+}
+function certificates() {
+  const blocks = document.querySelectorAll(".certificates");
+  if (blocks.length > 0) {
+    for (const block of blocks) {
+      const slider = block.querySelector(".swiper");
+      new Swiper(slider, {
+        slidesPerView: "auto",
+        spaceBetween: 5,
+        breakpoints: {
+          768: {
+            spaceBetween: 30
+          },
+          1260: {
+            spaceBetween: 40
+          }
+        }
+      });
+    }
+  }
+}
+function certificatesPromo() {
+  const blocks = document.querySelectorAll(".certificates-promo");
+  if (blocks.length > 0) {
+    const isMobile = window.innerWidth <= 767;
+    const slideCardTransition = 300;
+    const slideChangeTransition = 500;
+    for (const block of blocks) {
+      const bg = block.querySelector(".certificates-promo__bg-slider");
+      const bgSlider = bg.querySelector(".swiper");
+      const pagination = block.querySelector(".swiper-pagination");
+      const bgSwiper = new Swiper(bgSlider, {
+        loop: true,
+        speed: slideChangeTransition,
+        slidesPerView: 1,
+        allowTouchMove: true,
+        effect: isMobile ? void 0 : "fade",
+        crossFade: !isMobile,
+        loopAdditionalSlides: 1,
+        pagination: {
+          el: pagination,
+          type: "fraction",
+          renderFraction: function(currentClass, totalClass) {
+            return `<span class="${currentClass}"></span>/<span class="${totalClass}"></span>`;
+          }
+        },
+        breakpoints: {
+          768: {
+            allowTouchMove: false
+          }
+        }
+      });
+      const main = block.querySelector(".certificates-promo__slider");
+      const slider = main.querySelector(".swiper");
+      const buttonNext = main.querySelector(".swiper-button-next");
+      const buttonPrevious = main.querySelector(".swiper-button-prev");
+      const swiper = new Swiper(slider, {
+        speed: slideChangeTransition,
+        loop: true,
+        slidesPerView: 1,
+        spaceBetween: 0,
+        allowTouchMove: false,
+        effect: isMobile ? "fade" : void 0,
+        crossFade: isMobile,
+        enabled: false,
+        breakpoints: {
+          768: {
+            enabled: true,
+            slidesPerView: "auto",
+            spaceBetween: 30
+          },
+          1260: {
+            enabled: true,
+            slidesPerView: "auto",
+            spaceBetween: 40
+          }
+        },
+        pagination: isMobile ?? {
+          el: pagination,
+          type: "fraction",
+          renderFraction: function(currentClass, totalClass) {
+            return `<span class="${currentClass}"></span>/<span class="${totalClass}"></span>`;
+          }
+        }
+      });
+      if (!isMobile) {
+        swiper.on("loopFix", () => {
+          swiper.slides[swiper.slides.length - 1].style.opacity = "";
+        });
+      }
+      buttonNext.addEventListener("click", () => {
+        if (isMobile) {
+          bgSwiper.slideNext();
+          return;
+        }
+        if (block.hasAttribute("data-animation")) {
+          return;
+        }
+        block.setAttribute("data-animation", "");
+        const currentSlide = swiper.slides[swiper.activeIndex];
+        const currentSlideImg = currentSlide.querySelector(".certificates-promo__img img").src;
+        const coordinates = getCoordinates(currentSlide, block);
+        const fakeImg = createImg();
+        fakeImg.src = currentSlideImg;
+        fakeImg.style.width = `${coordinates.width}px`;
+        fakeImg.style.height = `${coordinates.height}px`;
+        fakeImg.style.top = `${coordinates.y}px`;
+        fakeImg.style.left = `${coordinates.x}px`;
+        block.append(fakeImg);
+        const blockClientRect = block.getBoundingClientRect();
+        const blockWidth = blockClientRect.width;
+        const blockHeight = blockClientRect.height;
+        currentSlide.style.opacity = 0;
+        setTimeout(() => {
+          animateElement(fakeImg, {
+            transform: {
+              translateX: -coordinates.x,
+              translateY: -coordinates.y
+            },
+            width: blockWidth,
+            height: blockHeight,
+            borderRadius: 0
+          }, slideChangeTransition, () => {
+            swiper.slideNext();
+            bgSwiper.slideNext();
+            animateElement(fakeImg, {
+              opacity: 0
+            }, slideChangeTransition, () => {
+              fakeImg.remove();
+              block.removeAttribute("data-animation");
+            });
+          });
+        }, slideCardTransition);
+      });
+      buttonPrevious.addEventListener("click", () => {
+        if (isMobile) {
+          bgSwiper.slidePrev();
+          return;
+        }
+        if (block.hasAttribute("data-animation")) {
+          return;
+        }
+        block.setAttribute("data-animation", "");
+        const currentSlide = swiper.slides[swiper.activeIndex];
+        const coordinates = getCoordinates(currentSlide, block);
+        const previousSlide = swiper.el.querySelector(".swiper-slide-prev") || swiper.slides[swiper.slides.length - 1];
+        const previousSlideImg = previousSlide.querySelector(".certificates-promo__img img").src;
+        previousSlide.style.opacity = 0;
+        swiper.slidePrev();
+        const blockClientRect = block.getBoundingClientRect();
+        const blockWidth = blockClientRect.width;
+        const blockHeight = blockClientRect.height;
+        const fakeImg = createImg();
+        fakeImg.src = previousSlideImg;
+        fakeImg.style.width = `${blockWidth}px`;
+        fakeImg.style.height = `${blockHeight}px`;
+        fakeImg.style.top = `${coordinates.y}px`;
+        fakeImg.style.left = `${coordinates.x}px`;
+        fakeImg.style.transform = `translate(-${coordinates.x}px, -${coordinates.y}px)`;
+        fakeImg.style.opacity = 0;
+        block.append(fakeImg);
+        animateElement(fakeImg, {
+          opacity: 1
+        }, slideChangeTransition, () => {
+          bgSwiper.slidePrev(0);
+          animateElement(fakeImg, {
+            transform: {
+              translateX: 0,
+              translateY: 0
+            },
+            width: coordinates.width,
+            height: coordinates.height,
+            borderRadius: 20
+          }, slideChangeTransition, () => {
+            previousSlide.style.opacity = "";
+            setTimeout(() => {
+              fakeImg.remove();
+              block.removeAttribute("data-animation");
+            }, slideChangeTransition);
+          });
+        });
+      });
+    }
+  }
+}
+function getCoordinates(element, parent) {
+  const elementClientRect = element.getBoundingClientRect();
+  const parentClientRect = parent.getBoundingClientRect();
+  return {
+    x: elementClientRect.x - parentClientRect.x,
+    y: elementClientRect.y - parentClientRect.y,
+    width: elementClientRect.width,
+    height: elementClientRect.height
+  };
+}
+function createImg() {
+  const img = document.createElement("img");
+  img.className = "certificates-promo__fake-img";
+  return img;
+}
+function animateElement(element, endValues, duration, callback) {
+  const requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+  let startTime;
+  element.style.transition = "none";
+  const startValues = {};
+  const elementStyles = window.getComputedStyle(element);
+  for (const key in endValues) {
+    if (key === "transform") {
+      const matrix = new DOMMatrixReadOnly(elementStyles[key]);
+      startValues.transform = {
+        translateX: matrix.m41,
+        translateY: matrix.m42
+      };
+    } else {
+      startValues[key] = Number.parseFloat(elementStyles[key]);
+    }
+  }
+  function frame() {
+    if (startTime === void 0) {
+      startTime = performance.now();
+    }
+    const elapsedTime = performance.now() - startTime;
+    const normalizedTime = Math.min(elapsedTime / duration, 1);
+    const lerp = (start, end, t) => {
+      return start * (1 - t) + end * t;
+    };
+    const currentValues = {};
+    for (const key in endValues) {
+      if (key === "transform") {
+        currentValues.transform = {
+          translateX: lerp(startValues.transform.translateX, endValues.transform.translateX, normalizedTime),
+          translateY: lerp(startValues.transform.translateY, endValues.transform.translateY, normalizedTime)
+        };
+        element.style.transform = `translate(
+          ${currentValues.transform.translateX}px,
+          ${currentValues.transform.translateY}px
+        )`;
+      } else {
+        currentValues[key] = lerp(startValues[key], endValues[key], normalizedTime);
+        element.style[key] = `${currentValues[key]}${key === "opacity" ? "" : "px"}`;
+      }
+    }
+    if (elapsedTime < duration) {
+      requestAnimationFrame(frame);
+    } else {
+      element.style.transition = "";
+      if (callback) {
+        callback();
+      }
+    }
+  }
+  requestAnimationFrame(frame);
+}
+function datePicker() {
+  Datepicker.locales.ru = {
+    days: ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"],
+    daysShort: ["Вск", "Пнд", "Втр", "Срд", "Чтв", "Птн", "Суб"],
+    daysMin: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
+    months: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
+    monthsShort: ["Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"],
+    today: "Сегодня",
+    clear: "Очистить",
+    format: "dd.mm.yyyy",
+    weekStart: 1,
+    monthsTitle: "Месяцы"
+  };
+  for (const block of document.querySelectorAll(".date-picker")) {
+    const datepickers = [];
+    const hiddenInput = block.querySelector(".date-picker__input");
+    for (const month of block.querySelectorAll(".date-picker__item")) {
+      const datepicker = new Datepicker(month, {
+        todayHighlight: true,
+        language: "ru",
+        maxView: 0,
+        defaultViewDate: `01.${month.dataset.monthYear}`,
+        minDate: month.dataset.minDate ?? null,
+        maxDate: month.dataset.maxDate ?? null,
+        datesDisabled: block.dataset.disabled ? block.dataset.disabled.split(",").map((date) => date.trim()) : []
+      });
+      datepickers.push(datepicker);
+    }
+    const [first, last] = datepickers;
+    first.element.addEventListener("changeDate", (event) => {
+      const currentDate = event.detail.date;
+      if (currentDate) {
+        const thisMonth = +first.element.dataset.monthYear.split(".")[0] - 1;
+        const currentMonth = currentDate.getMonth();
+        if (currentMonth > thisMonth) {
+          first.setDate({
+            clear: true
+          });
+          last.setDate(currentDate);
+        } else {
+          last.setDate({
+            clear: true
+          });
+          hiddenInput.value = currentDate.toLocaleDateString("ru-Ru");
+        }
+      }
+    });
+    last.element.addEventListener("changeDate", (event) => {
+      const currentDate = event.detail.date;
+      if (currentDate) {
+        const thisMonth = +last.element.dataset.monthYear.split(".")[0] - 1;
+        const currentMonth = currentDate.getMonth();
+        if (currentMonth < thisMonth) {
+          last.setDate({
+            clear: true
+          });
+          first.setDate(currentDate);
+        } else {
+          first.setDate({
+            clear: true
+          });
+          hiddenInput.value = currentDate.toLocaleDateString("ru-Ru");
+        }
+      }
+    });
+  }
+  window.updateDatePickerItem = function(element, monthYear, minDate, maxDate, disabled) {
+    const datepicker = element.datepicker;
+    datepicker.setOptions({
+      defaultViewDate: `01.${monthYear}`,
+      minDate: minDate ?? null,
+      maxDate: maxDate ?? null,
+      datesDisabled: disabled ?? []
+    });
+  };
 }
 function interior() {
   const blocks = document.querySelectorAll(".interior");
@@ -375,7 +703,7 @@ function reviewsVideoSlider() {
       const slider = block.querySelector(".swiper");
       const buttonsWrapper = block.querySelector(".ui-swiper-buttons");
       const buttonNext = block.querySelector(".swiper-button-next");
-      const buttonPrev = block.querySelector(".swiper-button-prev");
+      const buttonPrevious = block.querySelector(".swiper-button-prev");
       const pagination = block.querySelector(".swiper-pagination");
       const lockedClass = "ui-swiper-buttons--locked";
       new Swiper(slider, {
@@ -391,7 +719,7 @@ function reviewsVideoSlider() {
         },
         navigation: {
           nextEl: buttonNext,
-          prevEl: buttonPrev
+          prevEl: buttonPrevious
         },
         pagination: {
           el: pagination,
@@ -426,8 +754,10 @@ function reviewsVideoPlyr() {
         }
       });
       block.addEventListener("click", () => {
-        block.classList.add("reviews-video__item--active");
-        player.play();
+        if (!block.classList.contains("reviews-video__item--active")) {
+          block.classList.add("reviews-video__item--active");
+          player.play();
+        }
       });
     }
   }
@@ -502,26 +832,6 @@ function navbar() {
     $(window).on("resize", () => $("html").css("--navbar-height", `${navbar2.height()}px`));
   }
 }
-function certificates() {
-  const blocks = document.querySelectorAll(".certificates");
-  if (blocks.length > 0) {
-    for (const block of blocks) {
-      const slider = block.querySelector(".swiper");
-      new Swiper(slider, {
-        slidesPerView: "auto",
-        spaceBetween: 5,
-        breakpoints: {
-          768: {
-            spaceBetween: 30
-          },
-          1260: {
-            spaceBetween: 40
-          }
-        }
-      });
-    }
-  }
-}
 function largeActiveSlider() {
   const blocks = document.querySelectorAll(".large-active-slider");
   if (blocks.length > 0) {
@@ -574,238 +884,6 @@ function uiSelect() {
     });
   }
 }
-function certificatesPromo() {
-  const blocks = document.querySelectorAll(".certificates-promo");
-  if (blocks.length > 0) {
-    const isMobile = window.innerWidth <= 767;
-    const slideCardTransition = 300;
-    const slideChangeTransition = 500;
-    for (const block of blocks) {
-      const bg = block.querySelector(".certificates-promo__bg-slider");
-      const bgSlider = bg.querySelector(".swiper");
-      const pagination = block.querySelector(".swiper-pagination");
-      const bgSwiper = new Swiper(bgSlider, {
-        loop: true,
-        speed: slideChangeTransition,
-        slidesPerView: 1,
-        allowTouchMove: true,
-        effect: isMobile ? void 0 : "fade",
-        crossFade: !isMobile,
-        loopAdditionalSlides: 1,
-        pagination: {
-          el: pagination,
-          type: "fraction",
-          renderFraction: function(currentClass, totalClass) {
-            return `<span class="${currentClass}"></span>/<span class="${totalClass}"></span>`;
-          }
-        },
-        breakpoints: {
-          768: {
-            allowTouchMove: false
-          }
-        }
-      });
-      const main = block.querySelector(".certificates-promo__slider");
-      const slider = main.querySelector(".swiper");
-      const buttonNext = main.querySelector(".swiper-button-next");
-      const buttonPrevious = main.querySelector(".swiper-button-prev");
-      const swiper = new Swiper(slider, {
-        speed: slideChangeTransition,
-        loop: true,
-        slidesPerView: 1,
-        spaceBetween: 0,
-        allowTouchMove: false,
-        effect: isMobile ? "fade" : void 0,
-        crossFade: isMobile,
-        enabled: false,
-        breakpoints: {
-          768: {
-            enabled: true,
-            slidesPerView: "auto",
-            spaceBetween: 30
-          },
-          1260: {
-            enabled: true,
-            slidesPerView: "auto",
-            spaceBetween: 40
-          }
-        },
-        pagination: isMobile ?? {
-          el: pagination,
-          type: "fraction",
-          renderFraction: function(currentClass, totalClass) {
-            return `<span class="${currentClass}"></span>/<span class="${totalClass}"></span>`;
-          }
-        }
-      });
-      if (!isMobile) {
-        swiper.on("loopFix", () => {
-          swiper.slides[swiper.slides.length - 1].style.opacity = "";
-        });
-      }
-      buttonNext.addEventListener("click", () => {
-        if (isMobile) {
-          bgSwiper.slideNext();
-          return;
-        }
-        if (block.hasAttribute("data-animation")) {
-          return;
-        }
-        block.setAttribute("data-animation", "");
-        const currentSlide = swiper.slides[swiper.activeIndex];
-        const currentSlideImg = currentSlide.querySelector(".certificates-promo__img img").src;
-        const coordinates = getCoordinates(currentSlide, block);
-        const fakeImg = createImg();
-        fakeImg.src = currentSlideImg;
-        fakeImg.style.width = `${coordinates.width}px`;
-        fakeImg.style.height = `${coordinates.height}px`;
-        fakeImg.style.top = `${coordinates.y}px`;
-        fakeImg.style.left = `${coordinates.x}px`;
-        block.append(fakeImg);
-        const blockClientRect = block.getBoundingClientRect();
-        const blockWidth = blockClientRect.width;
-        const blockHeight = blockClientRect.height;
-        currentSlide.style.opacity = 0;
-        setTimeout(() => {
-          animateElement(fakeImg, {
-            transform: {
-              translateX: -coordinates.x,
-              translateY: -coordinates.y
-            },
-            width: blockWidth,
-            height: blockHeight,
-            borderRadius: 0
-          }, slideChangeTransition, () => {
-            swiper.slideNext();
-            bgSwiper.slideNext();
-            animateElement(fakeImg, {
-              opacity: 0
-            }, slideChangeTransition, () => {
-              fakeImg.remove();
-              block.removeAttribute("data-animation");
-            });
-          });
-        }, slideCardTransition);
-      });
-      buttonPrevious.addEventListener("click", () => {
-        if (isMobile) {
-          bgSwiper.slidePrev();
-          return;
-        }
-        if (block.hasAttribute("data-animation")) {
-          return;
-        }
-        block.setAttribute("data-animation", "");
-        const currentSlide = swiper.slides[swiper.activeIndex];
-        const coordinates = getCoordinates(currentSlide, block);
-        const previousSlide = swiper.el.querySelector(".swiper-slide-prev") || swiper.slides[swiper.slides.length - 1];
-        const previousSlideImg = previousSlide.querySelector(".certificates-promo__img img").src;
-        previousSlide.style.opacity = 0;
-        swiper.slidePrev();
-        const blockClientRect = block.getBoundingClientRect();
-        const blockWidth = blockClientRect.width;
-        const blockHeight = blockClientRect.height;
-        const fakeImg = createImg();
-        fakeImg.src = previousSlideImg;
-        fakeImg.style.width = `${blockWidth}px`;
-        fakeImg.style.height = `${blockHeight}px`;
-        fakeImg.style.top = `${coordinates.y}px`;
-        fakeImg.style.left = `${coordinates.x}px`;
-        fakeImg.style.transform = `translate(-${coordinates.x}px, -${coordinates.y}px)`;
-        fakeImg.style.opacity = 0;
-        block.append(fakeImg);
-        animateElement(fakeImg, {
-          opacity: 1
-        }, slideChangeTransition, () => {
-          bgSwiper.slidePrev(0);
-          animateElement(fakeImg, {
-            transform: {
-              translateX: 0,
-              translateY: 0
-            },
-            width: coordinates.width,
-            height: coordinates.height,
-            borderRadius: 20
-          }, slideChangeTransition, () => {
-            previousSlide.style.opacity = "";
-            setTimeout(() => {
-              fakeImg.remove();
-              block.removeAttribute("data-animation");
-            }, slideChangeTransition);
-          });
-        });
-      });
-    }
-  }
-}
-function getCoordinates(element, parent) {
-  const elementClientRect = element.getBoundingClientRect();
-  const parentClientRect = parent.getBoundingClientRect();
-  return {
-    x: elementClientRect.x - parentClientRect.x,
-    y: elementClientRect.y - parentClientRect.y,
-    width: elementClientRect.width,
-    height: elementClientRect.height
-  };
-}
-function createImg() {
-  const img = document.createElement("img");
-  img.className = "certificates-promo__fake-img";
-  return img;
-}
-function animateElement(element, endValues, duration, callback) {
-  const requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-  let startTime;
-  element.style.transition = "none";
-  const startValues = {};
-  const elementStyles = window.getComputedStyle(element);
-  for (const key in endValues) {
-    if (key === "transform") {
-      const matrix = new DOMMatrixReadOnly(elementStyles[key]);
-      startValues.transform = {
-        translateX: matrix.m41,
-        translateY: matrix.m42
-      };
-    } else {
-      startValues[key] = Number.parseFloat(elementStyles[key]);
-    }
-  }
-  function frame() {
-    if (startTime === void 0) {
-      startTime = performance.now();
-    }
-    const elapsedTime = performance.now() - startTime;
-    const normalizedTime = Math.min(elapsedTime / duration, 1);
-    const lerp = (start, end, t) => {
-      return start * (1 - t) + end * t;
-    };
-    const currentValues = {};
-    for (const key in endValues) {
-      if (key === "transform") {
-        currentValues.transform = {
-          translateX: lerp(startValues.transform.translateX, endValues.transform.translateX, normalizedTime),
-          translateY: lerp(startValues.transform.translateY, endValues.transform.translateY, normalizedTime)
-        };
-        element.style.transform = `translate(
-          ${currentValues.transform.translateX}px,
-          ${currentValues.transform.translateY}px
-        )`;
-      } else {
-        currentValues[key] = lerp(startValues[key], endValues[key], normalizedTime);
-        element.style[key] = `${currentValues[key]}${key === "opacity" ? "" : "px"}`;
-      }
-    }
-    if (elapsedTime < duration) {
-      requestAnimationFrame(frame);
-    } else {
-      element.style.transition = "";
-      if (callback) {
-        callback();
-      }
-    }
-  }
-  requestAnimationFrame(frame);
-}
 document.addEventListener("DOMContentLoaded", function() {
   plyrInit();
   uiSelect();
@@ -813,7 +891,10 @@ document.addEventListener("DOMContentLoaded", function() {
   articleSlider();
   askQuestion();
   banner();
+  datePicker();
   category();
+  certificates();
+  certificatesPromo();
   header();
   interior();
   popup();
@@ -825,8 +906,6 @@ document.addEventListener("DOMContentLoaded", function() {
   servicesSimular();
   tabs();
   largeActiveSlider();
-  certificates();
-  certificatesPromo();
 });
 $(window).on("load", () => {
   navbar();
@@ -843,7 +922,17 @@ function plyrInit() {
     plyrWrapperClose.className = "plyr-wrapper__close";
     plyrWrapper.append(plyrWrapperClose);
     document.body.append(plyrWrapper);
-    const player = new Plyr(plyrContainer);
+    const player = new Plyr(plyrContainer, {
+      controls: ["play-large", "play", "progress", "current-time", "volume", "captions", "fullscreen"],
+      hideControls: true,
+      ratio: "9:16",
+      youtube: {
+        rel: 0,
+        showinfo: 0,
+        iv_load_policy: 3,
+        modestbranding: 1
+      }
+    });
     plyrHolder.addEventListener("click", () => {
       plyrWrapper.classList.add("active");
       document.documentElement.classList.add("no-scroll");

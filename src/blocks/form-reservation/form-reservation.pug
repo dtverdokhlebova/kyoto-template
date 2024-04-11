@@ -1,0 +1,60 @@
+mixin form-reservation(data, mods)
+  -
+    const baseName = 'form-reservation'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  form.form-reservation(class=allMods action='#')&attributes(attributes)
+    .form-reservation__text
+      +ui-h4('Детали', 'form-reservation, --semibold, --mob-fz-medium')
+      .form-reservation__details
+        each item in data.details
+          .form-reservation__detail
+            +ui-p1(item.name, 'form-reservation').form-reservation__field.form-reservation__field--name
+            +ui-p2(item.value, 'form-reservation, --semibold')
+              button.form-reservation__edit
+                .svg
+                  include ../../images/icon_edit.svg
+      .form-reservation__price
+        +ui-h4('Сумма: 00000тенг', '--semibold, --mob-fz-medium')
+    .form-reservation__main
+      if data.type === 'certificates'
+        .form-reservation__section
+          +ui-h4('Для кого:', 'form-reservation, --semibold, --mob-fz-medium')
+          .form-reservation__fields
+            .form-reservation__fields.form-reservation__fields--cols2
+              .form-reservation__row
+                +ui-input('form-reservation-name-for', '--mob-l')(placeholder='Имя' name='name')
+            .form-reservation__row
+              +ui-textarea('form-reservation-signature')(placeholder='Подпись к сертификату' name='signature')
+      .form-reservation__section
+        +ui-h4('Ваши данные:', 'form-reservation, --semibold, --mob-fz-medium')
+        .form-reservation__fields.form-reservation__fields--cols2
+          .form-reservation__col
+            .form-reservation__row
+              +ui-input('form-reservation-name-you', '--mob-l')(placeholder='Ваше имя' name='name')
+            .form-reservation__row
+              +ui-input('form-reservation-phone', '--mob-l', 'error', 'Ведите правильное значение')(placeholder='Телефон' name='phone')
+            .form-reservation__row
+              +ui-input('form-reservation-name-email', '--mob-l')(placeholder='E-mail' name='email' type='email')
+            if data.type !== 'certificates'
+              .form-reservation__row.form-reservation__row--mob-order-1
+                +ui-select('', '')
+                  option(selected) Напомнить за 1 час
+                  option() Напомнить за 2 часа
+                  option() Напомнить за 3 часа
+
+          .form-reservation__col
+            +ui-textarea('form-reservation-comment', '--min-h-100', 'form-reservation__field form-reservation__field--comment error')(placeholder='Комментарии' name='comment')
+      .form-reservation__section
+        .form-reservation__fields.form-reservation__fields--cols2.form-reservation__fields--al-center.form-reservation__field--comment
+          +ui-button('Отправить', '--fz-xs')
+          +ui-p2('', '--semibold')
+            | Нажимая кнопку “Отправить” вы&nbsp;соглашаетесь с политикой конфиденциальности
+    block

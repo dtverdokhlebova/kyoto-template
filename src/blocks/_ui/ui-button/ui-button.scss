@@ -66,6 +66,15 @@
       min-width: unset;
     }
   }
+  &--min-w-xs {
+    min-width: 214px;
+    @include media-laptop {
+      min-width: 175px;
+    }
+  }
+  &--min-w-xxs {
+    min-width: 110px;
+  }
   &--min-w-s {
     min-width: 270px;
     @include media-laptop {

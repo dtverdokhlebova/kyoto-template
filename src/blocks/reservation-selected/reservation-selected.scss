@@ -1,0 +1,20 @@
+.reservation-selected {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  @include media-tablet {
+    gap: 10px;
+  }
+  &__item {
+    padding: 21px 20px;
+    text-align: center;
+    background: $beige;
+    border-radius: 100px;
+    opacity: 0.48;
+    @include media-tablet {
+      flex: auto;
+      min-width: 180px;
+      padding: 12px 15px 15px;
+    }
+  }
+}

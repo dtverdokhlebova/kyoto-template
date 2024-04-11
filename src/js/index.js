@@ -5,6 +5,9 @@ import askQuestion from '../blocks/ask-question/ask-question'
 import articleSlider from '../blocks/article-slider/article-slider'
 import banner from '../blocks/banner/banner'
 import category from '../blocks/category/category'
+import certificates from '../blocks/certificates/certificates'
+import certificatesPromo from '../blocks/certificates-promo/certificates-promo'
+import datePicker from '../blocks/date-picker/date-picker'
 import interior from '../blocks/interior/interior'
 import popup from '../blocks/popup/popup'
 import promotionsItem from '../blocks/promotions-item/promotions-item'
@@ -16,10 +19,8 @@ import reviewsVideo from '../blocks/reviews-video/reviews-video'
 import tabs from '../blocks/tabs/tabs'
 import header from '../blocks/header/header'
 import navbar from '../blocks/navbar/navbar'
-import certificates from '../blocks/certificates/certificates'
 import largeActiveSlider from '../blocks/large-active-slider/large-active-slider'
 import uiSelect from '../blocks/_ui/ui-select/ui-select'
-import certificatesPromo from '../blocks/certificates-promo/certificates-promo'
 
 // $('body *').on('touchstart', function () {})
 document.addEventListener('DOMContentLoaded', function () {
@@ -29,7 +30,10 @@ document.addEventListener('DOMContentLoaded', function () {
   articleSlider()
   askQuestion()
   banner()
+  datePicker()
   category()
+  certificates()
+  certificatesPromo()
   header()
   interior()
   popup()
@@ -41,8 +45,6 @@ document.addEventListener('DOMContentLoaded', function () {
   servicesSimular()
   tabs()
   largeActiveSlider()
-  certificates()
-  certificatesPromo()
 })
 
 $(window).on('load', () => {
@@ -65,7 +67,14 @@ function plyrInit() {
 
     document.body.append(plyrWrapper)
 
-    const player = new Plyr(plyrContainer)
+    const player = new Plyr(plyrContainer, {
+      controls: ['play-large', 'play', 'progress', 'current-time', 'volume', 'captions', 'fullscreen'],
+      hideControls: true,
+      ratio: '9:16',
+      youtube: {
+        rel: 0, showinfo: 0, iv_load_policy: 3, modestbranding: 1
+      }
+    })
     plyrHolder.addEventListener('click', () => {
       plyrWrapper.classList.add('active')
       document.documentElement.classList.add('no-scroll')

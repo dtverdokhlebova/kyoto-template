@@ -1,0 +1,71 @@
+.modal {
+  --moda-head-px: 50px;
+  @include media-tablet {
+    --moda-head-px: 18px;
+  }
+
+  max-width: 1600px;
+  border-radius: 30px;
+  background-color: #dcd6c6;
+  &__tabs {
+    margin: 0 calc(var(--moda-head-px) * -1);
+    padding: 0 var(--moda-head-px);
+    overflow: hidden;
+    @include media-tablet {
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
+.modal-head {
+  padding: 44px var(--moda-head-px) 25px;
+  border-bottom: 1px solid #b4b4b4;
+  @include media-tablet {
+    padding-top: 30px;
+    padding-bottom: 26px;
+  }
+  &__ui-h2 {
+    @include media-tablet {
+      text-align: center;
+    }
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+}
+.modal-content {
+  @include golden-scrollbar(8px, $white);
+
+  padding: 25px 50px 50px;
+  max-height: max(580px, 65vh);
+  overflow-y: auto;
+  @include media-tablet {
+    padding: 13px 18px 30px;
+    max-height: max(480, 51.8vh);
+  }
+  &::-webkit-scrollbar-track {
+    margin-bottom: 37px;
+  }
+  &--high {
+    display: flex;
+    flex-direction: column;
+    max-height: unset;
+    min-height: min(680px, 62.9vh);
+    @include media-tablet {
+      min-height: min(570px, 60.7vh);
+    }
+  }
+}
+.modal-control {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  padding: 20px 50px;
+  border-top: 1px solid #b4b4b4;
+  @include media-tablet {
+    padding: 16px 18px;
+    justify-content: center;
+    gap: 10px;
+  }
+}

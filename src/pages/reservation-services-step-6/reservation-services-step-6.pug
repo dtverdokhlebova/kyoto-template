@@ -1,0 +1,24 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'reservation-services-step-6'
+    const pageTitle = 'reservation-services-step-6'
+    const isEmptyPage = true
+
+    const tabsData =[
+      { text: 'Услуги', icon: 'palms', class: 'tabs__item--mob-w-auto tabs__item--pd-same-l' },
+      { text: 'Сертификаты', icon: 'certificate', class: 'tabs__item--mob-w-auto tabs__item--pd-same-l' },
+    ]
+
+block content
+  .inner
+    +modal
+      +modal-head('бронирование')
+          +tabs(tabsData, 'modal-head, --mob-center')
+      +modal-content('--high')
+        +form-success(
+          'Вы записаны',
+          'Среда 8 февраля 10:30',
+          'Записаться еще',
+        )
