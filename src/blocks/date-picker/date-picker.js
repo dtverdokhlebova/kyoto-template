@@ -16,7 +16,6 @@ export default function datePicker() {
     const datepickers = []
     const hiddenInput = block.querySelector('.date-picker__input')
     for (const month of block.querySelectorAll('.date-picker__item')) {
-      console.log(block.dataset.disabled.split(','))
       const datepicker = new Datepicker(month, {
         todayHighlight: true,
         language: 'ru',
@@ -27,10 +26,6 @@ export default function datePicker() {
         datesDisabled: block.dataset.disabled ? block.dataset.disabled.split(',').map(date => date.trim()) : []
       })
       datepickers.push(datepicker)
-
-      // удаление года в названии месяца
-      // const monthTitle = month.querySelector('.button.view-switch')
-      // monthTitle.textContent = monthTitle.textContent.slice(0, -5)
     }
 
     // Связывание дейтпикеров

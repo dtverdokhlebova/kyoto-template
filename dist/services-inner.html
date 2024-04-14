@@ -109,9 +109,11 @@
               <button class="ui-button header-burger__ui-button"><span>Забронировать</span>
               </button>
               <div class="header-burger__links">
-                <div class="socials header-burger__socials"><a class="socials__item" href="#">
-                    <div class="socials__icon"><img src="images/icon_inst-grey.svg" alt=""/></div></a><a class="socials__item" href="#">
-                    <div class="socials__icon"><img src="images/icon_vk-grey.svg" alt=""/></div></a>
+                <div class="socials header-burger__socials"><a class="socials__item socials__item--hover-color" href="#">
+                    <div class="socials__icon"><img class="socials__icon-start" src="images/icon_inst-grey.svg" alt=""/><img class="socials__icon-hover" src="images/icon_inst_color.svg" alt=""/>
+                    </div></a><a class="socials__item socials__item--hover-color" href="#">
+                    <div class="socials__icon"><img class="socials__icon-start" src="images/icon_vk-grey.svg" alt=""/><img class="socials__icon-hover" src="images/icon_vk_color.svg" alt=""/>
+                    </div></a>
                 </div>
                 <button class="ui-button ui-button--p-xs ui-button--outline-gradient"><span>Войти в личный кабинет</span>
                 </button>
@@ -288,12 +290,10 @@
                   <div class="banner__content">
                     <div class="ui-h1 banner__ui-h1">Кедровая фитобочка
                     </div>
-                  </div>
-                  <div class="banner__scroll">
+                  </div><a class="banner__scroll" href="#services-inner">
                     <div class="banner__scroll-img"><img src="images/banner-scroll.png" alt=""/></div>
                     <div class="ui-p2 text-gradient">Листай вниз
-                    </div>
-                  </div>
+                    </div></a>
                 </div>
               </div>
             </div>
@@ -303,7 +303,7 @@
             </div>
           </div>
         </div>
-        <div class="section section--pb-0">
+        <div class="section section--pb-0" id="services-inner">
           <div class="inner">
             <div class="services-inner">
               <div class="services-inner__text">
@@ -447,32 +447,67 @@
               </div>
               <div class="services-simular__main">
                 <div class="swiper">
-                  <div class="swiper-wrapper"><a class="services-simular__item swiper-slide" href="#">
+                  <div class="swiper-wrapper">
+                    <div class="services-simular__item swiper-slide">
                       <div class="services-simular__img"><img src="images/services-img-hammam.jpg" alt=""/></div>
                       <div class="services-simular__wrapper">
-                        <div class="ui-h5 services-simular__ui-h5 ui-h5--semibold ui-h5--mob-fz-l">Хаммам
+                        <div class="services-simular__content">
+                          <div class="services-simular__icon"><img src="images/services-icon.svg" alt=""/></div>
+                          <div class="ui-h5 services-simular__ui-h5 ui-h5--semibold ui-h5--mob-fz-l">Хаммам
+                          </div>
+                          <div class="services-simular__actions"><a class="ui-button ui-button--l-min-w-xs ui-button--fz-xs" href="#"><span>Подробнее</span></a><a class="ui-button ui-button--l-min-w-xs ui-button--fz-xs ui-button--outline-gradient" href="#"><span>Забронировать</span></a>
+                          </div>
                         </div>
-                      </div></a><a class="services-simular__item swiper-slide" href="#">
+                      </div>
+                    </div>
+                    <div class="services-simular__item swiper-slide">
                       <div class="services-simular__img"><img src="images/services-img-sauna.jpg" alt=""/></div>
                       <div class="services-simular__wrapper">
-                        <div class="ui-h5 services-simular__ui-h5 ui-h5--semibold ui-h5--mob-fz-l">Сауна
+                        <div class="services-simular__content">
+                          <div class="services-simular__icon"><img src="images/services-icon.svg" alt=""/></div>
+                          <div class="ui-h5 services-simular__ui-h5 ui-h5--semibold ui-h5--mob-fz-l">Сауна
+                          </div>
+                          <div class="services-simular__actions"><a class="ui-button ui-button--l-min-w-xs ui-button--fz-xs" href="#"><span>Подробнее</span></a><a class="ui-button ui-button--l-min-w-xs ui-button--fz-xs ui-button--outline-gradient" href="#"><span>Забронировать</span></a>
+                          </div>
                         </div>
-                      </div></a><a class="services-simular__item swiper-slide" href="#">
+                      </div>
+                    </div>
+                    <div class="services-simular__item swiper-slide">
                       <div class="services-simular__img"><img src="images/services-img-footsteps-geisha.jpg" alt=""/></div>
                       <div class="services-simular__wrapper">
-                        <div class="ui-h5 services-simular__ui-h5 ui-h5--semibold ui-h5--mob-fz-l">По следам Гейши: экспресс-ритуал для ног
+                        <div class="services-simular__content">
+                          <div class="services-simular__icon"><img src="images/services-icon.svg" alt=""/></div>
+                          <div class="ui-h5 services-simular__ui-h5 ui-h5--semibold ui-h5--mob-fz-l">По следам Гейши: экспресс-ритуал для ног
+                          </div>
+                          <div class="services-simular__actions"><a class="ui-button ui-button--l-min-w-xs ui-button--fz-xs" href="#"><span>Подробнее</span></a><a class="ui-button ui-button--l-min-w-xs ui-button--fz-xs ui-button--outline-gradient" href="#"><span>Забронировать</span></a>
+                          </div>
                         </div>
-                      </div></a><a class="services-simular__item swiper-slide" href="#">
+                      </div>
+                    </div>
+                    <div class="services-simular__item swiper-slide">
                       <div class="services-simular__img"><img src="images/services-img-elixir-harmony.jpg" alt=""/></div>
                       <div class="services-simular__wrapper">
-                        <div class="ui-h5 services-simular__ui-h5 ui-h5--semibold ui-h5--mob-fz-l">Эликсир Гармонии: Касание Киото
+                        <div class="services-simular__content">
+                          <div class="services-simular__icon"><img src="images/services-icon.svg" alt=""/></div>
+                          <div class="ui-h5 services-simular__ui-h5 ui-h5--semibold ui-h5--mob-fz-l">Эликсир Гармонии: Касание Киото
+                          </div>
+                          <div class="services-simular__actions"><a class="ui-button ui-button--l-min-w-xs ui-button--fz-xs" href="#"><span>Подробнее</span></a><a class="ui-button ui-button--l-min-w-xs ui-button--fz-xs ui-button--outline-gradient" href="#"><span>Забронировать</span></a>
+                          </div>
                         </div>
-                      </div></a><a class="services-simular__item swiper-slide" href="#">
+                      </div>
+                    </div>
+                    <div class="services-simular__item swiper-slide">
                       <div class="services-simular__img"><img src="images/services-img-elixir-harmony.jpg" alt=""/></div>
                       <div class="services-simular__wrapper">
-                        <div class="ui-h5 services-simular__ui-h5 ui-h5--semibold ui-h5--mob-fz-l">Эликсир Гармонии: Касание Киото
+                        <div class="services-simular__content">
+                          <div class="services-simular__icon"><img src="images/services-icon.svg" alt=""/></div>
+                          <div class="ui-h5 services-simular__ui-h5 ui-h5--semibold ui-h5--mob-fz-l">Эликсир Гармонии: Касание Киото
+                          </div>
+                          <div class="services-simular__actions"><a class="ui-button ui-button--l-min-w-xs ui-button--fz-xs" href="#"><span>Подробнее</span></a><a class="ui-button ui-button--l-min-w-xs ui-button--fz-xs ui-button--outline-gradient" href="#"><span>Забронировать</span></a>
+                          </div>
                         </div>
-                      </div></a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div><a class="ui-button services-simular__ui-button ui-button--l-min-w-s ui-button--outline" href="#"><span>Смотреть все услуги</span></a>
@@ -669,19 +704,24 @@
               </div>
             </div>
             <div class="socials socials--size-l socials--gap-l socials--mob-between"><a class="socials__item" href="#">
-                <div class="socials__icon"><img src="images/icon_vk_color.svg" alt=""/></div>
+                <div class="socials__icon"><img class="socials__icon-start" src="images/icon_vk_color.svg" alt=""/>
+                </div>
                 <div class="ui-p2 socials__ui-p2 ui-p2--mob-s">ВК
                 </div></a><a class="socials__item" href="#">
-                <div class="socials__icon"><img src="images/icon_wa_color.svg" alt=""/></div>
+                <div class="socials__icon"><img class="socials__icon-start" src="images/icon_wa_color.svg" alt=""/>
+                </div>
                 <div class="ui-p2 socials__ui-p2 ui-p2--mob-s">WhatsApp
                 </div></a><a class="socials__item" href="#">
-                <div class="socials__icon"><img src="images/icon_tg_color.svg" alt=""/></div>
+                <div class="socials__icon"><img class="socials__icon-start" src="images/icon_tg_color.svg" alt=""/>
+                </div>
                 <div class="ui-p2 socials__ui-p2 ui-p2--mob-s">Telegram
                 </div></a><a class="socials__item" href="#">
-                <div class="socials__icon"><img src="images/icon_link_color.svg" alt=""/></div>
+                <div class="socials__icon"><img class="socials__icon-start" src="images/icon_link_color.svg" alt=""/>
+                </div>
                 <div class="ui-p2 socials__ui-p2 ui-p2--mob-s">Копировать <br>ссылку
                 </div></a><a class="socials__item" href="#">
-                <div class="socials__icon"><img src="images/icon_inst_color.svg" alt=""/></div>
+                <div class="socials__icon"><img class="socials__icon-start" src="images/icon_inst_color.svg" alt=""/>
+                </div>
                 <div class="ui-p2 socials__ui-p2 ui-p2--mob-s">Instagram
                 </div></a>
             </div>
@@ -755,9 +795,11 @@
               </div>
             </li>
           </ul>
-          <div class="socials footer__socials"><a class="socials__item" href="#">
-              <div class="socials__icon"><img src="images/icon_inst-grey.svg" alt=""/></div></a><a class="socials__item" href="#">
-              <div class="socials__icon"><img src="images/icon_vk-grey.svg" alt=""/></div></a>
+          <div class="socials footer__socials"><a class="socials__item socials__item--hover-color" href="#">
+              <div class="socials__icon"><img class="socials__icon-start" src="images/icon_inst-grey.svg" alt=""/><img class="socials__icon-hover" src="images/icon_inst_color.svg" alt=""/>
+              </div></a><a class="socials__item socials__item--hover-color" href="#">
+              <div class="socials__icon"><img class="socials__icon-start" src="images/icon_vk-grey.svg" alt=""/><img class="socials__icon-hover" src="images/icon_vk_color.svg" alt=""/>
+              </div></a>
           </div>
           <div class="footer__policies"><a class="footer__policy" href="#">Политика конфиденциальности</a><a class="footer__policy" href="#">Разработка сайтов “Генерация”</a></div>
         </div>

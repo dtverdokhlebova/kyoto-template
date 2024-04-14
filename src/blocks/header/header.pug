@@ -245,8 +245,8 @@
   ]
 
   const socialsItemsHeader =[
-    { icon: 'icon_inst' },
-    { icon: 'icon_vk' },
+    { iconHover: 'icon_inst_color', iconStart: 'icon_inst-grey' },
+    { iconHover: 'icon_vk_color', iconStart: 'icon_vk-grey' },
   ]
 
 header.header
@@ -284,7 +284,7 @@ header.header
       .header-burger__foot
         +ui-button('Забронировать', 'header-burger')
         .header-burger__links
-          +socials(socialsItemsHeader, 'header-burger', '-grey')
+          +socials(socialsItemsHeader, 'header-burger')
           +ui-button('Войти в личный кабинет', '--p-xs, --outline-gradient')
   .header-menu
     button.header__close(onclick='window.closeMenu()')

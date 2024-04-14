@@ -52,7 +52,7 @@ mixin banner__scroll(mods)
       allMods = allMods.trim()
     }
 
-  .banner__scroll(class=allMods)&attributes(attributes)
+  a.banner__scroll(class=allMods)&attributes(attributes)
     .banner__scroll-img: img(src='../../images/banner-scroll.png' alt='')
     +ui-p2('Листай вниз').text-gradient
     block

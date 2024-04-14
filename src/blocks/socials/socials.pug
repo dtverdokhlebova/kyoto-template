@@ -1,4 +1,4 @@
-mixin socials(items, mods, iconsMod = '')
+mixin socials(items, mods)
   -
     const baseName = 'socials'
     let allMods = ''
@@ -12,9 +12,11 @@ mixin socials(items, mods, iconsMod = '')
 
   .socials(class=allMods)&attributes(attributes)
     each item in items
-      a.socials__item(href='#')
+      a.socials__item(class=(item.iconHover ? 'socials__item--hover-color' : '') href='#')
         .socials__icon
-          img(src=`../../images/${item.icon+iconsMod}.svg`, alt='')
+          img.socials__icon-start(src=`../../images/${item.iconStart}.svg`, alt='')
+          if item.iconHover
+            img.socials__icon-hover(src=`../../images/${item.iconHover}.svg`, alt='')
         if item.text
           +ui-p2(item.text, 'socials, --mob-s')
     block

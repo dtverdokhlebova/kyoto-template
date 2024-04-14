@@ -27,11 +27,17 @@ mixin services-simular(mods)
       .swiper
         .swiper-wrapper
           each item in items
-            a.services-simular__item.swiper-slide(href='#')
+            .services-simular__item.swiper-slide
               .services-simular__img
                 img(src=item.img, alt='')
               .services-simular__wrapper
-                +ui-h5(item.h5, 'services-simular, --semibold, --mob-fz-l')
+                .services-simular__content
+                  .services-simular__icon
+                    img(src='../../images/services/services-icon.svg', alt='')
+                  +ui-h5(item.h5, 'services-simular, --semibold, --mob-fz-l')
+                  .services-simular__actions
+                    +ui-button('Подробнее', '--l-min-w-xs, --fz-xs')(href='#')
+                    +ui-button('Забронировать', '--l-min-w-xs, --fz-xs, --outline-gradient')(href='#')
     +ui-button('Смотреть все услуги', 'services-simular, --l-min-w-s, --outline')(href='#')
     +ui-swiper-buttons('services-simular', '--outline')
     block

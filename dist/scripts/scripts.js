@@ -67,8 +67,10 @@ function banner() {
           delay: 5e3,
           disableOnInteraction: false
         },
+        touchStartPreventDefault: false,
         pagination: {
           el: pagination,
+          clickable: true,
           renderBullet: function(index, className) {
             return `
             <div class="${className}" data-index="${index}">

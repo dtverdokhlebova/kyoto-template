@@ -127,8 +127,8 @@
 
 -
   const socialsItemsFooter =[
-    { icon: 'icon_inst' },
-    { icon: 'icon_vk' },
+    { iconHover: 'icon_inst_color', iconStart: 'icon_inst-grey' },
+    { iconHover: 'icon_vk_color', iconStart: 'icon_vk-grey' },
   ]
 
 footer.footer
@@ -149,7 +149,7 @@ footer.footer
         .footer__buttons
           +ui-button('Бронирование', 'footer, --outline-gradient, --l-min-w-s')
           +ui-button('Купить сертификат', 'footer, --l-min-w-s')
-    +socials(socialsItemsFooter, 'footer', '-grey')
+    +socials(socialsItemsFooter, 'footer')
     .footer__policies
       a.footer__policy(href='#') Политика конфиденциальности
       a.footer__policy(href='#') Разработка сайтов “Генерация”

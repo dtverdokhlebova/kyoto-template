@@ -104,12 +104,26 @@
       bottom: 20px;
     }
     &-img {
-      width: 82px;
+      position: relative;
+      width: 81px;
       height: 67px;
       margin: 0 auto 10px;
       @media (max-width: 420px) {
         width: 57px;
         height: 48px;
+      }
+      &::before {
+        content: '';
+        position: absolute;
+        top: 43.5%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 25.9%;
+        aspect-ratio: 1;
+        background-image: url("data:image/svg+xml,%3Csvg width='20' height='21' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10.298 20.963c.23-.268.618-.727 1.164-1.378a79.509 79.509 0 0 0 1.768-2.183 76.2 76.2 0 0 0 2.07-2.642 56.128 56.128 0 0 0 2.026-2.756 49.246 49.246 0 0 0 1.596-2.47c.431-.766.69-1.379.776-1.838.115-.498.201-1.053.259-1.666.029-.574.043-1.167.043-1.78 0-1.11-.072-2.106-.216-2.986C19.612.42 19.368 0 19.051 0c-.23 0-.46.421-.69 1.264-.258.842-.675 2.01-1.25 3.503-.575 1.493-1.38 3.235-2.415 5.226-1.063 2.03-2.515 4.193-4.355 6.49a16.938 16.938 0 0 1-.388-1.206c-.173-.46-.36-.976-.56-1.55a85.808 85.808 0 0 0-.647-1.78 37.802 37.802 0 0 0-.777-1.724 85.375 85.375 0 0 1-1.078-2.47c-.402-.957-.804-1.895-1.207-2.814a39.94 39.94 0 0 0-1.207-2.297c-.374-.613-.69-.919-.949-.919-.345 0-.733.115-1.164.345-.431.23-.834.497-1.208.804a7.269 7.269 0 0 0-.905.861c-.23.306-.302.517-.216.632.144.191.388.46.733.804.317.345.547.593.69.747.058.038.245.268.56.689.288.46.648 1.014 1.079 1.665.431.651.877 1.34 1.337 2.068.46.727.862 1.398 1.207 2.01a81.84 81.84 0 0 1 1.94 3.561c.518 1.11.978 2.048 1.38 2.814.374.804.676 1.398.906 1.78.2.422.345.575.43.46Z' fill='url(%23a)'/%3E%3Cdefs%3E%3ClinearGradient id='a' x1='3.821' y1='1.857' x2='17.513' y2='17.32' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%238A5C2A'/%3E%3Cstop offset='.514' stop-color='%23C2A650' stop-opacity='.81'/%3E%3Cstop offset='.619' stop-color='%23D1BA5A' stop-opacity='.92'/%3E%3Cstop offset='.697' stop-color='%23C8AD53' stop-opacity='.86'/%3E%3Cstop offset='1' stop-color='%23A37C36'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E");
+        background-size: contain;
+        background-repeat: no-repeat;
+        animation: arrow-mover 1s infinite  alternate;
       }
       img {
         display: block;
@@ -154,5 +168,14 @@
       margin-top: 10px;
       max-width: 157px;
     }
+  }
+}
+
+@keyframes arrow-mover {
+  0% {
+    transform: translate(-50%, 0);
+  }
+  100% {
+    transform: translate(-50%, 10px);
   }
 }

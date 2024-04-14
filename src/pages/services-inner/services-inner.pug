@@ -7,11 +7,11 @@ block variables
 
   -
     const socialsItemsShare =[
-      { icon: 'icon_vk_color', isImg: true, text: 'ВК' },
-      { icon: 'icon_wa_color', isImg: true, text: 'WhatsApp' },
-      { icon: 'icon_tg_color', isImg: true, text: 'Telegram' },
-      { icon: 'icon_link_color', isImg: true, text: 'Копировать <br>ссылку' },
-      { icon: 'icon_inst_color', isImg: true, text: 'Instagram' },
+      { iconStart: 'icon_vk_color', text: 'ВК' },
+      { iconStart: 'icon_wa_color', text: 'WhatsApp' },
+      { iconStart: 'icon_tg_color', text: 'Telegram' },
+      { iconStart: 'icon_link_color', text: 'Копировать <br>ссылку' },
+      { iconStart: 'icon_inst_color', text: 'Instagram' },
     ]
 
 block content
@@ -19,8 +19,8 @@ block content
     +banner
       +banner__item('services-inner', 'Кедровая фитобочка')
         block banner
-          +banner__scroll
-    +section('--pb-0')
+          +banner__scroll(href='#services-inner')
+    +section('--pb-0')#services-inner
       .inner
         +services-inner
     +section('--pb-0, --ov-hidden, --bg, --reviews-video')

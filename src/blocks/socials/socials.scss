@@ -10,17 +10,35 @@
   }
   &__item {
     display: block;
-    @include media-hover {
-      .socials__icon {
-        opacity: 0.8;
+    &--hover-color {
+      @include media-hover {
+        .socials__icon {
+          &-start {
+            opacity: 0;
+          }
+          &-hover {
+            opacity: 1;
+          }
+        }
       }
     }
   }
   &__icon {
+    position: relative;
     width: var(--size);
     height: var(--size);
     margin: 0 auto;
-    transition: $transitionDuration;
+    &-start,
+    &-hover {
+      width: 100%;
+      transition: $transitionDuration;
+    }
+    &-hover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
   }
   &__ui-p2 {
     margin-top: 10px;

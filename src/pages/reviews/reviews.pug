@@ -22,8 +22,8 @@ block content
         block banner
           .banner__content
             +ui-h1('Отзывы', 'banner, --mob-fz-s')
-          +banner__scroll
-    +section('--pb-0, --ov-hidden')
+          +banner__scroll(href='#reviews-video')
+    +section('--pb-0, --ov-hidden')#reviews-video
       .inner
         +reviews-video
     +section('--ov-hidden, --bg, --reviews')
